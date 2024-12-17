@@ -152,7 +152,7 @@ namespace foodordering
                     }
                     else
                     {
-                        imagePath = Path.Combine(Application.StartupPath, "Resources", "1.jpg");
+                        imagePath = Path.Combine(Application.StartupPath, "Resources", "default.png");
                         image = System.Drawing.Image.FromFile(imagePath);
                     }
                 }
@@ -673,15 +673,12 @@ namespace foodordering
         {
             string searchQuery = searchBar.Text.Trim();
 
-            // Tạo ProductSearchForm và lọc sản phẩm
             var productSearchForm = new ProductSearchForm();
             productSearchForm.FilterProducts(searchQuery);
 
-            // Tạo SearchResult và đưa ProductSearchForm vào containerPanel
             var searchResultForm = new SearchResult();
             searchResultForm.LoadProductSearchForm(productSearchForm);
 
-            // Đưa SearchResult vào panel3 của Form1
             AddControlToPanel(searchResultForm);
         }
 

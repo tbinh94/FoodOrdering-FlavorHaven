@@ -31,6 +31,7 @@ namespace foodordering
             };
             tLP.BackColor = Color.Transparent;
             tLP.BackgroundImage = ResizeImg.ResizeImage(Properties.Resources.background1, 1440, 768);
+            
         }
 
         private void AddElementsToTableLayout()
@@ -73,7 +74,7 @@ namespace foodordering
                         }
                         else
                         {
-                            imagePath = Path.Combine(Application.StartupPath, "Resources", "1.jpg");
+                            imagePath = Path.Combine(Application.StartupPath, "Resources", "default.png");
                             image = Image.FromFile(imagePath);
                         }
                     }
@@ -125,10 +126,13 @@ namespace foodordering
                 string address = productItem.Address;
                 System.Drawing.Image productImage = productItem.ProductImage;
 
+
                 // Tạo Form2 và truyền dữ liệu
                 ItemDetail form2 = new ItemDetail();
                 form2.SetProductDetails(productName, productPrice, address, productImage);
                 AddControlToPanel(form2);
+
+                
             }
         }
         private void AddControlToPanel(Form form)

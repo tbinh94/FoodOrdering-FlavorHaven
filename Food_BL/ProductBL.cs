@@ -88,8 +88,6 @@ namespace Food_BL
         {
             try
             {
-
-
                 return new ProductDAL().save_product(ProductName, Price, ImagePath, Description, CategoryID, Address, idseller);
             }
             catch (SqlException ex)
