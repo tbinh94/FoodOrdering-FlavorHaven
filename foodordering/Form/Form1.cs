@@ -673,9 +673,16 @@ namespace foodordering
         {
             string searchQuery = searchBar.Text.Trim();
 
+            // Tạo ProductSearchForm và lọc sản phẩm
             var productSearchForm = new ProductSearchForm();
             productSearchForm.FilterProducts(searchQuery);
-            AddControlToPanel(productSearchForm);
+
+            // Tạo SearchResult và đưa ProductSearchForm vào containerPanel
+            var searchResultForm = new SearchResult();
+            searchResultForm.LoadProductSearchForm(productSearchForm);
+
+            // Đưa SearchResult vào panel3 của Form1
+            AddControlToPanel(searchResultForm);
         }
 
 

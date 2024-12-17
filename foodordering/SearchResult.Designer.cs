@@ -51,7 +51,7 @@
             // panelCbox
             // 
             this.panelCbox.BackColor = System.Drawing.Color.White;
-            this.panelCbox.Location = new System.Drawing.Point(0, 6);
+            this.panelCbox.Location = new System.Drawing.Point(0, 3);
             this.panelCbox.Name = "panelCbox";
             this.panelCbox.Size = new System.Drawing.Size(379, 111);
             this.panelCbox.TabIndex = 0;

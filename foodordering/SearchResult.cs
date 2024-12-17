@@ -10,64 +10,28 @@ namespace foodordering
     public partial class SearchResult : Form
     {
         private bool isExpanded = false;
-        private List<ProductDTO> filteredProducts;
 
 
-        public SearchResult(List<ProductDTO> products)
+        public SearchResult()
         {
             InitializeComponent();
-            filteredProducts = products;
-
-            LoadFilteredProducts(filteredProducts);
 
         }
-        private void LoadFilteredProducts(List<ProductDTO> products)
+        public void LoadProductSearchForm(ProductSearchForm productSearchForm)
         {
-            //containerPanel.Controls.Clear(); // Xóa sản phẩm cũ
+            productSearchForm.TopLevel = false;
+            productSearchForm.FormBorderStyle = FormBorderStyle.None;
+            productSearchForm.Dock = DockStyle.Fill;
 
-            foreach (var product in products)
-            {
-                // Tạo ProductItemControl cho từng sản phẩm
-                ProductItemControl item = new ProductItemControl
-                {
-                    ProductName = product.ProductName,
-                    ProductPrice = product.Price.ToString("C0"),
-                    ProductDescription = product.Description,
-                    ProductImage = LoadProductImage(product.ImagePath), // Phương thức riêng để tải ảnh
-                    BorderStyle = BorderStyle.FixedSingle,
-                    Margin = new Padding(10, 10, 10, 20),
-                    BackColor = Color.LightGray, // Màu nền
-                };
+            // Thêm ProductSearchForm vào containerPanel
+            containerPanel.Controls.Add(productSearchForm);
 
-                // Gắn sự kiện click
-                item.ProductClicked += (s, e) =>
-                {
-                    // Hành động khi click vào sản phẩm
-                    MessageBox.Show($"Món: {product.ProductName}, Giá: {product.Price:C0}");
-                };
+            // Đảm bảo panelCbox luôn nằm trên cùng
+            containerPanel.Controls.SetChildIndex(panelCbox, 0);
 
-                // Thêm vào containerPanel
-                containerPanel.Controls.Add(item);
-            }
-
-            // Kiểm tra nếu không có sản phẩm
-            if (products.Count == 0)
-            {
-                MessageBox.Show("Không tìm thấy món ăn nào phù hợp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            productSearchForm.Show();
         }
 
-        private Image LoadProductImage(string imageName)
-        {
-            string imagePath = Path.Combine(Application.StartupPath, "Resources", "ProductImage", imageName);
-            if (File.Exists(imagePath))
-            {
-                return Image.FromFile(imagePath);
-            }
-
-            // Trả về ảnh mặc định nếu không tìm thấy
-            return Image.FromFile(Path.Combine(Application.StartupPath, "Resources", "default.png"));
-        }
 
         string[] areas = { "Quận 6", "Quận 7", "Quận 8", "Quận 9", "Quận 10", "Quận 11",
                                "Quận 12", "Bình Thạnh", "Bình Tân", "Phú Nhuận",
