@@ -175,6 +175,12 @@
       <DependentUpon>Sign_up.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\ResizeImg.cs" />
+    <Compile Include="edit_productSeller_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="edit_productSeller_form.Designer.cs">
+      <DependentUpon>edit_productSeller_form.cs</DependentUpon>
+    </Compile>
     <Compile Include="save_productSeller_form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\Sign_up.resx">
       <DependentUpon>Sign_up.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="edit_productSeller_form.resx">
+      <DependentUpon>edit_productSeller_form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="save_productSeller_form.resx">
       <DependentUpon>save_productSeller_form.cs</DependentUpon>

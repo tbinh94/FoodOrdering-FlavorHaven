@@ -12,6 +12,7 @@
         public int SellerID { get; set; }
 
         public int Inventory { get; set; }
+        public int CategoryID { get; set; }
 
     }
 }

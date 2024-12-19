@@ -1,4 +1,5 @@
 ﻿using Food_DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -47,6 +48,7 @@ namespace Food_DL
                         ProductName = reader[1].ToString(),
                         Price = decimal.Parse(reader[2].ToString()),
                         Description = reader[3].ToString(),
+                        CategoryID = int.Parse(reader[4].ToString()),
                         ImagePath = reader[5].ToString(),
                         Address = reader[6].ToString(),
                         SellerID = int.Parse(reader[7].ToString()),
@@ -225,7 +227,33 @@ namespace Food_DL
             }
             return products;
         }
+        public bool edit_product(int idproduct, decimal price,string description,string address,int sl)
+        {
+            try
+            {
+                using (cn)
+                {
+                    cn.Open();
+                    string query = $"UPDATE Products SET Price = @Price,Description = @Description, Address=@Address,Inventory = @Inventory WHERE ProductID = @ProductID";
 
+                    using (SqlCommand cmd = new SqlCommand(query, cn))
+                    {
+                        cmd.Parameters.AddWithValue("@Price", price);
+                        cmd.Parameters.AddWithValue("@Description", description);
+                        cmd.Parameters.AddWithValue("@Address", address);
+                        cmd.Parameters.AddWithValue("@Inventory", sl);
+                        cmd.Parameters.AddWithValue("ProductID", idproduct);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 
 

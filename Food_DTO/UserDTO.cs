@@ -2,6 +2,7 @@
 {
     public class UserDTO
     {
+        public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
@@ -23,6 +24,15 @@
             Email = email;
             PhoneNumber = phoneNumber;
             Address = address;
+        }
+        public UserDTO(int id, string username, string password, string email, string phoneNumber, string address)
+        {
+            Username = username;
+            Password = password;
+            Email = email;
+            PhoneNumber = phoneNumber;
+            Address = address;
+            Id = id;
         }
     }
 

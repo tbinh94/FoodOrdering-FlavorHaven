@@ -57,7 +57,17 @@ namespace foodordering
             get => pictureBoxProduct.Image;
             set => pictureBoxProduct.Image = value;
         }
+        public Guna2PictureBox pbx
+        {
+            get => pictureBoxProduct;
+            set => pictureBoxProduct= value;
+        }
 
+        public Button cart
+        {
+            get => addCart;
+            set => addCart = value;
+        }
         // Thuộc tính để thiết lập trạng thái yêu thích
         public bool IsFavorite
         {

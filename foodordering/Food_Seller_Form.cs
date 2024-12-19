@@ -114,9 +114,12 @@ namespace foodordering
                     sizerow = productItems.Width;
                     //productItems.Width = (int)(productItems.Width * scaleX);
                     //productItems.Height = (int)(productItems.Height * scaleY);
-
                     productItems.Dock = DockStyle.None;
                     productItems.Anchor = AnchorStyles.None;
+                    productItems.Enabled = true;
+                    productItems.cart.Hide();
+                    productItems.pbx.Click += (_,__) => {
+                        AddControlToPanel(new edit_productSeller_form(product.id)); };
                     //productItems.AutoSize = true;
                     // Thêm vào các panel
                     tLP.Controls.Add(productItems, col, row);
@@ -130,6 +133,7 @@ namespace foodordering
             tLP.RowCount += 1;
             int them = products.Count * 10 / columnCount;
             tLP.RowStyles.Add(new RowStyle(SizeType.Absolute, them));
+
         }
         public void FilterProducts(string searchQuery)
         {
@@ -149,7 +153,15 @@ namespace foodordering
             products = filteredProducts;
             AddElementsToTableLayout(id);
         }
-
+        private void AddControlToPanel(Form form)
+        {
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            this.Controls.Clear();
+            this.Controls.Add(form);
+            form.Show();
+        }
 
     }
 }

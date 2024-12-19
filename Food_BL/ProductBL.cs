@@ -113,6 +113,17 @@ namespace Food_BL
             return productDAL.GetRandomProducts(count);
         }
 
+        public bool edit_product(int idproduct, decimal price, string description, string address, int sl)
+        {
+            try
+            {
+                return productDAL.edit_product(idproduct, price, description, address, sl);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
     }
 
 }
