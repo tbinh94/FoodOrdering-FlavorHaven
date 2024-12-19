@@ -326,6 +326,7 @@
     </Content>
     <None Include="Resources\login.png" />
     <None Include="Resources\backlogin.gif" />
+    <None Include="Resources\border.png" />
     <Content Include="Resources\ProductImage\bakhia.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

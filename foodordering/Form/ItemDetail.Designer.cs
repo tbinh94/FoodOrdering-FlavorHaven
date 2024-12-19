@@ -52,17 +52,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.searchBar = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.productPic = new Guna.UI2.WinForms.Guna2PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pProducts = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.productPic = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.pProducts = new System.Windows.Forms.Panel();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productPic)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.productPic)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -161,7 +161,7 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label4.Location = new System.Drawing.Point(572, 280);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 16);
+            this.label4.Size = new System.Drawing.Size(100, 16);
             this.label4.TabIndex = 12;
             this.label4.Text = "Flavor Haven";
             // 
@@ -349,6 +349,7 @@
             this.searchBar.SelectedText = "";
             this.searchBar.Size = new System.Drawing.Size(266, 31);
             this.searchBar.TabIndex = 10;
+            this.searchBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchBar_KeyDown);
             // 
             // btnSearch
             // 
@@ -360,17 +361,7 @@
             this.btnSearch.Size = new System.Drawing.Size(34, 31);
             this.btnSearch.TabIndex = 9;
             this.btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // productPic
-            // 
-            this.productPic.BackColor = System.Drawing.Color.Transparent;
-            this.productPic.FillColor = System.Drawing.Color.RosyBrown;
-            this.productPic.ImageRotate = 0F;
-            this.productPic.Location = new System.Drawing.Point(16, 22);
-            this.productPic.Name = "productPic";
-            this.productPic.Size = new System.Drawing.Size(455, 250);
-            this.productPic.TabIndex = 2;
-            this.productPic.TabStop = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // panel1
             // 
@@ -378,7 +369,7 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1028, 609);
             this.panel1.TabIndex = 15;
@@ -387,27 +378,18 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.57198F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.44747F));
             this.tableLayoutPanel1.Controls.Add(this.guna2Panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pProducts, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 336);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1028, 273);
             this.tableLayoutPanel1.TabIndex = 17;
-            // 
-            // pProducts
-            // 
-            this.pProducts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pProducts.Location = new System.Drawing.Point(156, 2);
-            this.pProducts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pProducts.Name = "pProducts";
-            this.pProducts.Size = new System.Drawing.Size(715, 269);
-            this.pProducts.TabIndex = 14;
             // 
             // panel3
             // 
@@ -427,10 +409,32 @@
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1028, 336);
             this.panel3.TabIndex = 16;
+            // 
+            // productPic
+            // 
+            this.productPic.BackColor = System.Drawing.Color.Transparent;
+            this.productPic.FillColor = System.Drawing.Color.RosyBrown;
+            this.productPic.ImageRotate = 0F;
+            this.productPic.Location = new System.Drawing.Point(16, 22);
+            this.productPic.Name = "productPic";
+            this.productPic.Size = new System.Drawing.Size(455, 250);
+            this.productPic.TabIndex = 2;
+            this.productPic.TabStop = false;
+            // 
+            // pProducts
+            // 
+            this.pProducts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pProducts.Location = new System.Drawing.Point(156, 2);
+            this.pProducts.Margin = new System.Windows.Forms.Padding(2);
+            this.pProducts.Name = "pProducts";
+            this.pProducts.Size = new System.Drawing.Size(556, 269);
+            this.pProducts.TabIndex = 14;
+            this.pProducts.Scroll += new System.Windows.Forms.ScrollEventHandler(this.pProducts_Scroll);
+            this.pProducts.Paint += new System.Windows.Forms.PaintEventHandler(this.pProducts_Paint);
             // 
             // ItemDetail
             // 
@@ -446,11 +450,11 @@
             this.guna2Panel1.PerformLayout();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productPic)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.productPic)).EndInit();
             this.ResumeLayout(false);
 
         }
