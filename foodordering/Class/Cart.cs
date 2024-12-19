@@ -128,16 +128,15 @@ namespace foodordering
         {
             products_choosed.Remove(itemcart);
             FlowLayoutPanel panel = itemcart.Parent as FlowLayoutPanel;
-            bool count = false;
+            int count = 0;
             foreach (Control control in panel.Controls)
             {
                 if (control is Item_Cart)
                 {
-                    count = true;
-                    break;
+                    count++;
                 }
             }
-            if (count == false)
+            if (count ==1 )
                 fLP1.Controls.Remove(panel);
             setText();
             setTotal();
