@@ -161,7 +161,7 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label4.Location = new System.Drawing.Point(572, 280);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 16);
+            this.label4.Size = new System.Drawing.Size(100, 16);
             this.label4.TabIndex = 12;
             this.label4.Text = "Flavor Haven";
             // 
@@ -349,6 +349,7 @@
             this.searchBar.SelectedText = "";
             this.searchBar.Size = new System.Drawing.Size(266, 31);
             this.searchBar.TabIndex = 10;
+            this.searchBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchBar_KeyDown);
             // 
             // btnSearch
             // 
@@ -360,6 +361,7 @@
             this.btnSearch.Size = new System.Drawing.Size(34, 31);
             this.btnSearch.TabIndex = 9;
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // productPic
             // 
@@ -378,7 +380,7 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1028, 609);
             this.panel1.TabIndex = 15;
@@ -393,7 +395,7 @@
             this.tableLayoutPanel1.Controls.Add(this.pProducts, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 336);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -404,7 +406,7 @@
             // 
             this.pProducts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pProducts.Location = new System.Drawing.Point(156, 2);
-            this.pProducts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pProducts.Margin = new System.Windows.Forms.Padding(2);
             this.pProducts.Name = "pProducts";
             this.pProducts.Size = new System.Drawing.Size(715, 269);
             this.pProducts.TabIndex = 14;
@@ -427,7 +429,7 @@
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1028, 336);
             this.panel3.TabIndex = 16;

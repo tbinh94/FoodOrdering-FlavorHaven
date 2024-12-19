@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace foodordering
@@ -290,7 +291,6 @@ namespace foodordering
                 }
                 else
                 {
-                    // Nếu không tìm thấy file, dùng hình mặc định
                     imagePath = Path.Combine(Application.StartupPath, "Resources", "1.jpg");
                     image = Image.FromFile(imagePath);
                 }
@@ -309,5 +309,71 @@ namespace foodordering
             }
         }
 
+        private void FilterProductsBySeller(string query)
+        {
+            pProducts.Controls.Clear();
+
+            // Lấy danh sách sản phẩm của seller
+            List<ProductDTO> allProducts = new ProductBL().GetProducts_Seller();
+
+            var filteredProducts = allProducts
+                .Where(p =>
+                    (!string.IsNullOrEmpty(p.ProductName) && p.ProductName.Trim().ToLower().Contains(query.Trim().ToLower())) ||
+                    (!string.IsNullOrEmpty(p.Description) && p.Description.Trim().ToLower().Contains(query.Trim().ToLower())))
+                .ToList();
+
+            foreach (ProductDTO item in filteredProducts)
+            {
+                string imagePath = Path.Combine(Application.StartupPath, "Resources", "ProductImage", item.ImagePath);
+                Image image;
+
+                if (File.Exists(imagePath))
+                {
+                    image = Image.FromFile(imagePath);
+                }
+                else
+                {
+                    imagePath = Path.Combine(Application.StartupPath, "Resources", "default.png");
+                    image = Image.FromFile(imagePath);
+                }
+
+                Product_ItemDetail p = new Product_ItemDetail
+                {
+                    id = item.ProductID,
+                    lblProductName = item.ProductName,
+                    lblProductDescription = item.Description,
+                    productPicture = ResizeImage(image, 100, 100),
+                    lblProductPrice = item.Price.ToString("C0"),
+                };
+
+                p.Dock = DockStyle.Top;
+                p.Padding = new Padding(10, 10, 10, 10);
+
+                // Thêm sản phẩm vào panel
+                pProducts.Controls.Add(p);
+            }
+
+            if (!filteredProducts.Any())
+            {
+                MessageBox.Show("Không tìm thấy sản phẩm nào phù hợp.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchQuery = searchBar.Text.Trim();
+            FilterProductsBySeller(searchQuery);
+        }
+
+        private void searchBar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSearch_Click(sender, e); 
+                e.Handled = true;           
+                e.SuppressKeyPress = true; 
+            }
+        }
     }
 }
