@@ -152,7 +152,7 @@ namespace Food_DL
 
         public bool save_product(string ProductName, decimal Price, string ImagePath, string Description, int CategoryID, string Address, int idseller)
         {
-            string sql = $"INSERT INTO Products (ProductName, Price, Image, Description,CategoryID,Address, SellerID,Invertory) " +
+            string sql = $"INSERT INTO Products (ProductName, Price, Image, Description,CategoryID,Address, SellerID,Inventory) " +
                          "VALUES (@ProductName, @Price, @ImagePath, @Description,@CategoryID,@Address, @SellerID,0)";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>
