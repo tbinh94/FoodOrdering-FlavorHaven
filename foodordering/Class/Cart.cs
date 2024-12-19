@@ -137,7 +137,7 @@ namespace foodordering
                     break;
                 }
             }
-            if (count)
+            if (count == false)
                 fLP1.Controls.Remove(panel);
             setText();
             setTotal();

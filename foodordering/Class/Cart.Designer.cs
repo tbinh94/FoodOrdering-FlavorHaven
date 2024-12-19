@@ -53,19 +53,19 @@
             this.panel2.Controls.Add(this.lblText);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(548, 83);
+            this.panel2.Size = new System.Drawing.Size(1096, 160);
             this.panel2.TabIndex = 0;
             // 
             // lblText
             // 
             this.lblText.AutoSize = true;
             this.lblText.Font = new System.Drawing.Font("Times New Roman", 25.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblText.Location = new System.Drawing.Point(197, 21);
-            this.lblText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblText.Location = new System.Drawing.Point(394, 40);
+            this.lblText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblText.Name = "lblText";
-            this.lblText.Size = new System.Drawing.Size(154, 40);
+            this.lblText.Size = new System.Drawing.Size(304, 78);
             this.lblText.TabIndex = 0;
             this.lblText.Text = "Giỏ hàng";
             // 
@@ -74,9 +74,9 @@
             this.fLP1.BackColor = System.Drawing.Color.White;
             this.fLP1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fLP1.Location = new System.Drawing.Point(0, 0);
-            this.fLP1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.fLP1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.fLP1.Name = "fLP1";
-            this.fLP1.Size = new System.Drawing.Size(548, 238);
+            this.fLP1.Size = new System.Drawing.Size(1096, 457);
             this.fLP1.TabIndex = 1;
             // 
             // panel1
@@ -84,10 +84,10 @@
             this.panel1.Controls.Add(this.fLP1);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 83);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Location = new System.Drawing.Point(0, 160);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(548, 283);
+            this.panel1.Size = new System.Drawing.Size(1096, 544);
             this.panel1.TabIndex = 1;
             // 
             // panel3
@@ -95,10 +95,10 @@
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.checkBoxAll);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 238);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Location = new System.Drawing.Point(0, 457);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(548, 45);
+            this.panel3.Size = new System.Drawing.Size(1096, 87);
             this.panel3.TabIndex = 0;
             // 
             // panel4
@@ -106,10 +106,10 @@
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(240, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Location = new System.Drawing.Point(480, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(308, 45);
+            this.panel4.Size = new System.Drawing.Size(616, 87);
             this.panel4.TabIndex = 2;
             // 
             // panel6
@@ -118,19 +118,19 @@
             this.panel6.Controls.Add(this.lblTotal);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(236, 45);
+            this.panel6.Size = new System.Drawing.Size(472, 87);
             this.panel6.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label3.Location = new System.Drawing.Point(131, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(268, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 13);
+            this.label3.Size = new System.Drawing.Size(175, 25);
             this.label3.TabIndex = 2;
             this.label3.Text = "Tổng thanh toán:";
             // 
@@ -140,10 +140,10 @@
             this.lblTotal.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.Red;
-            this.lblTotal.Location = new System.Drawing.Point(220, 0);
-            this.lblTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTotal.Location = new System.Drawing.Point(443, 0);
+            this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(16, 17);
+            this.lblTotal.Size = new System.Drawing.Size(29, 31);
             this.lblTotal.TabIndex = 0;
             this.lblTotal.Text = "0";
             // 
@@ -151,19 +151,19 @@
             // 
             this.panel5.Controls.Add(this.btn_buy);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel5.Location = new System.Drawing.Point(236, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Location = new System.Drawing.Point(472, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(72, 45);
+            this.panel5.Size = new System.Drawing.Size(144, 87);
             this.panel5.TabIndex = 4;
             // 
             // btn_buy
             // 
             this.btn_buy.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_buy.Location = new System.Drawing.Point(0, 0);
-            this.btn_buy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_buy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_buy.Name = "btn_buy";
-            this.btn_buy.Size = new System.Drawing.Size(72, 45);
+            this.btn_buy.Size = new System.Drawing.Size(144, 87);
             this.btn_buy.TabIndex = 3;
             this.btn_buy.Text = "Mua hàng";
             this.btn_buy.UseVisualStyleBackColor = true;
@@ -173,10 +173,10 @@
             // 
             this.checkBoxAll.AutoSize = true;
             this.checkBoxAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxAll.Location = new System.Drawing.Point(6, 14);
-            this.checkBoxAll.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxAll.Location = new System.Drawing.Point(12, 27);
+            this.checkBoxAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAll.Name = "checkBoxAll";
-            this.checkBoxAll.Size = new System.Drawing.Size(68, 22);
+            this.checkBoxAll.Size = new System.Drawing.Size(128, 37);
             this.checkBoxAll.TabIndex = 0;
             this.checkBoxAll.Text = "Tất cả";
             this.checkBoxAll.UseVisualStyleBackColor = true;
@@ -184,13 +184,13 @@
             // 
             // Cart
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ClientSize = new System.Drawing.Size(548, 366);
+            this.ClientSize = new System.Drawing.Size(1096, 704);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Name = "Cart";
             this.Text = "Cart";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Cart_FormClosed);
