@@ -1,4 +1,5 @@
 ﻿using Food_DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -127,6 +128,32 @@ namespace Food_DL
                 throw ex;
             }
         }
+        public bool UpdatePassword(int userId, string newPassword, bool isSeller)
+        {
+            try
+            {
+                using (cn)
+                {
+                    cn.Open();
+                    string tableName = isSeller ? "Seller" : "Users";
+                    string query = $"UPDATE {tableName} SET Password = @Password WHERE UserID = @UserID";
+
+                    using (SqlCommand cmd = new SqlCommand(query, cn))
+                    {
+                        cmd.Parameters.AddWithValue("@Password", newPassword);
+                        cmd.Parameters.AddWithValue("@UserID", userId);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
     }
 }

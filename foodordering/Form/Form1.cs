@@ -440,19 +440,30 @@ namespace foodordering
             cmsMenu.Items.Clear();
 
             ToolStripMenuItem history = new ToolStripMenuItem("Lịch sử đơn hàng");
+            ToolStripMenuItem edit = new ToolStripMenuItem("Cập nhật tài khoản");
             ToolStripMenuItem signOut = new ToolStripMenuItem("Đăng xuất");
 
             history.Click += OrderHistoryItem_Click;
             signOut.Click += SignOutItem_Click;
+            edit.Click += EditAccount_Click;
 
             cmsMenu.Items.Add(history);
+            cmsMenu.Items.Add(edit);
             cmsMenu.Items.Add(signOut);
-
+            
             cmsMenu.Show(btnLogin, new Point(0, btnLogin.Height));
 
         }
 
+        private void EditAccount_Click(object sender, EventArgs e)
+        {
+            using (frmEditAccount editForm = new frmEditAccount())
+            {
+                editForm.StartPosition = FormStartPosition.CenterScreen;
+                editForm.ShowDialog();
+            }
 
+        }
         private void OrderHistoryItem_Click(object sender, EventArgs e)
         {
             // Hiển thị form Lịch sử đơn hàng

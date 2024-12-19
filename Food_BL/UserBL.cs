@@ -68,5 +68,11 @@ namespace Food_BL
                 throw ex;
             }
         }
+        public bool UpdatePassword(int userId, string newPassword, bool isSeller)
+        {
+            return loginDL.UpdatePassword(userId, newPassword, isSeller);
+        }
+
+
     }
 }

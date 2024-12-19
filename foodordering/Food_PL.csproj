@@ -143,6 +143,12 @@
     <Compile Include="Class\Product_ItemDetail.Designer.cs">
       <DependentUpon>Product_ItemDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEditAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditAccount.Designer.cs">
+      <DependentUpon>frmEditAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProductSearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Class\Product_ItemDetail.resx">
       <DependentUpon>Product_ItemDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditAccount.resx">
+      <DependentUpon>frmEditAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductSearchForm.resx">
       <DependentUpon>ProductSearchForm.cs</DependentUpon>

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.fLPCategory = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnFood = new foodordering.BorderButton();
             this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
             this.btnLanguage = new System.Windows.Forms.Button();
             this.btnSellerChannel = new System.Windows.Forms.Button();
@@ -57,7 +58,6 @@
             this.flpAds = new System.Windows.Forms.FlowLayoutPanel();
             this.flpDetail = new System.Windows.Forms.FlowLayoutPanel();
             this.cmsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnFood = new foodordering.BorderButton();
             this.panel1.SuspendLayout();
             this.fLPCategory.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
@@ -92,6 +92,24 @@
             this.fLPCategory.Size = new System.Drawing.Size(850, 40);
             this.fLPCategory.TabIndex = 20;
             this.fLPCategory.WrapContents = false;
+            // 
+            // btnFood
+            // 
+            this.btnFood.BackColor = System.Drawing.Color.Transparent;
+            this.btnFood.BorderColor = System.Drawing.Color.OrangeRed;
+            this.btnFood.BorderWidth = 2;
+            this.btnFood.DefaultTextColor = System.Drawing.Color.Black;
+            this.btnFood.FlatAppearance.BorderSize = 0;
+            this.btnFood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFood.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFood.ForeColor = System.Drawing.Color.Black;
+            this.btnFood.HoverTextColor = System.Drawing.Color.OrangeRed;
+            this.btnFood.Location = new System.Drawing.Point(3, 3);
+            this.btnFood.Name = "btnFood";
+            this.btnFood.Size = new System.Drawing.Size(80, 36);
+            this.btnFood.TabIndex = 11;
+            this.btnFood.Text = "Đồ ăn";
+            this.btnFood.UseVisualStyleBackColor = false;
             // 
             // btnLogin
             // 
@@ -417,24 +435,6 @@
             this.cmsMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.cmsMenu.Name = "contextMenuStrip1";
             this.cmsMenu.Size = new System.Drawing.Size(61, 4);
-            // 
-            // btnFood
-            // 
-            this.btnFood.BackColor = System.Drawing.Color.Transparent;
-            this.btnFood.BorderColor = System.Drawing.Color.OrangeRed;
-            this.btnFood.BorderWidth = 2;
-            this.btnFood.DefaultTextColor = System.Drawing.Color.Black;
-            this.btnFood.FlatAppearance.BorderSize = 0;
-            this.btnFood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFood.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFood.ForeColor = System.Drawing.Color.Black;
-            this.btnFood.HoverTextColor = System.Drawing.Color.OrangeRed;
-            this.btnFood.Location = new System.Drawing.Point(3, 3);
-            this.btnFood.Name = "btnFood";
-            this.btnFood.Size = new System.Drawing.Size(80, 36);
-            this.btnFood.TabIndex = 11;
-            this.btnFood.Text = "Đồ ăn";
-            this.btnFood.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
