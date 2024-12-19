@@ -13,6 +13,7 @@ namespace foodordering
     public partial class ItemDetail : Form
     {
         private Image currentImage;
+        private Bitmap backgroundBitmap;
 
         public ItemDetail()
         {
@@ -25,41 +26,35 @@ namespace foodordering
             searchBar.Enter += searchBar_Enter;
             searchBar.Leave += searchBar_Leave;
 
-
-            // override hàm trên
             btnSearch.FlatAppearance.BorderSize = 0;
             btnSearch.BackColor = Color.Transparent;
 
-            productPic.Image = ResizeImage(Properties.Resources.background, 500, 300);
-            btnDiscount1.Image = ResizeImage(Properties.Resources.discount, 30, 30);
-            btnDiscount2.Image = ResizeImage(Properties.Resources.discount, 30, 30);
-            btnDiscount3.Image = ResizeImage(Properties.Resources.discount, 30, 30);
-            btnSearch.Image = ResizeImage(Properties.Resources.searchicon, 20, 20);
+            productPic.Image = ResizeImg.ResizeImage(Properties.Resources.background, 500, 300);
+            btnDiscount1.Image = ResizeImg.ResizeImage(Properties.Resources.discount, 30, 30);
+            btnDiscount2.Image = ResizeImg.ResizeImage(Properties.Resources.discount, 30, 30);
+            btnDiscount3.Image = ResizeImg.ResizeImage(Properties.Resources.discount, 30, 30);
+            btnSearch.Image = ResizeImg.ResizeImage(Properties.Resources.searchicon, 20, 20);
 
             ConfigButtonDiscount(btnDiscount1);
             ConfigButtonDiscount(btnDiscount2);
             ConfigButtonDiscount(btnDiscount3);
             load_item_seller();
+            backgroundBitmap = new Bitmap(ResizeImg.ResizeImage(Properties.Resources.border, 500, 300));
+
+            DoubleBuffering(pProducts);
+            pProducts.BackColor = Color.Transparent;
+            tableLayoutPanel1.BackColor = Color.Transparent;
+            pProducts.Paint += new PaintEventHandler(pProducts_Paint);
+            pProducts.Scroll += new ScrollEventHandler(pProducts_Scroll);
+
             pProducts.AutoScroll = true;
         }
-        private Image ResizeImage(Image imgToResize, int width, int height)
+        private void DoubleBuffering(Panel panel)
         {
-            try
-            {
-                Bitmap b = new Bitmap(width, height);
-                using (Graphics g = Graphics.FromImage(b))
-                {
-                    g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                    g.DrawImage(imgToResize, 0, 0, width, height);
-                }
-                return b;
-            }
-            catch
-            {
-                return imgToResize; // trả về ảnh gốc nếu có lỗi
-            }
+            typeof(Panel).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.SetProperty | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic,
+                null, panel, new object[] { true });
         }
-
         private void ConfigButtonDiscount(System.Windows.Forms.Button btn)
         {
             btn.Size = new Size(40, 40);  // kích thước button
@@ -72,45 +67,6 @@ namespace foodordering
             btn.BackColor = Color.Transparent; // hoặc màu khác tùy thiết kế
             btn.FlatAppearance.MouseOverBackColor = Color.Transparent; // mau hover
             btn.FlatAppearance.MouseDownBackColor = Color.Transparent;
-        }
-        private void ConfigureImageButton(System.Windows.Forms.Button btn)
-        {
-            btn.Size = new Size(80, 80);  // kích thước button
-            btn.FlatStyle = FlatStyle.Flat;
-            btn.FlatAppearance.BorderSize = 0;
-            btn.Text = "";
-            btn.ImageAlign = ContentAlignment.MiddleCenter;
-            btn.BackColor = Color.Transparent; // hoặc màu khác tùy thiết kế
-            btn.FlatAppearance.MouseOverBackColor = Color.Transparent; // mau hover
-            btn.FlatAppearance.MouseDownBackColor = Color.Transparent;
-        }
-        private void ApplyTransparentStyleToAllButtons(Control container)
-        {
-            // Tìm button trong container hiện tại
-            foreach (Control control in container.Controls)
-            {
-                // Nếu là button thì áp dụng style
-                if (control is System.Windows.Forms.Button)
-                {
-                    MakeButtonTransparent((System.Windows.Forms.Button)control);
-                }
-                // Nếu control chứa các control khác (như Panel, GroupBox...)
-                // thì tìm kiếm tiếp trong đó
-                if (control.HasChildren)
-                {
-                    ApplyTransparentStyleToAllButtons(control);
-                }
-            }
-        }
-        private void MakeButtonTransparent(System.Windows.Forms.Button btn)
-        {
-            btn.FlatStyle = FlatStyle.Flat;
-            btn.BackColor = Color.Transparent;
-            btn.FlatAppearance.BorderColor = Color.White;
-            btn.FlatAppearance.BorderSize = 1;
-            btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(50, Color.White);
-            btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, Color.White);
-            btn.ForeColor = Color.White;
         }
         private void searchBar_Enter(object sender, EventArgs e)
         {
@@ -146,6 +102,7 @@ namespace foodordering
 
             // Hiển thị overlay
             overlay.Show(this);
+
             Guna2MessageDialog dialog = new Guna2MessageDialog
             {
                 Caption = "Flavor Haven Thông báo",
@@ -165,8 +122,10 @@ namespace foodordering
                 Style = MessageDialogStyle.Light,
                 Icon = MessageDialogIcon.Information,
                 Buttons = MessageDialogButtons.OK,
+               
             };
 
+            
             dialog.Show();
             overlay.Dispose();
         }
@@ -300,7 +259,7 @@ namespace foodordering
                     lblProductName = item.ProductName,
 
                     lblProductDescription = item.Description,
-                    productPicture = ResizeImage(image, 100, 100),
+                    productPicture = ResizeImg.ResizeImage(image, 100, 100),
                     lblProductPrice = item.Price.ToString("C0"),
                 };
                 p.Dock = DockStyle.Top;
@@ -318,8 +277,7 @@ namespace foodordering
 
             var filteredProducts = allProducts
                 .Where(p =>
-                    (!string.IsNullOrEmpty(p.ProductName) && p.ProductName.Trim().ToLower().Contains(query.Trim().ToLower())) ||
-                    (!string.IsNullOrEmpty(p.Description) && p.Description.Trim().ToLower().Contains(query.Trim().ToLower())))
+                    (!string.IsNullOrEmpty(p.ProductName) && p.ProductName.Trim().ToLower().Contains(query.Trim().ToLower())))
                 .ToList();
 
             foreach (ProductDTO item in filteredProducts)
@@ -342,7 +300,7 @@ namespace foodordering
                     id = item.ProductID,
                     lblProductName = item.ProductName,
                     lblProductDescription = item.Description,
-                    productPicture = ResizeImage(image, 100, 100),
+                    productPicture = ResizeImg.ResizeImage(image, 100, 100),
                     lblProductPrice = item.Price.ToString("C0"),
                 };
 
@@ -374,6 +332,21 @@ namespace foodordering
                 e.Handled = true;           
                 e.SuppressKeyPress = true; 
             }
+        }
+
+        private void pProducts_Scroll(object sender, ScrollEventArgs e)
+        {
+            pProducts.Invalidate();
+        }
+        private void pProducts_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+
+            int adjustedWidth = pProducts.Width - SystemInformation.VerticalScrollBarWidth;
+
+            g.DrawImage(backgroundBitmap, new Rectangle(0, 0, adjustedWidth, pProducts.Height));
+
+            base.OnPaint(e);
         }
     }
 }
