@@ -414,6 +414,8 @@ namespace foodordering
 
                     // Cập nhật nút đăng nhập
                     UpdateLoginButton(UserSession.Instance.LoggedInUsername);
+                    user = new UserBL().getUser(foodordering.Properties.Settings.Default.userID, foodordering.Properties.Settings.Default.isSeller);
+
                 }
             }
         }
@@ -584,14 +586,15 @@ namespace foodordering
         {
             if (foodordering.Properties.Settings.Default.userID != 0)
             {
-                UserDTO user = new UserBL().getUser(foodordering.Properties.Settings.Default.userID, foodordering.Properties.Settings.Default.isSeller);
-                if (user != null)
+                UserDTO userl = new UserBL().getUser(foodordering.Properties.Settings.Default.userID, foodordering.Properties.Settings.Default.isSeller);
+                if (userl != null)
                 {
-                    UserSession.Instance.LoggedInUsername = user.Username;
+                    UserSession.Instance.LoggedInUsername = userl.Username;
                     if (foodordering.Properties.Settings.Default.isSeller)
                     {
                         IsSellerLoggedIn = true;
                     }
+                    user = userl;
                 }
                 else
                 {
