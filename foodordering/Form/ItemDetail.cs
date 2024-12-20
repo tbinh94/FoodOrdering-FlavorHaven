@@ -201,12 +201,13 @@ namespace foodordering
             dialog.Show();
             overlay.Dispose();
         }
-        public void SetProductDetails(string productName, string productPrice, string address, Image productImage)
+        public void SetProductDetails(string productName, string productPrice, string address, Image productImage, int rating)
         {
             lblName.Text = productName;
             lblPrice.Text = productPrice;
             lblAddress.Text = address;
             label1.Text = $"Home >> TP. HCM >> {productName}";
+            starRating.Value = rating;
 
             if (currentImage != null)
             {
@@ -237,7 +238,7 @@ namespace foodordering
         {
             pProducts.Controls.Clear();
             List<ProductDTO> list = new ProductBL().GetProducts_Seller();
-
+            Random random = new Random();
 
             foreach (ProductDTO item in list)
             {
@@ -250,7 +251,7 @@ namespace foodordering
                 }
                 else
                 {
-                    imagePath = Path.Combine(Application.StartupPath, "Resources", "1.jpg");
+                    imagePath = Path.Combine(Application.StartupPath, "Resources", "default.png");
                     image = Image.FromFile(imagePath);
                 }
                 Product_ItemDetail p = new Product_ItemDetail
@@ -262,6 +263,8 @@ namespace foodordering
                     productPicture = ResizeImg.ResizeImage(image, 100, 100),
                     lblProductPrice = item.Price.ToString("C0"),
                 };
+
+
                 p.Dock = DockStyle.Top;
                 p.Padding = new Padding(10, 10, 10, 10);
                 pProducts.Controls.Add(p);

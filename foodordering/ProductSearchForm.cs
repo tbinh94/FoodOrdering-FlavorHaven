@@ -125,11 +125,12 @@ namespace foodordering
                 string productPrice = productItem.ProductPrice;
                 string address = productItem.Address;
                 System.Drawing.Image productImage = productItem.ProductImage;
-
+                Random random = new Random();
+                int randomRating = random.Next(1, 6);
 
                 // Tạo Form2 và truyền dữ liệu
                 ItemDetail form2 = new ItemDetail();
-                form2.SetProductDetails(productName, productPrice, address, productImage);
+                form2.SetProductDetails(productName, productPrice, address, productImage, randomRating);
                 AddControlToPanel(form2);
 
                 
