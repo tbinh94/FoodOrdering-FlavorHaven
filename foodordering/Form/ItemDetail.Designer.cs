@@ -39,9 +39,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDrink = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDessert = new Guna.UI2.WinForms.Guna2Button();
+            this.btnMainFood = new Guna.UI2.WinForms.Guna2Button();
             this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnDiscount3 = new System.Windows.Forms.Button();
@@ -54,9 +54,9 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pProducts = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.productPic = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.pProducts = new System.Windows.Forms.Panel();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -161,16 +161,16 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label4.Location = new System.Drawing.Point(572, 280);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 16);
+            this.label4.Size = new System.Drawing.Size(103, 16);
             this.label4.TabIndex = 12;
             this.label4.Text = "Flavor Haven";
             // 
             // guna2Panel1
             // 
             this.guna2Panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.guna2Panel1.Controls.Add(this.guna2Button3);
-            this.guna2Panel1.Controls.Add(this.guna2Button2);
-            this.guna2Panel1.Controls.Add(this.guna2Button1);
+            this.guna2Panel1.Controls.Add(this.btnDrink);
+            this.guna2Panel1.Controls.Add(this.btnDessert);
+            this.guna2Panel1.Controls.Add(this.btnMainFood);
             this.guna2Panel1.Controls.Add(this.label5);
             this.guna2Panel1.FillColor = System.Drawing.Color.Transparent;
             this.guna2Panel1.Location = new System.Drawing.Point(19, 71);
@@ -178,60 +178,63 @@
             this.guna2Panel1.Size = new System.Drawing.Size(115, 131);
             this.guna2Panel1.TabIndex = 13;
             // 
-            // guna2Button3
+            // btnDrink
             // 
-            this.guna2Button3.AutoRoundedCorners = true;
-            this.guna2Button3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button3.BorderRadius = 8;
-            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button3.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button3.ForeColor = System.Drawing.Color.Gray;
-            this.guna2Button3.Location = new System.Drawing.Point(12, 98);
-            this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(98, 18);
-            this.guna2Button3.TabIndex = 3;
-            this.guna2Button3.Text = "ĐỒ UỐNG";
+            this.btnDrink.AutoRoundedCorners = true;
+            this.btnDrink.BackColor = System.Drawing.Color.Transparent;
+            this.btnDrink.BorderRadius = 8;
+            this.btnDrink.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDrink.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDrink.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDrink.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDrink.FillColor = System.Drawing.Color.Transparent;
+            this.btnDrink.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDrink.ForeColor = System.Drawing.Color.Gray;
+            this.btnDrink.Location = new System.Drawing.Point(12, 98);
+            this.btnDrink.Name = "btnDrink";
+            this.btnDrink.Size = new System.Drawing.Size(98, 18);
+            this.btnDrink.TabIndex = 3;
+            this.btnDrink.Text = "ĐỒ UỐNG";
+            this.btnDrink.Click += new System.EventHandler(this.btnDrink_Click);
             // 
-            // guna2Button2
+            // btnDessert
             // 
-            this.guna2Button2.AutoRoundedCorners = true;
-            this.guna2Button2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.BorderRadius = 8;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button2.ForeColor = System.Drawing.Color.Gray;
-            this.guna2Button2.Location = new System.Drawing.Point(12, 74);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(98, 18);
-            this.guna2Button2.TabIndex = 2;
-            this.guna2Button2.Text = "MÓN THÊM";
+            this.btnDessert.AutoRoundedCorners = true;
+            this.btnDessert.BackColor = System.Drawing.Color.Transparent;
+            this.btnDessert.BorderRadius = 8;
+            this.btnDessert.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDessert.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDessert.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDessert.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDessert.FillColor = System.Drawing.Color.Transparent;
+            this.btnDessert.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDessert.ForeColor = System.Drawing.Color.Gray;
+            this.btnDessert.Location = new System.Drawing.Point(12, 74);
+            this.btnDessert.Name = "btnDessert";
+            this.btnDessert.Size = new System.Drawing.Size(98, 18);
+            this.btnDessert.TabIndex = 2;
+            this.btnDessert.Text = "MÓN THÊM";
+            this.btnDessert.Click += new System.EventHandler(this.btnDessert_Click);
             // 
-            // guna2Button1
+            // btnMainFood
             // 
-            this.guna2Button1.AutoRoundedCorners = true;
-            this.guna2Button1.BackColor = System.Drawing.Color.Gray;
-            this.guna2Button1.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderRadius = 8;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(12, 50);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(98, 18);
-            this.guna2Button1.TabIndex = 1;
-            this.guna2Button1.Text = "MÓN CHÍNH";
+            this.btnMainFood.AutoRoundedCorners = true;
+            this.btnMainFood.BackColor = System.Drawing.Color.White;
+            this.btnMainFood.BorderColor = System.Drawing.Color.Transparent;
+            this.btnMainFood.BorderRadius = 8;
+            this.btnMainFood.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMainFood.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMainFood.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMainFood.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMainFood.FillColor = System.Drawing.Color.Transparent;
+            this.btnMainFood.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnMainFood.ForeColor = System.Drawing.Color.Gray;
+            this.btnMainFood.Location = new System.Drawing.Point(12, 50);
+            this.btnMainFood.Name = "btnMainFood";
+            this.btnMainFood.Size = new System.Drawing.Size(98, 18);
+            this.btnMainFood.TabIndex = 1;
+            this.btnMainFood.Text = "MÓN CHÍNH";
+            this.btnMainFood.Click += new System.EventHandler(this.btnMainFood_Click);
             // 
             // label5
             // 
@@ -391,6 +394,17 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1028, 273);
             this.tableLayoutPanel1.TabIndex = 17;
             // 
+            // pProducts
+            // 
+            this.pProducts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pProducts.Location = new System.Drawing.Point(156, 2);
+            this.pProducts.Margin = new System.Windows.Forms.Padding(2);
+            this.pProducts.Name = "pProducts";
+            this.pProducts.Size = new System.Drawing.Size(556, 269);
+            this.pProducts.TabIndex = 14;
+            this.pProducts.Scroll += new System.Windows.Forms.ScrollEventHandler(this.pProducts_Scroll);
+            this.pProducts.Paint += new System.Windows.Forms.PaintEventHandler(this.pProducts_Paint);
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.productPic);
@@ -424,17 +438,6 @@
             this.productPic.Size = new System.Drawing.Size(455, 250);
             this.productPic.TabIndex = 2;
             this.productPic.TabStop = false;
-            // 
-            // pProducts
-            // 
-            this.pProducts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pProducts.Location = new System.Drawing.Point(156, 2);
-            this.pProducts.Margin = new System.Windows.Forms.Padding(2);
-            this.pProducts.Name = "pProducts";
-            this.pProducts.Size = new System.Drawing.Size(556, 269);
-            this.pProducts.TabIndex = 14;
-            this.pProducts.Scroll += new System.Windows.Forms.ScrollEventHandler(this.pProducts_Scroll);
-            this.pProducts.Paint += new System.Windows.Forms.PaintEventHandler(this.pProducts_Paint);
             // 
             // ItemDetail
             // 
@@ -473,9 +476,9 @@
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.Label label5;
-        private Guna.UI2.WinForms.Guna2Button guna2Button3;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btnDrink;
+        private Guna.UI2.WinForms.Guna2Button btnDessert;
+        private Guna.UI2.WinForms.Guna2Button btnMainFood;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;

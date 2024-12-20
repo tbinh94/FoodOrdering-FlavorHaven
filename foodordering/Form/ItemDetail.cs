@@ -14,6 +14,7 @@ namespace foodordering
     {
         private Image currentImage;
         private Bitmap backgroundBitmap;
+        private Guna2Button selectedButton = null;
 
         public ItemDetail()
         {
@@ -38,7 +39,6 @@ namespace foodordering
             ConfigButtonDiscount(btnDiscount1);
             ConfigButtonDiscount(btnDiscount2);
             ConfigButtonDiscount(btnDiscount3);
-            load_item_seller();
             backgroundBitmap = new Bitmap(ResizeImg.ResizeImage(Properties.Resources.border, 500, 300));
 
             DoubleBuffering(pProducts);
@@ -48,6 +48,8 @@ namespace foodordering
             pProducts.Scroll += new ScrollEventHandler(pProducts_Scroll);
 
             pProducts.AutoScroll = true;
+
+            load_item_seller();
         }
         private void DoubleBuffering(Panel panel)
         {
@@ -254,22 +256,57 @@ namespace foodordering
                     imagePath = Path.Combine(Application.StartupPath, "Resources", "default.png");
                     image = Image.FromFile(imagePath);
                 }
+
                 Product_ItemDetail p = new Product_ItemDetail
                 {
                     id = item.ProductID,
                     lblProductName = item.ProductName,
-
                     lblProductDescription = item.Description,
                     productPicture = ResizeImg.ResizeImage(image, 100, 100),
                     lblProductPrice = item.Price.ToString("C0"),
                 };
-
 
                 p.Dock = DockStyle.Top;
                 p.Padding = new Padding(10, 10, 10, 10);
                 pProducts.Controls.Add(p);
             }
         }
+        private void load_item_seller_by_category(int categoryID)
+        {
+            pProducts.Controls.Clear();
+            List<ProductDTO> list = new ProductBL().GetProducts_byCategorieID(categoryID); // Lọc theo CategoryID
+            Random random = new Random();
+
+            foreach (ProductDTO item in list)
+            {
+                string imagePath = Path.Combine(Application.StartupPath, "Resources", "ProductImage", item.ImagePath);
+                Image image;
+
+                if (File.Exists(imagePath))
+                {
+                    image = Image.FromFile(imagePath);
+                }
+                else
+                {
+                    imagePath = Path.Combine(Application.StartupPath, "Resources", "default.png");
+                    image = Image.FromFile(imagePath);
+                }
+
+                Product_ItemDetail p = new Product_ItemDetail
+                {
+                    id = item.ProductID,
+                    lblProductName = item.ProductName,
+                    lblProductDescription = item.Description,
+                    productPicture = ResizeImg.ResizeImage(image, 100, 100),
+                    lblProductPrice = item.Price.ToString("C0"),
+                };
+
+                p.Dock = DockStyle.Top;
+                p.Padding = new Padding(10, 10, 10, 10);
+                pProducts.Controls.Add(p);
+            }
+        }
+
 
         private void FilterProductsBySeller(string query)
         {
@@ -350,6 +387,40 @@ namespace foodordering
             g.DrawImage(backgroundBitmap, new Rectangle(0, 0, adjustedWidth, pProducts.Height));
 
             base.OnPaint(e);
+        }
+
+        private void btnMainFood_Click(object sender, EventArgs e)
+        {
+            SetButtonColor(btnMainFood);
+            load_item_seller_by_category(3);
+        }
+
+        private void btnDessert_Click(object sender, EventArgs e)
+        {
+            SetButtonColor(btnDessert);
+            load_item_seller_by_category(4);
+        }
+
+        private void btnDrink_Click(object sender, EventArgs e)
+        {
+            SetButtonColor(btnDrink);
+            load_item_seller_by_category(2);
+        }
+        private void SetButtonColor(Guna2Button clickedButton)
+        {
+            // Nếu có nút đã được chọn, đặt lại màu nền và màu chữ của nó về trạng thái ban đầu
+            if (selectedButton != null)
+            {
+                selectedButton.BackColor = Color.White;
+                selectedButton.ForeColor = Color.Gray;
+            }
+
+            clickedButton.AutoRoundedCorners = true;
+            // Đặt màu nền của nút được nhấn là Gray và màu chữ là White
+            clickedButton.BackColor = Color.Gray;
+            clickedButton.ForeColor = Color.White;
+
+            selectedButton = clickedButton;
         }
     }
 }
