@@ -35,6 +35,7 @@
             this.btnLogo = new System.Windows.Forms.Button();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
+            this.containerPanel = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -49,8 +50,6 @@
             this.btnNext = new Guna.UI2.WinForms.Guna2CircleButton();
             this.panelContainer = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
-            this.searchBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.searchBar = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,6 +58,7 @@
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel5.SuspendLayout();
+            this.containerPanel.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.SuspendLayout();
@@ -124,34 +124,46 @@
             // 
             // guna2Panel5
             // 
-            this.guna2Panel5.Controls.Add(this.button9);
-            this.guna2Panel5.Controls.Add(this.button8);
-            this.guna2Panel5.Controls.Add(this.label5);
-            this.guna2Panel5.Controls.Add(this.btnThongTin);
-            this.guna2Panel5.Controls.Add(this.btnTraHang);
-            this.guna2Panel5.Controls.Add(this.btnDonHang);
-            this.guna2Panel5.Controls.Add(this.btnThanhToan);
-            this.guna2Panel5.Controls.Add(this.btnKhuyenMai);
-            this.guna2Panel5.Controls.Add(this.label4);
-            this.guna2Panel5.Controls.Add(this.btnMuaSam);
-            this.guna2Panel5.Controls.Add(this.btnPrevious);
-            this.guna2Panel5.Controls.Add(this.btnNext);
-            this.guna2Panel5.Controls.Add(this.panelContainer);
-            this.guna2Panel5.Location = new System.Drawing.Point(0, 111);
+            this.guna2Panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Panel5.Controls.Add(this.containerPanel);
+            this.guna2Panel5.Location = new System.Drawing.Point(0, 76);
             this.guna2Panel5.Name = "guna2Panel5";
-            this.guna2Panel5.Size = new System.Drawing.Size(961, 405);
+            this.guna2Panel5.Size = new System.Drawing.Size(961, 432);
             this.guna2Panel5.TabIndex = 4;
+            // 
+            // containerPanel
+            // 
+            this.containerPanel.Controls.Add(this.button9);
+            this.containerPanel.Controls.Add(this.button8);
+            this.containerPanel.Controls.Add(this.label5);
+            this.containerPanel.Controls.Add(this.btnThongTin);
+            this.containerPanel.Controls.Add(this.btnTraHang);
+            this.containerPanel.Controls.Add(this.btnDonHang);
+            this.containerPanel.Controls.Add(this.btnThanhToan);
+            this.containerPanel.Controls.Add(this.btnKhuyenMai);
+            this.containerPanel.Controls.Add(this.label4);
+            this.containerPanel.Controls.Add(this.btnMuaSam);
+            this.containerPanel.Controls.Add(this.btnPrevious);
+            this.containerPanel.Controls.Add(this.btnNext);
+            this.containerPanel.Controls.Add(this.panelContainer);
+            this.containerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.containerPanel.Location = new System.Drawing.Point(0, 0);
+            this.containerPanel.Name = "containerPanel";
+            this.containerPanel.Size = new System.Drawing.Size(961, 432);
+            this.containerPanel.TabIndex = 18;
             // 
             // button9
             // 
+            this.button9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button9.BackColor = System.Drawing.Color.Transparent;
             this.button9.FlatAppearance.BorderSize = 0;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(92, 345);
+            this.button9.Location = new System.Drawing.Point(56, 381);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(790, 39);
-            this.button9.TabIndex = 17;
+            this.button9.Size = new System.Drawing.Size(854, 39);
+            this.button9.TabIndex = 30;
             this.button9.Text = "[Thành viên mới] Tại sao tôi không thể đăng ký tạo tài khoản Shopee bằng số điện " +
     "thoại của mình?\r\n";
             this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -160,14 +172,15 @@
             // 
             // button8
             // 
+            this.button8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button8.BackColor = System.Drawing.Color.Transparent;
             this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(92, 304);
+            this.button8.Location = new System.Drawing.Point(56, 340);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(790, 35);
-            this.button8.TabIndex = 16;
+            this.button8.Size = new System.Drawing.Size(854, 35);
+            this.button8.TabIndex = 29;
             this.button8.Text = "[Bảo mật tài khoản] Làm gì khi nhận được thông báo là thông tin tài khoản Shopee " +
     "đã được thay đổi?\r\n";
             this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -176,99 +189,107 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(88, 277);
+            this.label5.Location = new System.Drawing.Point(52, 313);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(194, 24);
-            this.label5.TabIndex = 15;
+            this.label5.TabIndex = 28;
             this.label5.Text = "Câu hỏi thường gặp";
             // 
             // btnThongTin
             // 
+            this.btnThongTin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnThongTin.BackColor = System.Drawing.Color.White;
             this.btnThongTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTin.Location = new System.Drawing.Point(298, 206);
+            this.btnThongTin.Location = new System.Drawing.Point(277, 242);
             this.btnThongTin.Name = "btnThongTin";
-            this.btnThongTin.Size = new System.Drawing.Size(185, 56);
-            this.btnThongTin.TabIndex = 14;
+            this.btnThongTin.Size = new System.Drawing.Size(184, 56);
+            this.btnThongTin.TabIndex = 27;
             this.btnThongTin.Text = "Thông tin chung";
             this.btnThongTin.UseVisualStyleBackColor = false;
             this.btnThongTin.Click += new System.EventHandler(this.btnThongTin_Click);
             // 
             // btnTraHang
             // 
+            this.btnTraHang.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnTraHang.BackColor = System.Drawing.Color.White;
             this.btnTraHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTraHang.Location = new System.Drawing.Point(92, 206);
+            this.btnTraHang.Location = new System.Drawing.Point(56, 242);
             this.btnTraHang.Name = "btnTraHang";
-            this.btnTraHang.Size = new System.Drawing.Size(185, 56);
-            this.btnTraHang.TabIndex = 13;
+            this.btnTraHang.Size = new System.Drawing.Size(177, 56);
+            this.btnTraHang.TabIndex = 26;
             this.btnTraHang.Text = "Trả hàng và Hoàn tiền";
             this.btnTraHang.UseVisualStyleBackColor = false;
             this.btnTraHang.Click += new System.EventHandler(this.btnTraHang_Click);
             // 
             // btnDonHang
             // 
+            this.btnDonHang.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnDonHang.BackColor = System.Drawing.Color.White;
             this.btnDonHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDonHang.Location = new System.Drawing.Point(704, 144);
+            this.btnDonHang.Location = new System.Drawing.Point(727, 180);
             this.btnDonHang.Name = "btnDonHang";
-            this.btnDonHang.Size = new System.Drawing.Size(185, 56);
-            this.btnDonHang.TabIndex = 12;
+            this.btnDonHang.Size = new System.Drawing.Size(190, 56);
+            this.btnDonHang.TabIndex = 25;
             this.btnDonHang.Text = "Đơn hàng và vận chuyển";
             this.btnDonHang.UseVisualStyleBackColor = false;
             this.btnDonHang.Click += new System.EventHandler(this.btnDonHang_Click);
             // 
             // btnThanhToan
             // 
+            this.btnThanhToan.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnThanhToan.BackColor = System.Drawing.Color.White;
             this.btnThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThanhToan.Location = new System.Drawing.Point(502, 144);
+            this.btnThanhToan.Location = new System.Drawing.Point(493, 180);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(185, 56);
-            this.btnThanhToan.TabIndex = 11;
+            this.btnThanhToan.TabIndex = 24;
             this.btnThanhToan.Text = "Thanh toán";
             this.btnThanhToan.UseVisualStyleBackColor = false;
             this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
             // btnKhuyenMai
             // 
+            this.btnKhuyenMai.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnKhuyenMai.BackColor = System.Drawing.Color.White;
             this.btnKhuyenMai.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKhuyenMai.Location = new System.Drawing.Point(298, 144);
+            this.btnKhuyenMai.Location = new System.Drawing.Point(277, 180);
             this.btnKhuyenMai.Name = "btnKhuyenMai";
-            this.btnKhuyenMai.Size = new System.Drawing.Size(185, 56);
-            this.btnKhuyenMai.TabIndex = 10;
+            this.btnKhuyenMai.Size = new System.Drawing.Size(184, 56);
+            this.btnKhuyenMai.TabIndex = 23;
             this.btnKhuyenMai.Text = "Khuyến mãi - Ưu đãi";
             this.btnKhuyenMai.UseVisualStyleBackColor = false;
             this.btnKhuyenMai.Click += new System.EventHandler(this.btnKhuyenMai_Click);
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(88, 105);
+            this.label4.Location = new System.Drawing.Point(52, 139);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(105, 24);
-            this.label4.TabIndex = 9;
+            this.label4.TabIndex = 22;
             this.label4.Text = "Danh mục";
             // 
             // btnMuaSam
             // 
+            this.btnMuaSam.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnMuaSam.BackColor = System.Drawing.Color.White;
             this.btnMuaSam.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMuaSam.Location = new System.Drawing.Point(92, 144);
+            this.btnMuaSam.Location = new System.Drawing.Point(56, 180);
             this.btnMuaSam.Name = "btnMuaSam";
-            this.btnMuaSam.Size = new System.Drawing.Size(185, 56);
-            this.btnMuaSam.TabIndex = 8;
+            this.btnMuaSam.Size = new System.Drawing.Size(177, 56);
+            this.btnMuaSam.TabIndex = 21;
             this.btnMuaSam.Text = "Mua sắm cùng Flavor Haven";
             this.btnMuaSam.UseVisualStyleBackColor = false;
             this.btnMuaSam.Click += new System.EventHandler(this.btnMuaSam_Click);
             // 
             // btnPrevious
             // 
-            this.btnPrevious.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnPrevious.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnPrevious.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnPrevious.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnPrevious.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -276,17 +297,17 @@
             this.btnPrevious.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnPrevious.ForeColor = System.Drawing.Color.White;
-            this.btnPrevious.Location = new System.Drawing.Point(108, 37);
+            this.btnPrevious.Location = new System.Drawing.Point(68, 54);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnPrevious.Size = new System.Drawing.Size(28, 25);
-            this.btnPrevious.TabIndex = 5;
+            this.btnPrevious.TabIndex = 18;
             this.btnPrevious.Text = "<";
             this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // btnNext
             // 
-            this.btnNext.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnNext.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -294,85 +315,45 @@
             this.btnNext.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnNext.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnNext.ForeColor = System.Drawing.Color.White;
-            this.btnNext.Location = new System.Drawing.Point(860, 37);
+            this.btnNext.Location = new System.Drawing.Point(884, 54);
             this.btnNext.Name = "btnNext";
             this.btnNext.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnNext.Size = new System.Drawing.Size(29, 25);
-            this.btnNext.TabIndex = 6;
+            this.btnNext.TabIndex = 19;
             this.btnNext.Text = ">";
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // panelContainer
             // 
-            this.panelContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelContainer.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelContainer.AutoRoundedCorners = true;
             this.panelContainer.BorderRadius = 41;
-            this.panelContainer.Location = new System.Drawing.Point(142, 9);
+            this.panelContainer.Location = new System.Drawing.Point(102, 24);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(712, 84);
-            this.panelContainer.TabIndex = 7;
+            this.panelContainer.Size = new System.Drawing.Size(776, 84);
+            this.panelContainer.TabIndex = 20;
             // 
             // guna2Panel4
             // 
-            this.guna2Panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.guna2Panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel4.AutoSize = true;
-            this.guna2Panel4.Controls.Add(this.searchBtn);
-            this.guna2Panel4.Controls.Add(this.searchBar);
             this.guna2Panel4.Controls.Add(this.label2);
             this.guna2Panel4.FillColor = System.Drawing.Color.Firebrick;
-            this.guna2Panel4.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel4.Location = new System.Drawing.Point(0, -130);
             this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(961, 114);
+            this.guna2Panel4.Size = new System.Drawing.Size(961, 209);
             this.guna2Panel4.TabIndex = 3;
-            // 
-            // searchBtn
-            // 
-            this.searchBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.searchBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.searchBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.searchBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.searchBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.searchBtn.FillColor = System.Drawing.SystemColors.ActiveCaption;
-            this.searchBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.searchBtn.ForeColor = System.Drawing.Color.White;
-            this.searchBtn.Location = new System.Drawing.Point(735, 54);
-            this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(39, 36);
-            this.searchBtn.TabIndex = 2;
-            // 
-            // searchBar
-            // 
-            this.searchBar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.searchBar.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.searchBar.DefaultText = "";
-            this.searchBar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.searchBar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.searchBar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.searchBar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.searchBar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.searchBar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.searchBar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.searchBar.Location = new System.Drawing.Point(189, 54);
-            this.searchBar.Name = "searchBar";
-            this.searchBar.PasswordChar = '\0';
-            this.searchBar.PlaceholderText = "";
-            this.searchBar.SelectedText = "";
-            this.searchBar.Size = new System.Drawing.Size(585, 36);
-            this.searchBar.TabIndex = 1;
-            this.searchBar.Enter += new System.EventHandler(this.searchBar_Enter);
-            this.searchBar.Leave += new System.EventHandler(this.searchBar_Leave);
             // 
             // label2
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(294, 22);
+            this.label2.Location = new System.Drawing.Point(273, 156);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(411, 24);
             this.label2.TabIndex = 0;
@@ -380,9 +361,8 @@
             // 
             // guna2Panel3
             // 
-            this.guna2Panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel3.Controls.Add(this.label3);
+            this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.guna2Panel3.Location = new System.Drawing.Point(0, 514);
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(961, 64);
@@ -390,7 +370,7 @@
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(655, 19);
             this.label3.Name = "label3";
@@ -416,12 +396,15 @@
             this.Name = "HelpForm";
             this.Text = "HelpForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HelpForm_FormClosed);
+            this.Load += new System.EventHandler(this.HelpForm_Load);
+            this.Resize += new System.EventHandler(this.HelpForm_Resize);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
             this.guna2Panel5.ResumeLayout(false);
-            this.guna2Panel5.PerformLayout();
+            this.containerPanel.ResumeLayout(false);
+            this.containerPanel.PerformLayout();
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel4.PerformLayout();
             this.guna2Panel3.ResumeLayout(false);
@@ -440,15 +423,14 @@
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
         private System.Windows.Forms.Label label2;
-        private Guna.UI2.WinForms.Guna2TextBox searchBar;
-        private Guna.UI2.WinForms.Guna2Button searchBtn;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private System.Windows.Forms.Timer timer1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
-        private Guna.UI2.WinForms.Guna2CircleButton btnPrevious;
-        private Guna.UI2.WinForms.Guna2CircleButton btnNext;
-        private Guna.UI2.WinForms.Guna2Panel panelContainer;
+        private System.Windows.Forms.Panel containerPanel;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnThongTin;
         private System.Windows.Forms.Button btnTraHang;
         private System.Windows.Forms.Button btnDonHang;
@@ -456,8 +438,8 @@
         private System.Windows.Forms.Button btnKhuyenMai;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnMuaSam;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
+        private Guna.UI2.WinForms.Guna2CircleButton btnPrevious;
+        private Guna.UI2.WinForms.Guna2CircleButton btnNext;
+        private Guna.UI2.WinForms.Guna2Panel panelContainer;
     }
 }

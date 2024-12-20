@@ -13,9 +13,9 @@ namespace foodordering
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(Form1.Instance);  /*Form1.Instance*/
-            //SearchResult frm = new SearchResult();
-            //Application.Run(frm);
+            //Application.Run(Form1.Instance);  /*Form1.Instance*/
+            HelpForm frm = new HelpForm();
+            Application.Run(frm);
         }
     }
 }
