@@ -12,17 +12,10 @@ namespace foodordering
         public HelpForm()
         {
             InitializeComponent();
-
-            searchBar.Text = "Nhập từ khoá hoặc nội dung cần tìm";
-            searchBar.ForeColor = Color.Gray;
-
-            searchBar.Enter += searchBar_Enter;
-            searchBar.Leave += searchBar_Leave;
-            searchBtn.Image = ResizeImg.ResizeImage(Properties.Resources.searchicon, 20, 20);
+            
             btnLogo.Image = ResizeImg.ResizeImage(Properties.Resources.logo, 140, 140);
             ConfigureImageButton(btnLogo);
 
-            // Tạo 5 textbox
             for (int i = 0; i < 5; i++)
             {
                 TextBox txt = new TextBox();
@@ -42,38 +35,38 @@ namespace foodordering
                 panelContainer.Controls.Add(txt);
                 textBoxes.Add(txt);
             }
+            InitializeTimer();
+
+        }
+        private void InitializeTimer()
+        {
+            timer1 = new Timer();
+            timer1.Interval = 5000; 
+            timer1.Tick += Timer_Tick;
+            timer1.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            textBoxes[currentIndex].Visible = false;
+
+            currentIndex = (currentIndex + 1) % textBoxes.Count;
+
+            textBoxes[currentIndex].Visible = true;
         }
         private void OpenCategoryDetail(string filePath, string categoryTitle)
         {
             CategoryDetail detailForm = new CategoryDetail(filePath);
-            detailForm.ShowDialog(); // Mở form ở chế độ Dialog (khóa form chính)
+            detailForm.ShowDialog(); 
         }
         private void ConfigureImageButton(System.Windows.Forms.Button btn)
         {
-            btn.Size = new Size(100, 100);  // kích thước button
+            btn.Size = new Size(100, 100);  
             btn.FlatStyle = FlatStyle.Flat;
             btn.FlatAppearance.BorderSize = 0;
             btn.ImageAlign = ContentAlignment.MiddleCenter;
-            btn.BackColor = Color.Transparent; // hoặc màu khác tùy thiết kế
-            btn.FlatAppearance.MouseOverBackColor = Color.Transparent; // mau hover
-        }
-
-        private void searchBar_Enter(object sender, EventArgs e)
-        {
-            if (searchBar.Text == "Nhập từ khoá hoặc nội dung cần tìm")
-            {
-                searchBar.Text = "";
-                searchBar.ForeColor = Color.Black;
-            }
-        }
-
-        private void searchBar_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(searchBar.Text))
-            {
-                searchBar.Text = "Nhập từ khoá hoặc nội dung cần tìm";
-                searchBar.ForeColor = Color.Gray;
-            }
+            btn.BackColor = Color.Transparent; 
+            btn.FlatAppearance.MouseOverBackColor = Color.Transparent; 
         }
 
         private void btnLogo_Click(object sender, EventArgs e)
@@ -168,6 +161,22 @@ namespace foodordering
         {
             string filePath = GetRTFFilePath("ThanhVien.rtf");
             OpenCategoryDetail(filePath, "Thành viên mới");
+        }
+        private void CenterPanel()
+        {
+            containerPanel.Location = new Point(
+                (this.ClientSize.Width - containerPanel.Width) / 2,
+                (this.ClientSize.Height - containerPanel.Height) / 2
+            );
+        }
+        private void HelpForm_Load(object sender, EventArgs e)
+        {
+            CenterPanel();
+        }
+
+        private void HelpForm_Resize(object sender, EventArgs e)
+        {
+            CenterPanel();
         }
     }
 }
