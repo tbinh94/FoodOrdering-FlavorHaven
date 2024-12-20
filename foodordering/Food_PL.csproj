@@ -89,6 +89,12 @@
     <Compile Include="Class\CustomTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="discount_productSeller_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="discount_productSeller_form.Designer.cs">
+      <DependentUpon>discount_productSeller_form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Food_Seller_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,12 @@
     </Compile>
     <Compile Include="frmEditAccount.Designer.cs">
       <DependentUpon>frmEditAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdsShowAllForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdsShowAllForm.Designer.cs">
+      <DependentUpon>AdsShowAllForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ProductSearchForm.cs">
       <SubType>Form</SubType>
@@ -221,6 +233,9 @@
     <EmbeddedResource Include="Class\Cart.resx">
       <DependentUpon>Cart.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="discount_productSeller_form.resx">
+      <DependentUpon>discount_productSeller_form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Food_Seller_Form.resx">
       <DependentUpon>Food_Seller_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -250,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditAccount.resx">
       <DependentUpon>frmEditAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdsShowAllForm.resx">
+      <DependentUpon>AdsShowAllForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductSearchForm.resx">
       <DependentUpon>ProductSearchForm.cs</DependentUpon>

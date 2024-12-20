@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.fLPCategory = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnFood = new foodordering.BorderButton();
             this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
             this.btnLanguage = new System.Windows.Forms.Button();
             this.btnSellerChannel = new System.Windows.Forms.Button();
@@ -55,9 +54,17 @@
             this.lblAds = new System.Windows.Forms.Label();
             this.lblFLPProduct = new System.Windows.Forms.Label();
             this.flowLayoutPanelProducts = new System.Windows.Forms.FlowLayoutPanel();
-            this.flpAds = new System.Windows.Forms.FlowLayoutPanel();
             this.flpDetail = new System.Windows.Forms.FlowLayoutPanel();
             this.cmsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.flpAds = new System.Windows.Forms.FlowLayoutPanel();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btnFood = new foodordering.BorderButton();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.adsShowAll = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.fLPCategory.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
@@ -66,6 +73,12 @@
             this.leftPanel.SuspendLayout();
             this.feature_containerPanel.SuspendLayout();
             this.fLP1.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.guna2Panel2.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -92,24 +105,6 @@
             this.fLPCategory.Size = new System.Drawing.Size(850, 40);
             this.fLPCategory.TabIndex = 20;
             this.fLPCategory.WrapContents = false;
-            // 
-            // btnFood
-            // 
-            this.btnFood.BackColor = System.Drawing.Color.Transparent;
-            this.btnFood.BorderColor = System.Drawing.Color.OrangeRed;
-            this.btnFood.BorderWidth = 2;
-            this.btnFood.DefaultTextColor = System.Drawing.Color.Black;
-            this.btnFood.FlatAppearance.BorderSize = 0;
-            this.btnFood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFood.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFood.ForeColor = System.Drawing.Color.Black;
-            this.btnFood.HoverTextColor = System.Drawing.Color.OrangeRed;
-            this.btnFood.Location = new System.Drawing.Point(3, 3);
-            this.btnFood.Name = "btnFood";
-            this.btnFood.Size = new System.Drawing.Size(80, 36);
-            this.btnFood.TabIndex = 11;
-            this.btnFood.Text = "Đồ ăn";
-            this.btnFood.UseVisualStyleBackColor = false;
             // 
             // btnLogin
             // 
@@ -249,7 +244,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(936, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(157, 20);
+            this.label3.Size = new System.Drawing.Size(320, 37);
             this.label3.TabIndex = 0;
             this.label3.Text = "© 2024 Flavor Haven\r\n";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -308,7 +303,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(24, 460);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(321, 36);
+            this.label2.Size = new System.Drawing.Size(657, 72);
             this.label2.TabIndex = 66;
             this.label2.Text = "Sử dụng App Flavor Haven để có nhiều giảm giá\r\nvà trải nghiệm tốt hơn";
             // 
@@ -320,7 +315,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(23, 159);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(377, 40);
+            this.label1.Size = new System.Drawing.Size(728, 74);
             this.label1.TabIndex = 65;
             this.label1.Text = "Đặt Đồ ăn, giao hàng từ 20\'...\r\ncó 84993 địa điểm ở TP. HCM từ 00:00 - 23:59\r\n";
             // 
@@ -362,12 +357,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.fLP1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.fLP1.BackColor = System.Drawing.Color.White;
-            this.fLP1.Controls.Add(this.lblDetail);
-            this.fLP1.Controls.Add(this.lblAds);
+            this.fLP1.Controls.Add(this.flpDetail);
+            this.fLP1.Controls.Add(this.panel2);
             this.fLP1.Controls.Add(this.lblFLPProduct);
             this.fLP1.Controls.Add(this.flowLayoutPanelProducts);
-            this.fLP1.Controls.Add(this.flpAds);
-            this.fLP1.Controls.Add(this.flpDetail);
             this.fLP1.Location = new System.Drawing.Point(419, 0);
             this.fLP1.Name = "fLP1";
             this.fLP1.Size = new System.Drawing.Size(686, 594);
@@ -377,9 +370,9 @@
             // 
             this.lblDetail.AutoSize = true;
             this.lblDetail.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetail.Location = new System.Drawing.Point(13, 369);
+            this.lblDetail.Location = new System.Drawing.Point(19, 14);
             this.lblDetail.Name = "lblDetail";
-            this.lblDetail.Size = new System.Drawing.Size(82, 16);
+            this.lblDetail.Size = new System.Drawing.Size(165, 32);
             this.lblDetail.TabIndex = 26;
             this.lblDetail.Text = "BÁN CHẠY";
             // 
@@ -387,9 +380,9 @@
             // 
             this.lblAds.AutoSize = true;
             this.lblAds.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAds.Location = new System.Drawing.Point(13, 189);
+            this.lblAds.Location = new System.Drawing.Point(3, 20);
             this.lblAds.Name = "lblAds";
-            this.lblAds.Size = new System.Drawing.Size(98, 16);
+            this.lblAds.Size = new System.Drawing.Size(204, 32);
             this.lblAds.TabIndex = 25;
             this.lblAds.Text = "KHUYẾN MÃI";
             // 
@@ -399,7 +392,7 @@
             this.lblFLPProduct.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFLPProduct.Location = new System.Drawing.Point(13, 7);
             this.lblFLPProduct.Name = "lblFLPProduct";
-            this.lblFLPProduct.Size = new System.Drawing.Size(58, 16);
+            this.lblFLPProduct.Size = new System.Drawing.Size(122, 32);
             this.lblFLPProduct.TabIndex = 24;
             this.lblFLPProduct.Text = "ƯU ĐÃI";
             // 
@@ -412,20 +405,12 @@
             this.flowLayoutPanelProducts.Size = new System.Drawing.Size(674, 161);
             this.flowLayoutPanelProducts.TabIndex = 21;
             // 
-            // flpAds
-            // 
-            this.flpAds.AutoScroll = true;
-            this.flpAds.BackColor = System.Drawing.Color.Transparent;
-            this.flpAds.Location = new System.Drawing.Point(9, 210);
-            this.flpAds.Name = "flpAds";
-            this.flpAds.Size = new System.Drawing.Size(674, 154);
-            this.flpAds.TabIndex = 22;
-            // 
             // flpDetail
             // 
             this.flpDetail.AutoScroll = true;
+            this.flpDetail.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flpDetail.BackColor = System.Drawing.Color.Transparent;
-            this.flpDetail.Location = new System.Drawing.Point(9, 390);
+            this.flpDetail.Location = new System.Drawing.Point(3, 510);
             this.flpDetail.Name = "flpDetail";
             this.flpDetail.Size = new System.Drawing.Size(674, 198);
             this.flpDetail.TabIndex = 23;
@@ -435,6 +420,106 @@
             this.cmsMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.cmsMenu.Name = "contextMenuStrip1";
             this.cmsMenu.Size = new System.Drawing.Size(61, 4);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.panel7);
+            this.panel4.Controls.Add(this.lblAds);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(711, 63);
+            this.panel4.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.AutoSize = true;
+            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Location = new System.Drawing.Point(9, 192);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(711, 217);
+            this.panel2.TabIndex = 0;
+            // 
+            // panel5
+            // 
+            this.panel5.AutoSize = true;
+            this.panel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel5.Controls.Add(this.flpAds);
+            this.panel5.Controls.Add(this.panel6);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 63);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(711, 154);
+            this.panel5.TabIndex = 1;
+            // 
+            // flpAds
+            // 
+            this.flpAds.AutoScroll = true;
+            this.flpAds.BackColor = System.Drawing.Color.Transparent;
+            this.flpAds.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpAds.Location = new System.Drawing.Point(0, 0);
+            this.flpAds.Name = "flpAds";
+            this.flpAds.Size = new System.Drawing.Size(711, 96);
+            this.flpAds.TabIndex = 22;
+            // 
+            // guna2Panel2
+            // 
+            this.guna2Panel2.Controls.Add(this.lblDetail);
+            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.Size = new System.Drawing.Size(711, 58);
+            this.guna2Panel2.TabIndex = 27;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.guna2Panel2);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 96);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(711, 58);
+            this.panel6.TabIndex = 25;
+            // 
+            // btnFood
+            // 
+            this.btnFood.BackColor = System.Drawing.Color.Transparent;
+            this.btnFood.BorderColor = System.Drawing.Color.OrangeRed;
+            this.btnFood.BorderWidth = 2;
+            this.btnFood.DefaultTextColor = System.Drawing.Color.Black;
+            this.btnFood.FlatAppearance.BorderSize = 0;
+            this.btnFood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFood.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFood.ForeColor = System.Drawing.Color.Black;
+            this.btnFood.HoverTextColor = System.Drawing.Color.OrangeRed;
+            this.btnFood.Location = new System.Drawing.Point(3, 3);
+            this.btnFood.Name = "btnFood";
+            this.btnFood.Size = new System.Drawing.Size(80, 36);
+            this.btnFood.TabIndex = 11;
+            this.btnFood.Text = "Đồ ăn";
+            this.btnFood.UseVisualStyleBackColor = false;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.adsShowAll);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel7.Location = new System.Drawing.Point(544, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(167, 63);
+            this.panel7.TabIndex = 26;
+            // 
+            // adsShowAll
+            // 
+            this.adsShowAll.AutoSize = true;
+            this.adsShowAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.adsShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adsShowAll.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.adsShowAll.Location = new System.Drawing.Point(12, 16);
+            this.adsShowAll.Name = "adsShowAll";
+            this.adsShowAll.Size = new System.Drawing.Size(126, 29);
+            this.adsShowAll.TabIndex = 0;
+            this.adsShowAll.Text = "Xem tất cả";
+            this.adsShowAll.Click += new System.EventHandler(this.adsShowAll_Click);
             // 
             // Form1
             // 
@@ -460,6 +545,16 @@
             this.feature_containerPanel.PerformLayout();
             this.fLP1.ResumeLayout(false);
             this.fLP1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.guna2Panel2.ResumeLayout(false);
+            this.guna2Panel2.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -473,7 +568,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FlowLayoutPanel flpDetail;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelProducts;
-        private System.Windows.Forms.FlowLayoutPanel flpAds;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Panel loadingPanel;
         private System.Windows.Forms.Button btnLanguage;
@@ -495,5 +589,13 @@
         private System.Windows.Forms.Label lblAds;
         private System.Windows.Forms.Label lblFLPProduct;
         private BorderButton btnFood;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.FlowLayoutPanel flpAds;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label adsShowAll;
     }
 }

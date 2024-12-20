@@ -83,7 +83,6 @@ namespace foodordering
                         MessageBox.Show($"Không thể tải hình ảnh cho {product.Name}: {ex.Message}");
                         continue;
                     }
-
                     ProductItemControl productItems = new ProductItemControl
                     {
                         ProductName = product.Name,
@@ -96,7 +95,6 @@ namespace foodordering
                         BackColor = Color.FromArgb(230, 170, 170),
                         id = product.id,
                     };
-
                     productItems.ProductClicked += ProductItem_ProductClicked;
 
                     sizerow = productItems.Width;
@@ -109,13 +107,10 @@ namespace foodordering
                     image.Dispose();
                     x++;
                 }
-
                 tLP.RowStyles.Add(new RowStyle(SizeType.Absolute, sizerow));
             }
-
             tLP.RowCount += 1;
         }
-
         private void ProductItem_ProductClicked(object sender, EventArgs e)
         {
             if (sender is ProductItemControl productItem)
@@ -161,5 +156,4 @@ namespace foodordering
             AddElementsToTableLayout();
         }
     }
-
 }

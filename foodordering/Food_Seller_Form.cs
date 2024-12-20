@@ -120,6 +120,17 @@ namespace foodordering
                     productItems.cart.Hide();
                     productItems.pbx.Click += (_,__) => {
                         AddControlToPanel(new edit_productSeller_form(product.id)); };
+                    ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
+                    contextMenuStrip.Items.Add("Chỉnh sửa sản phẩm", null, (_, __) =>
+                    {
+                        AddControlToPanel(new edit_productSeller_form(product.id));
+                    });
+
+                    contextMenuStrip.Items.Add("Ngừng bán sản phẩm này", null, (_, __) =>
+                    {
+                        deleteProduct(product.id);
+                    });
+                    productItems.ContextMenuStrip = contextMenuStrip;
                     //productItems.AutoSize = true;
                     // Thêm vào các panel
                     tLP.Controls.Add(productItems, col, row);
@@ -163,6 +174,27 @@ namespace foodordering
             form.Show();
         }
 
+        private void deleteProduct(int i)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thực hiện không?",
+               "Xác nhận",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                if (new ProductBL().remove_product(i))
+                {
+                    products = new ProductBL().GetProducts_Seller(id);
+                    AddElementsToTableLayout(id);
+                }
+            }
+        }
+
+        private void discount(int i)
+        {
+
+        }
     }
 }
 

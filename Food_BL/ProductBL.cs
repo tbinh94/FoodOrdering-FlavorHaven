@@ -124,6 +124,17 @@ namespace Food_BL
                 throw ex;
             }
         }
+        public bool remove_product(int id )
+        {
+            try
+            {
+                return (productDAL.removeProduct(id));
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
     }
 
 }

@@ -47,7 +47,7 @@ namespace foodordering
             this.WindowState = FormWindowState.Maximized;
             searchBar.Text = "Tìm địa điểm, món ăn, địa chỉ...";
             searchBar.ForeColor = Color.Gray;
-
+            flpDetail.WrapContents = true;
             searchBar.Enter += searchBar_Enter;
             searchBar.Leave += searchBar_Leave;
 
@@ -81,7 +81,8 @@ namespace foodordering
             LoadFeaturedProducts();
 
             flowLayoutPanelProducts.HorizontalScroll.Visible = false;
-
+            flpAds.AutoScroll = false;
+            flpAds.AutoSize = true;
             this.DoubleBuffered = true;
 
             // để tạo thời chờ làm phần login account rồi xử lí
@@ -262,7 +263,7 @@ namespace foodordering
 
             AdItemBL adItemBL = new AdItemBL();
             List<AdItemDTO> ads = adItemBL.GetAllAds(); // Lấy danh sách quảng cáo từ BL
-
+            ads = ShuffleList(ads).Take(4).ToList();
             foreach (var adDto in ads)
             {
                 AdItemBL adItem = AdItemBL.FromDTO(adDto); // Chuyển từ DTO sang đối tượng BL
@@ -780,5 +781,10 @@ namespace foodordering
             }
         }
 
+        private void adsShowAll_Click(object sender, EventArgs e)
+        {
+            var showAllAds = new AdsShowAllForm();
+            AddControlToPanel(showAllAds);
+        }
     }
 }

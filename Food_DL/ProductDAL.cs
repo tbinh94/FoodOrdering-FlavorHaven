@@ -254,6 +254,24 @@ namespace Food_DL
                 throw ex;
             }
         }
+        public bool removeProduct(int id)
+        {
+            string sql = "DELETE FROM Products WHERE ProductID = " + id;
+            try
+            {
+                MyExecuteNonQuery(sql);
+                return true;
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                Disconnect();
+            }
+        }
     }
 
 
