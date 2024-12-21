@@ -82,8 +82,9 @@ namespace foodordering
 
             flowLayoutPanelProducts.HorizontalScroll.Visible = false;
             flpAds.AutoScroll = false;
-            flpAds.AutoSize = true;
+            //flpAds.AutoSize = true;
             this.DoubleBuffered = true;
+
 
             // để tạo thời chờ làm phần login account rồi xử lí
 
@@ -179,6 +180,7 @@ namespace foodordering
                 };
 
                 flowLayoutPanelProducts.Controls.Add(productItem);
+                flowLayoutPanelProducts.Height += (productItem.Height + 35) / 2;
                 productItem.ProductClicked += ProductItem_ProductClicked;
                 productItem.Cursor = Cursors.Hand;
                 image.Dispose();
@@ -238,8 +240,6 @@ namespace foodordering
             return inputList.OrderBy(x => random.Next()).ToList();
         }
 
-
-
         private void ProductItem_ProductClicked(object sender, EventArgs e)
         {
             if (sender is ProductItemControl productItem)
@@ -269,9 +269,9 @@ namespace foodordering
             ads = ShuffleList(ads).Take(4).ToList();
             foreach (var adDto in ads)
             {
-                AdItemBL adItem = AdItemBL.FromDTO(adDto); // Chuyển từ DTO sang đối tượng BL
+                AdItemBL adItem = AdItemBL.FromDTO(adDto); 
 
-                // Tạo đường dẫn đến hình ảnh quảng cáo trong Resources
+              
                 string imagePath = Path.Combine(Application.StartupPath, "Resources", "PromoIMG", adItem.Image);
                 System.Drawing.Image image;
 
@@ -283,34 +283,30 @@ namespace foodordering
                     }
                     else
                     {
-                        // Nếu không tìm thấy file, dùng hình mặc định
-                        imagePath = Path.Combine(Application.StartupPath, "Resources", "1.jpg");
+                        imagePath = Path.Combine(Application.StartupPath, "Resources", "default.png");
                         image = System.Drawing.Image.FromFile(imagePath);
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Không thể tải hình ảnh cho quảng cáo {adItem.AdName}: {ex.Message}");
-                    continue; // Bỏ qua quảng cáo này nếu không load được hình
+                    continue;
                 }
 
                 // Tạo AdItemControl với thông tin quảng cáo
                 AdItem adItemControl = new AdItem
                 {
                     DiscountDescription = adItem.AdDescription,
-                    AdImage = ResizeImg.ResizeImage(image, 381, 310), // Resize hình ảnh nếu cần
+                    AdImage = ResizeImg.ResizeImage(image, 381, 310),
                     BorderStyle = BorderStyle.FixedSingle,
                     Margin = new Padding(10, 7, 10, 20),
                     BackColor = Color.FromArgb(230, 170, 170),
                     Id = adItem.Id
                 };
 
-                // Thêm vào panel chứa quảng cáo
                 flpAds.Controls.Add(adItemControl);
 
-                adItemControl.Cursor = Cursors.Hand;
-
-                image.Dispose(); // Giải phóng bộ nhớ hình ảnh sau khi sử dụng
+                image.Dispose(); 
             }
         }
         private void MakeButtonTransparent(System.Windows.Forms.Button btn)
@@ -541,6 +537,7 @@ namespace foodordering
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
             panel3.Controls.Clear();
+            fLP1.Controls.Clear();
             panel3.Controls.Add(form);
             form.Show();
         }
@@ -654,21 +651,17 @@ namespace foodordering
         }
         private void ToggleButtonColor(BorderButton button, int categoryIndex)
         {
-            // Nếu đã có button được chọn trước đó, đổi màu về ban đầu
             if (selectedButton != null)
             {
-                selectedButton.BackColor = Color.White; // Trả về màu gốc
-                selectedButton.ForeColor = Color.Black;     // Trả về màu chữ gốc
+                selectedButton.BackColor = Color.White; 
+                selectedButton.ForeColor = Color.Black;     
             }
 
             // Đổi màu của button hiện tại
             button.BackColor = Color.DarkOrange;
             button.ForeColor = Color.White;
 
-            // Lưu button hiện tại là button đã chọn
             selectedButton = button;
-
-            // Gọi phương thức load sản phẩm theo danh mục
             loadProductByCategorieID(categoryIndex);
         }
         private void ResetUserState()
@@ -712,9 +705,6 @@ namespace foodordering
                 e.SuppressKeyPress = true;
             }
         }
-
-
-
         public void LoadFeaturedProducts()
         {
             flpFeatures.Controls.Clear();
@@ -785,9 +775,10 @@ namespace foodordering
         }
 
         private void adsShowAll_Click(object sender, EventArgs e)
-        {
-            var showAllAds = new AdsShowAllForm();
+        {           
+            AdsShowAllForm showAllAds = new AdsShowAllForm();
             AddControlToPanel(showAllAds);
+            adsShowAll.Visible = false;
         }
     }
 }
