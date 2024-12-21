@@ -12,6 +12,7 @@ namespace foodordering
         public AdItem()
         {
             InitializeComponent();
+            pictureBoxAd.SizeMode = PictureBoxSizeMode.StretchImage;
         }
         public Guna2PictureBox AdImageBox
         {
