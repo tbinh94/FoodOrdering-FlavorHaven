@@ -595,16 +595,19 @@ namespace foodordering
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Kiểm tra xem người dùng đã đăng nhập trước đó hay chưa
             if (foodordering.Properties.Settings.Default.userID != 0)
             {
                 UserDTO userl = new UserBL().getUser(foodordering.Properties.Settings.Default.userID, foodordering.Properties.Settings.Default.isSeller);
                 if (userl != null)
                 {
                     UserSession.Instance.LoggedInUsername = userl.Username;
+
                     if (foodordering.Properties.Settings.Default.isSeller)
                     {
                         IsSellerLoggedIn = true;
                     }
+
                     user = userl;
                 }
                 else
@@ -612,11 +615,29 @@ namespace foodordering
                     ResetUserState();
                 }
             }
+
+            // Nếu chưa có người dùng nào đăng nhập, hiển thị form đăng nhập
+            if (string.IsNullOrEmpty(UserSession.Instance.LoggedInUsername))
+            {
+                using (login loginForm = new login())
+                {
+                    if (loginForm.ShowDialog() == DialogResult.OK)
+                    {
+                        UserSession.Instance.LoggedInUsername = loginForm.Username;
+
+                        UpdateLoginButton(UserSession.Instance.LoggedInUsername);
+                        user = new UserBL().getUser(foodordering.Properties.Settings.Default.userID, foodordering.Properties.Settings.Default.isSeller);
+
+                    }
+                }
+            }
+
             if (!string.IsNullOrEmpty(UserSession.Instance.LoggedInUsername))
             {
                 UpdateLoginButton(UserSession.Instance.LoggedInUsername);
             }
 
+            // Tải danh mục sản phẩm
             List<string> categories = new ProductBL().CategoryProduct();
             int indexctg = 0;
 
@@ -647,8 +668,8 @@ namespace foodordering
                 fLPCategory.Controls.Add(button);
                 button.Show();
             }
-
         }
+
         private void ToggleButtonColor(BorderButton button, int categoryIndex)
         {
             if (selectedButton != null)
@@ -775,10 +796,11 @@ namespace foodordering
         }
 
         private void adsShowAll_Click(object sender, EventArgs e)
-        {           
+        {
+            adsShowAll.Visible = false;
             AdsShowAllForm showAllAds = new AdsShowAllForm();
             AddControlToPanel(showAllAds);
-            adsShowAll.Visible = false;
+            
         }
     }
 }
