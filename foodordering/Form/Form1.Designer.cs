@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.fLPCategory = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnFood = new foodordering.BorderButton();
             this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
             this.btnLanguage = new System.Windows.Forms.Button();
             this.btnSellerChannel = new System.Windows.Forms.Button();
@@ -50,15 +51,14 @@
             this.searchBar = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.fLP1 = new System.Windows.Forms.Panel();
+            this.lblDetail = new System.Windows.Forms.Label();
+            this.adsShowAll = new Guna.UI2.WinForms.Guna2Button();
+            this.flpAds = new System.Windows.Forms.FlowLayoutPanel();
             this.flpDetail = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblAds = new System.Windows.Forms.Label();
             this.lblFLPProduct = new System.Windows.Forms.Label();
             this.flowLayoutPanelProducts = new System.Windows.Forms.FlowLayoutPanel();
             this.cmsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.lblAds = new System.Windows.Forms.Label();
-            this.flpAds = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblDetail = new System.Windows.Forms.Label();
-            this.adsShowAll = new Guna.UI2.WinForms.Guna2Button();
-            this.btnFood = new foodordering.BorderButton();
             this.panel1.SuspendLayout();
             this.fLPCategory.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
@@ -93,6 +93,24 @@
             this.fLPCategory.Size = new System.Drawing.Size(850, 40);
             this.fLPCategory.TabIndex = 20;
             this.fLPCategory.WrapContents = false;
+            // 
+            // btnFood
+            // 
+            this.btnFood.BackColor = System.Drawing.Color.Transparent;
+            this.btnFood.BorderColor = System.Drawing.Color.OrangeRed;
+            this.btnFood.BorderWidth = 2;
+            this.btnFood.DefaultTextColor = System.Drawing.Color.Black;
+            this.btnFood.FlatAppearance.BorderSize = 0;
+            this.btnFood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFood.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFood.ForeColor = System.Drawing.Color.Black;
+            this.btnFood.HoverTextColor = System.Drawing.Color.OrangeRed;
+            this.btnFood.Location = new System.Drawing.Point(3, 3);
+            this.btnFood.Name = "btnFood";
+            this.btnFood.Size = new System.Drawing.Size(80, 36);
+            this.btnFood.TabIndex = 11;
+            this.btnFood.Text = "Đồ ăn";
+            this.btnFood.UseVisualStyleBackColor = false;
             // 
             // btnLogin
             // 
@@ -357,62 +375,6 @@
             this.fLP1.Size = new System.Drawing.Size(686, 594);
             this.fLP1.TabIndex = 53;
             // 
-            // flpDetail
-            // 
-            this.flpDetail.AutoScroll = true;
-            this.flpDetail.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flpDetail.BackColor = System.Drawing.Color.Transparent;
-            this.flpDetail.Location = new System.Drawing.Point(9, 400);
-            this.flpDetail.Name = "flpDetail";
-            this.flpDetail.Size = new System.Drawing.Size(674, 188);
-            this.flpDetail.TabIndex = 23;
-            // 
-            // lblFLPProduct
-            // 
-            this.lblFLPProduct.AutoSize = true;
-            this.lblFLPProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblFLPProduct.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFLPProduct.Location = new System.Drawing.Point(13, 7);
-            this.lblFLPProduct.Name = "lblFLPProduct";
-            this.lblFLPProduct.Size = new System.Drawing.Size(58, 16);
-            this.lblFLPProduct.TabIndex = 24;
-            this.lblFLPProduct.Text = "ƯU ĐÃI";
-            // 
-            // flowLayoutPanelProducts
-            // 
-            this.flowLayoutPanelProducts.AutoScroll = true;
-            this.flowLayoutPanelProducts.BackColor = System.Drawing.Color.Transparent;
-            this.flowLayoutPanelProducts.Location = new System.Drawing.Point(9, 25);
-            this.flowLayoutPanelProducts.Name = "flowLayoutPanelProducts";
-            this.flowLayoutPanelProducts.Size = new System.Drawing.Size(674, 161);
-            this.flowLayoutPanelProducts.TabIndex = 21;
-            // 
-            // cmsMenu
-            // 
-            this.cmsMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.cmsMenu.Name = "contextMenuStrip1";
-            this.cmsMenu.Size = new System.Drawing.Size(61, 4);
-            // 
-            // lblAds
-            // 
-            this.lblAds.AutoSize = true;
-            this.lblAds.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblAds.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAds.Location = new System.Drawing.Point(13, 200);
-            this.lblAds.Name = "lblAds";
-            this.lblAds.Size = new System.Drawing.Size(98, 16);
-            this.lblAds.TabIndex = 25;
-            this.lblAds.Text = "KHUYẾN MÃI";
-            // 
-            // flpAds
-            // 
-            this.flpAds.AutoScroll = true;
-            this.flpAds.BackColor = System.Drawing.Color.Transparent;
-            this.flpAds.Location = new System.Drawing.Point(9, 219);
-            this.flpAds.Name = "flpAds";
-            this.flpAds.Size = new System.Drawing.Size(674, 159);
-            this.flpAds.TabIndex = 22;
-            // 
             // lblDetail
             // 
             this.lblDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -441,23 +403,61 @@
             this.adsShowAll.UseTransparentBackground = true;
             this.adsShowAll.Click += new System.EventHandler(this.adsShowAll_Click);
             // 
-            // btnFood
+            // flpAds
             // 
-            this.btnFood.BackColor = System.Drawing.Color.Transparent;
-            this.btnFood.BorderColor = System.Drawing.Color.OrangeRed;
-            this.btnFood.BorderWidth = 2;
-            this.btnFood.DefaultTextColor = System.Drawing.Color.Black;
-            this.btnFood.FlatAppearance.BorderSize = 0;
-            this.btnFood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFood.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFood.ForeColor = System.Drawing.Color.Black;
-            this.btnFood.HoverTextColor = System.Drawing.Color.OrangeRed;
-            this.btnFood.Location = new System.Drawing.Point(3, 3);
-            this.btnFood.Name = "btnFood";
-            this.btnFood.Size = new System.Drawing.Size(80, 36);
-            this.btnFood.TabIndex = 11;
-            this.btnFood.Text = "Đồ ăn";
-            this.btnFood.UseVisualStyleBackColor = false;
+            this.flpAds.AutoScroll = true;
+            this.flpAds.BackColor = System.Drawing.Color.Transparent;
+            this.flpAds.Location = new System.Drawing.Point(9, 219);
+            this.flpAds.Name = "flpAds";
+            this.flpAds.Size = new System.Drawing.Size(674, 159);
+            this.flpAds.TabIndex = 22;
+            // 
+            // flpDetail
+            // 
+            this.flpDetail.AutoScroll = true;
+            this.flpDetail.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flpDetail.BackColor = System.Drawing.Color.Transparent;
+            this.flpDetail.Location = new System.Drawing.Point(9, 400);
+            this.flpDetail.Name = "flpDetail";
+            this.flpDetail.Size = new System.Drawing.Size(674, 188);
+            this.flpDetail.TabIndex = 23;
+            // 
+            // lblAds
+            // 
+            this.lblAds.AutoSize = true;
+            this.lblAds.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblAds.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAds.Location = new System.Drawing.Point(13, 200);
+            this.lblAds.Name = "lblAds";
+            this.lblAds.Size = new System.Drawing.Size(98, 16);
+            this.lblAds.TabIndex = 25;
+            this.lblAds.Text = "KHUYẾN MÃI";
+            // 
+            // lblFLPProduct
+            // 
+            this.lblFLPProduct.AutoSize = true;
+            this.lblFLPProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblFLPProduct.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFLPProduct.Location = new System.Drawing.Point(13, 7);
+            this.lblFLPProduct.Name = "lblFLPProduct";
+            this.lblFLPProduct.Size = new System.Drawing.Size(58, 16);
+            this.lblFLPProduct.TabIndex = 24;
+            this.lblFLPProduct.Text = "ƯU ĐÃI";
+            // 
+            // flowLayoutPanelProducts
+            // 
+            this.flowLayoutPanelProducts.AutoScroll = true;
+            this.flowLayoutPanelProducts.BackColor = System.Drawing.Color.Transparent;
+            this.flowLayoutPanelProducts.Location = new System.Drawing.Point(9, 25);
+            this.flowLayoutPanelProducts.Name = "flowLayoutPanelProducts";
+            this.flowLayoutPanelProducts.Size = new System.Drawing.Size(674, 161);
+            this.flowLayoutPanelProducts.TabIndex = 21;
+            // 
+            // cmsMenu
+            // 
+            this.cmsMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.cmsMenu.Name = "contextMenuStrip1";
+            this.cmsMenu.Size = new System.Drawing.Size(61, 4);
             // 
             // Form1
             // 
@@ -467,7 +467,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Flavor Haven";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
