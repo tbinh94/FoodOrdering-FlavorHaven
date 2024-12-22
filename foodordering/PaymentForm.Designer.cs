@@ -36,14 +36,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtTotalPrice = new System.Windows.Forms.TextBox();
             this.voucherPanel = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnBank = new Guna.UI2.WinForms.Guna2Button();
             this.btnCash = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnOrder = new Guna.UI2.WinForms.Guna2Button();
             this.tlpBuyerInfo = new System.Windows.Forms.TableLayoutPanel();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.voucherPanel.SuspendLayout();
             this.tlpBuyerInfo.SuspendLayout();
             this.SuspendLayout();
@@ -118,16 +118,6 @@
             this.voucherPanel.Size = new System.Drawing.Size(389, 45);
             this.voucherPanel.TabIndex = 8;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(11, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 15);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Thêm voucher";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -137,6 +127,16 @@
             this.label6.Size = new System.Drawing.Size(83, 13);
             this.label6.TabIndex = 1;
             this.label6.Text = "Chọn voucher >";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(11, 15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 15);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Thêm voucher";
             // 
             // btnBank
             // 
@@ -178,25 +178,25 @@
             this.btnCash.Text = "Tiền mặt";
             this.btnCash.UseTransparentBackground = true;
             // 
-            // guna2Button3
+            // btnOrder
             // 
-            this.guna2Button3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button3.BorderColor = System.Drawing.Color.OrangeRed;
-            this.guna2Button3.BorderThickness = 1;
-            this.guna2Button3.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
-            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button3.FillColor = System.Drawing.Color.Tomato;
-            this.guna2Button3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Location = new System.Drawing.Point(16, 700);
-            this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(389, 37);
-            this.guna2Button3.TabIndex = 11;
-            this.guna2Button3.Text = "Đặt đơn - (Tổng số tiền ở đây)";
-            this.guna2Button3.UseTransparentBackground = true;
+            this.btnOrder.BackColor = System.Drawing.Color.Transparent;
+            this.btnOrder.BorderColor = System.Drawing.Color.OrangeRed;
+            this.btnOrder.BorderThickness = 1;
+            this.btnOrder.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
+            this.btnOrder.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnOrder.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnOrder.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnOrder.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnOrder.FillColor = System.Drawing.Color.Tomato;
+            this.btnOrder.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrder.ForeColor = System.Drawing.Color.White;
+            this.btnOrder.Location = new System.Drawing.Point(16, 700);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(389, 37);
+            this.btnOrder.TabIndex = 11;
+            this.btnOrder.Text = "Đặt đơn - (Tổng số tiền ở đây)";
+            this.btnOrder.UseTransparentBackground = true;
             // 
             // tlpBuyerInfo
             // 
@@ -213,15 +213,6 @@
             this.tlpBuyerInfo.Size = new System.Drawing.Size(389, 88);
             this.tlpBuyerInfo.TabIndex = 12;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(198, 13);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Ở đây hiện tên người mua | số điện thoại";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -231,13 +222,22 @@
             this.label8.TabIndex = 1;
             this.label8.Text = "Hiện địa chỉ";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(198, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Ở đây hiện tên người mua | số điện thoại";
+            // 
             // PaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(422, 749);
             this.Controls.Add(this.tlpBuyerInfo);
-            this.Controls.Add(this.guna2Button3);
+            this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.btnCash);
             this.Controls.Add(this.btnBank);
             this.Controls.Add(this.voucherPanel);
@@ -273,7 +273,7 @@
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2Button btnBank;
         private Guna.UI2.WinForms.Guna2Button btnCash;
-        private Guna.UI2.WinForms.Guna2Button guna2Button3;
+        private Guna.UI2.WinForms.Guna2Button btnOrder;
         private System.Windows.Forms.TableLayoutPanel tlpBuyerInfo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
