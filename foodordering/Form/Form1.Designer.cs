@@ -56,10 +56,10 @@
             this.flpDetail = new System.Windows.Forms.FlowLayoutPanel();
             this.lblAds = new System.Windows.Forms.Label();
             this.lblFLPProduct = new System.Windows.Forms.Label();
-            this.flowLayoutPanelProducts = new System.Windows.Forms.FlowLayoutPanel();
             this.cmsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnFood = new foodordering.BorderButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanelProducts = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnFood = new foodordering.BorderButton();
             this.panel1.SuspendLayout();
             this.fLPCategory.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
@@ -234,7 +234,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(936, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(320, 37);
+            this.label3.Size = new System.Drawing.Size(157, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "© 2024 Flavor Haven\r\n";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -293,7 +293,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(24, 460);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(657, 72);
+            this.label2.Size = new System.Drawing.Size(321, 36);
             this.label2.TabIndex = 66;
             this.label2.Text = "Sử dụng App Flavor Haven để có nhiều giảm giá\r\nvà trải nghiệm tốt hơn";
             // 
@@ -305,7 +305,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(23, 159);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(728, 74);
+            this.label1.Size = new System.Drawing.Size(377, 40);
             this.label1.TabIndex = 65;
             this.label1.Text = "Đặt Đồ ăn, giao hàng từ 20\'...\r\ncó 84993 địa điểm ở TP. HCM từ 00:00 - 23:59\r\n";
             // 
@@ -413,7 +413,7 @@
             this.lblAds.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAds.Location = new System.Drawing.Point(13, 200);
             this.lblAds.Name = "lblAds";
-            this.lblAds.Size = new System.Drawing.Size(204, 32);
+            this.lblAds.Size = new System.Drawing.Size(98, 16);
             this.lblAds.TabIndex = 25;
             this.lblAds.Text = "KHUYẾN MÃI";
             // 
@@ -424,25 +424,33 @@
             this.lblFLPProduct.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFLPProduct.Location = new System.Drawing.Point(13, 7);
             this.lblFLPProduct.Name = "lblFLPProduct";
-            this.lblFLPProduct.Size = new System.Drawing.Size(122, 32);
+            this.lblFLPProduct.Size = new System.Drawing.Size(58, 16);
             this.lblFLPProduct.TabIndex = 24;
             this.lblFLPProduct.Text = "ƯU ĐÃI";
-            // 
-            // flowLayoutPanelProducts
-            // 
-            this.flowLayoutPanelProducts.AutoScroll = true;
-            this.flowLayoutPanelProducts.BackColor = System.Drawing.Color.Transparent;
-            this.flowLayoutPanelProducts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelProducts.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanelProducts.Name = "flowLayoutPanelProducts";
-            this.flowLayoutPanelProducts.Size = new System.Drawing.Size(677, 152);
-            this.flowLayoutPanelProducts.TabIndex = 21;
             // 
             // cmsMenu
             // 
             this.cmsMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.cmsMenu.Name = "contextMenuStrip1";
             this.cmsMenu.Size = new System.Drawing.Size(61, 4);
+            // 
+            // panel2
+            // 
+            this.panel2.AutoSize = true;
+            this.panel2.Controls.Add(this.flowLayoutPanelProducts);
+            this.panel2.Location = new System.Drawing.Point(9, 26);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(674, 168);
+            this.panel2.TabIndex = 29;
+            // 
+            // flowLayoutPanelProducts
+            // 
+            this.flowLayoutPanelProducts.AutoScroll = true;
+            this.flowLayoutPanelProducts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanelProducts.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanelProducts.Name = "flowLayoutPanelProducts";
+            this.flowLayoutPanelProducts.Size = new System.Drawing.Size(674, 168);
+            this.flowLayoutPanelProducts.TabIndex = 30;
             // 
             // btnFood
             // 
@@ -461,14 +469,6 @@
             this.btnFood.TabIndex = 11;
             this.btnFood.Text = "Đồ ăn";
             this.btnFood.UseVisualStyleBackColor = false;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.flowLayoutPanelProducts);
-            this.panel2.Location = new System.Drawing.Point(9, 42);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(677, 152);
-            this.panel2.TabIndex = 69;
             // 
             // Form1
             // 
@@ -507,7 +507,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FlowLayoutPanel flpDetail;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelProducts;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Panel loadingPanel;
         private System.Windows.Forms.Button btnLanguage;
@@ -532,5 +531,6 @@
         private System.Windows.Forms.Label lblDetail;
         private Guna.UI2.WinForms.Guna2Button adsShowAll;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelProducts;
     }
 }

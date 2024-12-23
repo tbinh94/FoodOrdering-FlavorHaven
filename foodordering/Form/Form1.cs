@@ -85,7 +85,6 @@ namespace foodordering
             //flpAds.AutoSize = true;
             this.DoubleBuffered = true;
 
-
             // để tạo thời chờ làm phần login account rồi xử lí
 
 
@@ -132,15 +131,15 @@ namespace foodordering
         {
             flowLayoutPanelProducts.Controls.Clear();
             flpDetail.Controls.Clear();
-            int totalHeight = 0;
-            if(listProduct ==null)
+
+            if (listProduct == null)
                 listProduct = new ProductBL().GetAllProducts();
+
             List<ProductDTO> shuffledProducts = ShuffleList(new List<ProductDTO>(listProduct));
 
             // Thêm sản phẩm vào flowLayoutPanelProducts
             foreach (var productDto in listProduct) // Dùng listProduct gốc cho flowLayoutPanelProducts
             {
-
                 ProductBL product = ProductBL.FromDTO(productDto);
                 string imagePath = Path.Combine(Application.StartupPath, "Resources", "ProductImage", product.Image);
                 System.Drawing.Image image;
@@ -177,13 +176,15 @@ namespace foodordering
                     id = product.id,
                 };
 
-                flowLayoutPanelProducts.AutoScroll = true;
-                flowLayoutPanelProducts.Controls.Add(productItem);
                 flowLayoutPanelProducts.Height += (productItem.Height + 35) / 2;
+                flowLayoutPanelProducts.Controls.Add(productItem);
                 productItem.ProductClicked += ProductItem_ProductClicked;
                 productItem.Cursor = Cursors.Hand;
+
                 image.Dispose();
             }
+
+            flowLayoutPanelProducts.Width = panel2.Width - 20;
 
             foreach (var productDto in shuffledProducts) // Dùng danh sách đã xáo trộn cho flpDetail
             {
@@ -226,13 +227,9 @@ namespace foodordering
 
                 flpDetail.Controls.Add(productItemDetail);
                 flpDetail.Height += (productItemDetail.Height + 35) / 3;
-                totalHeight += productItemDetail.Height + 20;
-
                 image.Dispose();
             }
         }
-
-
         public static List<T> ShuffleList<T>(List<T> inputList)
         {
             Random random = new Random();
@@ -790,6 +787,7 @@ namespace foodordering
                 {
                     flp.Width = fLP1.ClientSize.Width - 20;
                     flp.Margin = new Padding(10);
+                    panel2.Width = fLP1.Width;
                 }
             }
         }
