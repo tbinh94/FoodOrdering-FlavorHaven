@@ -133,17 +133,15 @@ namespace foodordering
             flowLayoutPanelProducts.Controls.Clear();
             flpDetail.Controls.Clear();
             int totalHeight = 0;
-
-            if (listProduct == null)
+            if(listProduct ==null)
                 listProduct = new ProductBL().GetAllProducts();
-
             List<ProductDTO> shuffledProducts = ShuffleList(new List<ProductDTO>(listProduct));
 
             // Thêm sản phẩm vào flowLayoutPanelProducts
             foreach (var productDto in listProduct) // Dùng listProduct gốc cho flowLayoutPanelProducts
             {
-                ProductBL product = ProductBL.FromDTO(productDto);
 
+                ProductBL product = ProductBL.FromDTO(productDto);
                 string imagePath = Path.Combine(Application.StartupPath, "Resources", "ProductImage", product.Image);
                 System.Drawing.Image image;
 

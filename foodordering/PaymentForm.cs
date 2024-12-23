@@ -25,7 +25,7 @@ namespace foodordering
         {
             InitializeComponent();
             user = Form1.user;
-            listItem = l;
+            listItem = Cart.instance.products_choosed;
             seller = null;
             productBL = new ProductBL();
             formList = new List<Product_Payment_Form>();
