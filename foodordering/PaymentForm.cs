@@ -21,6 +21,7 @@ namespace foodordering
         public List<Product_Payment_Form> formList;
         public List<ProductDTO> productDTOList;
         public List<String> productName;
+        private DiscountBL discountBL;
         public PaymentForm(List<Item_Cart> l)
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace foodordering
             formList = new List<Product_Payment_Form>();
             productDTOList = new List<ProductDTO>();
             productName = new List<String>();
-
+            discountBL = new DiscountBL();
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
@@ -82,14 +83,16 @@ namespace foodordering
         {
             flpExtraFood.Controls.Clear();
 
-                // Thêm sản phẩm vào flowLayoutPanelProducts
-                List<ProductDTO> l = productBL.GetProducts_Seller(seller.Id);
-                List<ProductDTO> l2 = l
+            flpExtraFood.FlowDirection = FlowDirection.LeftToRight; // Hiển thị sản phẩm theo chiều ngang
+            flpExtraFood.WrapContents = false; 
+            flpExtraFood.AutoScroll = true; 
+
+            List<ProductDTO> products = productBL.GetProducts_Seller(seller.Id)
                 .Where(product => !productDTOList.Any(p => p.ProductName == product.ProductName))
                 .ToList();
-                List<ProductDTO> shuffledProducts = ShuffleList(new List<ProductDTO>(l2));
+            List<ProductDTO> shuffledProducts = ShuffleList(new List<ProductDTO>(products));
 
-            foreach (var productDto in shuffledProducts.Take(shuffledProducts.Count < 4 ? shuffledProducts.Count : 4)) // Dùng listProduct gốc cho flowLayoutPanelProducts
+            foreach (var productDto in shuffledProducts.Take(shuffledProducts.Count < 4 ? shuffledProducts.Count : 4))
             {
                 ProductBL product = ProductBL.FromDTO(productDto);
                 string imagePath = Path.Combine(Application.StartupPath, "Resources", "ProductImage", product.Image);
@@ -118,28 +121,28 @@ namespace foodordering
                     ProductName = product.Name,
                     ProductPrice = product.Price.ToString("C0"),
                     ProductDescription = product.Description,
-                    ProductImage = ResizeImg.ResizeImage(image, 381, 310),
+                    ProductImage = ResizeImg.ResizeImage(image, 100, flpExtraFood.Height - 20), // Điều chỉnh chiều cao
                     Address = product.Address,
                     DiscountText = product.DiscountText,
                     BorderStyle = BorderStyle.FixedSingle,
-                    Margin = new Padding(10, 7, 10, 20),
+                    Margin = new Padding(10, 0, 10, 0),
                     BackColor = Color.FromArgb(230, 170, 170),
                     id = product.id,
                 };
+
                 productItem.cart.Hide();
-                productItem.Width = (int)(productItem.Width * 0.7);
-                productItem.Height = (int)(productItem.Height * 0.7);
+                productItem.Width = 100; 
+                productItem.Height = flpExtraFood.Height - 20; // Fit với chiều cao của FlowLayoutPanel
+
                 flpExtraFood.Controls.Add(productItem);
-                flpExtraFood.Height += (productItem.Height + 35) / 2;
-                Button button = new Button()
-                {
-                    Text = "+",
-                };
-                productItem.ProductClicked += (sender,e) => addBtn(productDto);
+
+                productItem.ProductClicked += (sender, e) => addBtn(productDto);
                 productItem.Cursor = Cursors.Hand;
+
                 image.Dispose();
             }
         }
+
 
         private void addBtn(ProductDTO product)
         {
@@ -166,6 +169,21 @@ namespace foodordering
             createPPF(product.ProductName, product.Price.ToString(), "1", image);
             productDTOList.Add(product);
             loadflpExtraFood();
+        }
+        public void SetDiscountRate(double discountRate)
+        {
+            lblDiscount.Text = $"Giảm giá: {discountRate * 100:0.##}%";
+        }
+        private void voucherPanel_Click(object sender, EventArgs e)
+        {
+            discountBL = new DiscountBL();
+            // Lấy danh sách discount từ BL
+            List<DiscountDTO> discounts = discountBL.GetActiveDiscounts();
+
+            // Hiển thị DiscountForm
+            DiscountListForm discountForm = new DiscountListForm(this);
+            discountForm.LoadDiscounts(discounts); // Load danh sách discount vào form
+            discountForm.ShowDialog();
         }
     }
 }

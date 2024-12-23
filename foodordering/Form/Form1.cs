@@ -177,6 +177,7 @@ namespace foodordering
                     id = product.id,
                 };
 
+                flowLayoutPanelProducts.AutoScroll = true;
                 flowLayoutPanelProducts.Controls.Add(productItem);
                 flowLayoutPanelProducts.Height += (productItem.Height + 35) / 2;
                 productItem.ProductClicked += ProductItem_ProductClicked;

@@ -14,7 +14,7 @@ namespace foodordering
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(Form1.Instance);  /*Form1.Instance*/
-            //HelpForm frm = new HelpForm();
+            //PaymentForm frm = new PaymentForm();
             //Application.Run(frm);
         }
     }
