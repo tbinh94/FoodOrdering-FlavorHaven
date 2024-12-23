@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Forms;
 namespace foodordering
 {
@@ -92,14 +93,13 @@ namespace foodordering
                         imagePath = Path.Combine(Application.StartupPath, "Resources", "1.jpg");
                         image = Image.FromFile(imagePath);
                     }
-
                     Item_Cart item_Cart = new Item_Cart
                     {
                         id = cart.ProductID,
                         productPicture = image,
                         lblProductName = product.ProductName,
                         lblProductPrice = product.Price.ToString("C0"),
-                        lblproductSoLuong = cart.SoLuong.ToString(),
+                        lblproductSoLuong = "1",
                         lblInventory = product.Inventory.ToString(),
                         product = product,
 
@@ -212,6 +212,14 @@ namespace foodordering
         public void setText()
         {
             btn_buy.Text = "Mua hàng (" + products_choosed.Count + ")";
+            if (products_choosed.Count == 0)
+            {
+                btn_buy.Enabled = false;
+            }
+            else
+            {
+                btn_buy.Enabled = true;
+            }    
 
         }
         public void setTotal()
@@ -288,6 +296,19 @@ namespace foodordering
 
                         }
                     }
+                }
+            }
+        }
+
+        private void btn_buy_Click(object sender, EventArgs e)
+        {
+
+
+            using (PaymentForm pay = new PaymentForm(products_choosed))
+            {
+                if (pay.ShowDialog() == DialogResult.OK)
+                {
+                    this.Enabled = true;
                 }
             }
         }

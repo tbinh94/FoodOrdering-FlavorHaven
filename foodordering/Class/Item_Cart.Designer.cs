@@ -149,7 +149,7 @@
             this.panel1.Location = new System.Drawing.Point(948, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(160, 182);
+            this.panel1.Size = new System.Drawing.Size(160, 169);
             this.panel1.TabIndex = 6;
             // 
             // panel3
@@ -157,7 +157,7 @@
             this.panel3.Controls.Add(this.congSL);
             this.panel3.Controls.Add(this.truSL);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 101);
+            this.panel3.Location = new System.Drawing.Point(0, 88);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(160, 81);
@@ -192,7 +192,7 @@
             this.panel2.Location = new System.Drawing.Point(672, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(276, 182);
+            this.panel2.Size = new System.Drawing.Size(276, 169);
             this.panel2.TabIndex = 7;
             // 
             // inventory
@@ -221,7 +221,7 @@
             this.productPic.Location = new System.Drawing.Point(44, 0);
             this.productPic.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.productPic.Name = "productPic";
-            this.productPic.Size = new System.Drawing.Size(270, 182);
+            this.productPic.Size = new System.Drawing.Size(270, 169);
             this.productPic.TabIndex = 1;
             this.productPic.TabStop = false;
             // 
@@ -232,7 +232,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(314, 182);
+            this.panel4.Size = new System.Drawing.Size(314, 169);
             this.panel4.TabIndex = 8;
             // 
             // panel5
@@ -241,7 +241,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(44, 182);
+            this.panel5.Size = new System.Drawing.Size(44, 169);
             this.panel5.TabIndex = 9;
             // 
             // choosed
@@ -257,7 +257,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1108, 182);
+            this.ClientSize = new System.Drawing.Size(1108, 169);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

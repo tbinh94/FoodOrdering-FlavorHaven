@@ -53,5 +53,17 @@ namespace Food_BL
             }
         }
 
+        public bool updateQuantityProduct(int userID = 1, int id = 1, int quantity = 1)
+        {
+            try
+            {
+                return (new CartDAL().updateQuantity(userID,id,quantity));
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

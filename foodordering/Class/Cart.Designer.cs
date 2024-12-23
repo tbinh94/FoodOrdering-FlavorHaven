@@ -160,6 +160,7 @@
             // btn_buy
             // 
             this.btn_buy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_buy.Enabled = false;
             this.btn_buy.Location = new System.Drawing.Point(0, 0);
             this.btn_buy.Margin = new System.Windows.Forms.Padding(4);
             this.btn_buy.Name = "btn_buy";
@@ -168,6 +169,7 @@
             this.btn_buy.Text = "Mua hàng";
             this.btn_buy.UseVisualStyleBackColor = true;
             this.btn_buy.TextChanged += new System.EventHandler(this.btn_buy_TextChanged);
+            this.btn_buy.Click += new System.EventHandler(this.btn_buy_Click);
             // 
             // checkBoxAll
             // 
