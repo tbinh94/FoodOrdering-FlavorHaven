@@ -89,6 +89,12 @@
     <Compile Include="Class\CustomTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DiscountListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscountListForm.Designer.cs">
+      <DependentUpon>DiscountListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="discount_productSeller_form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Class\Cart.resx">
       <DependentUpon>Cart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscountListForm.resx">
+      <DependentUpon>DiscountListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="discount_productSeller_form.resx">
       <DependentUpon>discount_productSeller_form.cs</DependentUpon>
