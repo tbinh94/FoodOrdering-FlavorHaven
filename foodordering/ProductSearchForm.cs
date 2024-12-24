@@ -13,7 +13,7 @@ namespace foodordering
     public partial class ProductSearchForm : Form
     {
         public List<ProductDTO> products;
-
+        private ProductBL productBL;
         public ProductSearchForm()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace foodordering
             };
             tLP.BackColor = Color.Transparent;
             tLP.BackgroundImage = ResizeImg.ResizeImage(Properties.Resources.background1, 1440, 768);
-
+            productBL = new ProductBL();
         }
 
         private void AddElementsToTableLayout()
@@ -140,6 +140,7 @@ namespace foodordering
             this.Controls.Add(form);
             form.Show();
         }
+
         public void FilterProducts(string searchQuery)
         {
             var filteredProducts = products
@@ -156,5 +157,23 @@ namespace foodordering
             products = filteredProducts;
             AddElementsToTableLayout();
         }
+
+        public List<string> GetSuggestedProductNames(string searchQuery)
+        {
+            if (string.IsNullOrEmpty(searchQuery))
+            {
+                return new List<string>();
+            }
+
+            var suggestedProducts = productBL.GetSuggestedProductNames(searchQuery)
+                                              .Select(p => p.ProductName) // Chỉ lấy tên sản phẩm
+                                              .Distinct() // Loại bỏ trùng lặp
+                                              .ToList();
+
+            return suggestedProducts;
+        }
+
+
+
     }
 }

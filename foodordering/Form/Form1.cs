@@ -24,7 +24,7 @@ namespace foodordering
         public static int iduser;
         private ProductBL productBL;
         BorderButton selectedButton = null;
-
+        private ProductSearchForm productSearchForm;
         public static Form1 Instance
         {
             get
@@ -86,12 +86,13 @@ namespace foodordering
             //flpAds.AutoSize = true;
             this.DoubleBuffered = true;
 
-            InitializeSuggestionListBox();
+
+            InitializesuggestionsListBox();
             // để tạo thời chờ làm phần login account rồi xử lí
 
 
         }
-        private void InitializeSuggestionListBox()
+        private void InitializesuggestionsListBox()
         {
             suggestionsListBox = new ListBox
             {
@@ -102,6 +103,15 @@ namespace foodordering
             };
             suggestionsListBox.Click += SuggestionsListBox_Click; // Sự kiện khi chọn gợi ý
             this.Controls.Add(suggestionsListBox);
+        }
+        private void SuggestionsListBox_Click(object sender, EventArgs e)
+        {
+            if (suggestionsListBox.SelectedItem != null)
+            {
+                searchBar.Text = suggestionsListBox.SelectedItem.ToString();
+                suggestionsListBox.Visible = false; // Ẩn danh sách gợi ý
+                btnSearch_Click_2(sender, e); // Thực hiện tìm kiếm sau khi chọn gợi ý
+            }
         }
 
         public void loadCart()
@@ -678,6 +688,10 @@ namespace foodordering
                 button.Click += (_, __) => ToggleButtonColor(button, index + 1);
                 fLPCategory.Controls.Add(button);
                 button.Show();
+
+
+                //productSearchForm = new ProductSearchForm();
+                suggestionsListBox.Visible = false;
             }
         }
 
@@ -737,6 +751,7 @@ namespace foodordering
                 e.SuppressKeyPress = true;
             }
         }
+
         public void LoadFeaturedProducts()
         {
             flpFeatures.Controls.Clear();
@@ -813,6 +828,55 @@ namespace foodordering
             AdsShowAllForm showAllAds = new AdsShowAllForm();
             AddControlToPanel(showAllAds);
 
+        }
+
+        private void searchBar_TextChanged(object sender, EventArgs e)
+        {
+            suggestionsListBox.Visible = true;
+            string input = searchBar.Text.Trim();
+
+            if (string.IsNullOrEmpty(input))
+            {
+                suggestionsListBox.Visible = false; // Ẩn suggestionsListBox khi không có gì nhập
+                return;
+            }
+
+            var productSearchForm = new ProductSearchForm();
+            // Gọi hàm từ ProductSearchForm để lấy danh sách gợi ý
+            var suggestedProducts = productSearchForm.GetSuggestedProductNames(input);
+
+            // Nếu không có gợi ý, ẩn suggestionsListBox
+            if (!suggestedProducts.Any())
+            {
+                suggestionsListBox.Visible = false;
+                return;
+            }
+
+            // Cập nhật danh sách gợi ý vào suggestionsListBox
+            suggestionsListBox.DataSource = suggestedProducts;
+            
+        }
+
+        private void suggestionsListBox_Click_1(object sender, EventArgs e)
+        {
+            if (suggestionsListBox.SelectedItem != null)
+            {
+                searchBar.Text = suggestionsListBox.SelectedItem.ToString();
+                suggestionsListBox.Visible = false; // Ẩn danh sách gợi ý
+            }
+        }
+
+
+        private void suggestionsListBox_Leave_1(object sender, EventArgs e)
+        {
+            Task.Delay(200).ContinueWith(t =>
+            {
+                if (!suggestionsListBox.Focused)
+                {
+                    suggestionsListBox.Invoke((MethodInvoker)(() => suggestionsListBox.Visible = false));
+                }
+            });
+            suggestionsListBox.Visible = false;
         }
     }
 }

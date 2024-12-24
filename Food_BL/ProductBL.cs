@@ -135,6 +135,11 @@ namespace Food_BL
                 throw ex;
             }
         }
+
+        public List<ProductDTO> GetSuggestedProductNames(string searchQuery)
+        {
+            return productDAL.GetSuggestedProducts(searchQuery);
+        }
     }
 
 }

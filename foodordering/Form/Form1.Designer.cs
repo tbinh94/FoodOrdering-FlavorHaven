@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.fLPCategory = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnFood = new foodordering.BorderButton();
             this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
             this.btnLanguage = new System.Windows.Forms.Button();
             this.btnSellerChannel = new System.Windows.Forms.Button();
@@ -61,6 +60,7 @@
             this.lblFLPProduct = new System.Windows.Forms.Label();
             this.cmsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.suggestionsListBox = new System.Windows.Forms.ListBox();
+            this.btnFood = new foodordering.BorderButton();
             this.panel1.SuspendLayout();
             this.fLPCategory.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
@@ -96,24 +96,6 @@
             this.fLPCategory.Size = new System.Drawing.Size(850, 40);
             this.fLPCategory.TabIndex = 20;
             this.fLPCategory.WrapContents = false;
-            // 
-            // btnFood
-            // 
-            this.btnFood.BackColor = System.Drawing.Color.Transparent;
-            this.btnFood.BorderColor = System.Drawing.Color.OrangeRed;
-            this.btnFood.BorderWidth = 2;
-            this.btnFood.DefaultTextColor = System.Drawing.Color.Black;
-            this.btnFood.FlatAppearance.BorderSize = 0;
-            this.btnFood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFood.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFood.ForeColor = System.Drawing.Color.Black;
-            this.btnFood.HoverTextColor = System.Drawing.Color.OrangeRed;
-            this.btnFood.Location = new System.Drawing.Point(3, 3);
-            this.btnFood.Name = "btnFood";
-            this.btnFood.Size = new System.Drawing.Size(80, 36);
-            this.btnFood.TabIndex = 11;
-            this.btnFood.Text = "Đồ ăn";
-            this.btnFood.UseVisualStyleBackColor = false;
             // 
             // btnLogin
             // 
@@ -253,7 +235,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(936, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(197, 25);
+            this.label3.Size = new System.Drawing.Size(157, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "© 2024 Flavor Haven\r\n";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -274,12 +256,12 @@
             // 
             this.leftPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.leftPanel.Controls.Add(this.suggestionsListBox);
-            this.leftPanel.Controls.Add(this.feature_containerPanel);
-            this.leftPanel.Controls.Add(this.label2);
-            this.leftPanel.Controls.Add(this.label1);
             this.leftPanel.Controls.Add(this.searchBar);
             this.leftPanel.Controls.Add(this.btnSearch);
+            this.leftPanel.Controls.Add(this.feature_containerPanel);
+            this.leftPanel.Controls.Add(this.suggestionsListBox);
+            this.leftPanel.Controls.Add(this.label2);
+            this.leftPanel.Controls.Add(this.label1);
             this.leftPanel.Location = new System.Drawing.Point(0, 0);
             this.leftPanel.Name = "leftPanel";
             this.leftPanel.Size = new System.Drawing.Size(422, 594);
@@ -313,7 +295,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(24, 460);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(422, 48);
+            this.label2.Size = new System.Drawing.Size(321, 36);
             this.label2.TabIndex = 66;
             this.label2.Text = "Sử dụng App Flavor Haven để có nhiều giảm giá\r\nvà trải nghiệm tốt hơn";
             // 
@@ -325,7 +307,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(23, 159);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(461, 50);
+            this.label1.Size = new System.Drawing.Size(377, 40);
             this.label1.TabIndex = 65;
             this.label1.Text = "Đặt Đồ ăn, giao hàng từ 20\'...\r\ncó 84993 địa điểm ở TP. HCM từ 00:00 - 23:59\r\n";
             // 
@@ -340,23 +322,26 @@
             this.searchBar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.searchBar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.searchBar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.searchBar.Location = new System.Drawing.Point(27, 219);
+            this.searchBar.Location = new System.Drawing.Point(23, 219);
             this.searchBar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.searchBar.Name = "searchBar";
             this.searchBar.PasswordChar = '\0';
             this.searchBar.PlaceholderText = "";
             this.searchBar.SelectedText = "";
-            this.searchBar.Size = new System.Drawing.Size(293, 36);
+            this.searchBar.Size = new System.Drawing.Size(339, 36);
             this.searchBar.TabIndex = 54;
+            this.searchBar.TextChanged += new System.EventHandler(this.searchBar_TextChanged);
             this.searchBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchBar_KeyDown);
+            this.searchBar.Leave += new System.EventHandler(this.suggestionsListBox_Leave_1);
             // 
             // btnSearch
             // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(317, 219);
+            this.btnSearch.Location = new System.Drawing.Point(357, 219);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(46, 36);
+            this.btnSearch.Size = new System.Drawing.Size(43, 36);
             this.btnSearch.TabIndex = 53;
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click_2);
@@ -451,7 +436,7 @@
             this.lblAds.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAds.Location = new System.Drawing.Point(13, 200);
             this.lblAds.Name = "lblAds";
-            this.lblAds.Size = new System.Drawing.Size(133, 20);
+            this.lblAds.Size = new System.Drawing.Size(98, 16);
             this.lblAds.TabIndex = 25;
             this.lblAds.Text = "KHUYẾN MÃI";
             // 
@@ -462,7 +447,7 @@
             this.lblFLPProduct.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFLPProduct.Location = new System.Drawing.Point(13, 7);
             this.lblFLPProduct.Name = "lblFLPProduct";
-            this.lblFLPProduct.Size = new System.Drawing.Size(79, 20);
+            this.lblFLPProduct.Size = new System.Drawing.Size(58, 16);
             this.lblFLPProduct.TabIndex = 24;
             this.lblFLPProduct.Text = "ƯU ĐÃI";
             // 
@@ -474,13 +459,32 @@
             // 
             // suggestionsListBox
             // 
+            this.suggestionsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.suggestionsListBox.FormattingEnabled = true;
-            this.suggestionsListBox.ItemHeight = 16;
-            this.suggestionsListBox.Location = new System.Drawing.Point(25, 253);
+            this.suggestionsListBox.Location = new System.Drawing.Point(23, 257);
             this.suggestionsListBox.Name = "suggestionsListBox";
-            this.suggestionsListBox.Size = new System.Drawing.Size(338, 132);
-            this.suggestionsListBox.TabIndex = 69;
+            this.suggestionsListBox.Size = new System.Drawing.Size(377, 121);
+            this.suggestionsListBox.TabIndex = 70;
             this.suggestionsListBox.Visible = false;
+            // 
+            // btnFood
+            // 
+            this.btnFood.BackColor = System.Drawing.Color.Transparent;
+            this.btnFood.BorderColor = System.Drawing.Color.OrangeRed;
+            this.btnFood.BorderWidth = 2;
+            this.btnFood.DefaultTextColor = System.Drawing.Color.Black;
+            this.btnFood.FlatAppearance.BorderSize = 0;
+            this.btnFood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFood.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFood.ForeColor = System.Drawing.Color.Black;
+            this.btnFood.HoverTextColor = System.Drawing.Color.OrangeRed;
+            this.btnFood.Location = new System.Drawing.Point(3, 3);
+            this.btnFood.Name = "btnFood";
+            this.btnFood.Size = new System.Drawing.Size(80, 36);
+            this.btnFood.TabIndex = 11;
+            this.btnFood.Text = "Đồ ăn";
+            this.btnFood.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 

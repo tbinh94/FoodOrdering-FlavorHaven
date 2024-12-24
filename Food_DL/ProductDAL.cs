@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Food_DL
 {
@@ -271,6 +272,44 @@ namespace Food_DL
             {
                 Disconnect();
             }
+        }
+
+        public List<ProductDTO> GetSuggestedProducts(string searchQuery)
+        {
+            List<ProductDTO> products = new List<ProductDTO>();
+
+            if (string.IsNullOrEmpty(searchQuery))
+            {
+                return products;
+            }
+
+            string query = "SELECT ProductName FROM Products WHERE ProductName LIKE @searchQuery";
+
+            using (cn)
+            {
+                SqlCommand command = new SqlCommand(query, cn);
+                command.Parameters.AddWithValue("@searchQuery", "%" + searchQuery + "%");
+
+                try
+                {
+                    cn.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        products.Add(new ProductDTO
+                        {
+                            ProductName = reader["ProductName"].ToString(),
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi kết nối cơ sở dữ liệu: " + ex.Message);
+                }
+            }
+
+            return products;
         }
     }
 
