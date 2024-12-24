@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Runtime.InteropServices.ComTypes;
 using System.Windows.Forms;
 namespace foodordering
 {
@@ -14,14 +13,14 @@ namespace foodordering
         public int idProduct;
         public UserDTO user;
         public ProductDTO product;
-        public edit_productSeller_form( int idProduct)
+        public edit_productSeller_form(int idProduct)
         {
             InitializeComponent();
             img.AllowDrop = true;
             this.idProduct = idProduct;
             user = Form1.user;
             product = new ProductBL().GetProduct(idProduct);
-            
+
         }
         public string RemoveDiacritics(string text)
         {
@@ -117,7 +116,7 @@ namespace foodordering
             slTxt.Text = product.Inventory.ToString();
             descriptionTxt.Text = product.Description;
             loadImg(product.ImagePath);
-            int categoryid = product.CategoryID - 1 <=0 ? 0 : product.CategoryID -1;
+            int categoryid = product.CategoryID - 1 <= 0 ? 0 : product.CategoryID - 1;
             CategoryCbb.Text = list[categoryid];
         }
         public void loadImg(string path)
@@ -127,7 +126,7 @@ namespace foodordering
             Image i = ResizeImg.ResizeImage(Image.FromFile(imagePath), 379, 254);
             img.Image = i;
         }
-       
+
         private void btn_save_Click(object sender, EventArgs e)
         {
 
@@ -154,7 +153,7 @@ namespace foodordering
                     MessageBox.Show("Lỗi lưu ảnh: " + ex.Message);
                 }
             }
-            if (new ProductBL().edit_product(idProduct,decimal.Parse(priceTxt.Text),descriptionTxt.Text,addressTxt.Text,int.Parse(slTxt.Text)))
+            if (new ProductBL().edit_product(idProduct, decimal.Parse(priceTxt.Text), descriptionTxt.Text, addressTxt.Text, int.Parse(slTxt.Text)))
             {
                 MessageBox.Show("Bạn sửa thông tin sản phẩm thành công!");
 

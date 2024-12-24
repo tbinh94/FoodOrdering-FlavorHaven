@@ -2,12 +2,7 @@
 using Food_DTO;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace foodordering
@@ -28,15 +23,15 @@ namespace foodordering
         }
         public void LoadDiscounts(List<DiscountDTO> discounts)
         {
-            tlpDiscounts.Controls.Clear(); 
-            tlpDiscounts.RowCount = discounts.Count; 
+            tlpDiscounts.Controls.Clear();
+            tlpDiscounts.RowCount = discounts.Count;
             tlpDiscounts.RowStyles.Clear();
 
             foreach (var discount in discounts)
             {
                 Panel discountPanel = new Panel
                 {
-                    Size = new Size(tlpDiscounts.Width-10, 50),
+                    Size = new Size(tlpDiscounts.Width - 10, 50),
                     BackColor = Color.LightGray,
                     Margin = new Padding(5),
                     Tag = discount // Gắn DiscountDTO vào Tag

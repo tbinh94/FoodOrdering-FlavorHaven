@@ -1,13 +1,9 @@
 ﻿using Food_BL;
 using Food_DTO;
-using Guna.UI2.AnimatorNS;
-using Microsoft.VisualBasic.Devices;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace foodordering
@@ -33,7 +29,7 @@ namespace foodordering
             };
             tLP.BackColor = Color.Transparent;
             tLP.BackgroundImage = ResizeImg.ResizeImage(Properties.Resources.background1, 1440, 768);
-            
+
         }
 
         private void AddElementsToTableLayout()

@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Food_DTO;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Food_DTO;
 namespace Food_DL
 {
     public class DiscountDAL : DataProvider
@@ -23,7 +20,7 @@ namespace Food_DL
                 SqlCommand command = new SqlCommand(query, cn);
                 try
                 {
-                    cn.Open(); 
+                    cn.Open();
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -52,7 +49,7 @@ namespace Food_DL
 
             return discounts;
         }
-        
+
 
     }
 }

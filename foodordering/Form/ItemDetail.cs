@@ -124,10 +124,10 @@ namespace foodordering
                 Style = MessageDialogStyle.Light,
                 Icon = MessageDialogIcon.Information,
                 Buttons = MessageDialogButtons.OK,
-               
+
             };
 
-            
+
             dialog.Show();
             overlay.Dispose();
         }
@@ -368,9 +368,9 @@ namespace foodordering
         {
             if (e.KeyCode == Keys.Enter)
             {
-                btnSearch_Click(sender, e); 
-                e.Handled = true;           
-                e.SuppressKeyPress = true; 
+                btnSearch_Click(sender, e);
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
         }
 

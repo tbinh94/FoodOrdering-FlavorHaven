@@ -1,11 +1,8 @@
 ﻿using Food_BL;
 using Food_DTO;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Runtime.InteropServices.ComTypes;
 using System.Windows.Forms;
 namespace foodordering
 {
@@ -14,14 +11,14 @@ namespace foodordering
         public int idProduct;
         public UserDTO user;
         public ProductDTO product;
-        public discount_productSeller_form( int idProduct)
+        public discount_productSeller_form(int idProduct)
         {
             InitializeComponent();
             img.AllowDrop = true;
             this.idProduct = idProduct;
             user = Form1.user;
             product = new ProductBL().GetProduct(idProduct);
-            
+
         }
         public string RemoveDiacritics(string text)
         {
@@ -106,11 +103,11 @@ namespace foodordering
 
         private void save_productSeller_form_Load(object sender, EventArgs e)
         {
-            
+
             nameTxt.Text = product.ProductName;
             priceTxt.Text = product.Price.ToString();
             slTxt.Text = product.Inventory.ToString();
-           
+
             loadImg(product.ImagePath);
 
         }
@@ -121,12 +118,12 @@ namespace foodordering
             Image i = ResizeImg.ResizeImage(Image.FromFile(imagePath), 379, 254);
             img.Image = i;
         }
-       
+
         private void btn_save_Click(object sender, EventArgs e)
         {
 
-            
-            
+
+
         }
 
         private void img_DragEnter(object sender, DragEventArgs e)

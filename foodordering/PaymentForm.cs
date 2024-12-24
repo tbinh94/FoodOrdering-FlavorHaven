@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Food_BL;
+using Food_DTO;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Food_BL;
-using Food_DTO;
 namespace foodordering
 {
     public partial class PaymentForm : Form
@@ -47,7 +44,7 @@ namespace foodordering
                 //total += int.Parse(item.lblproductSoLuong) * item.product.Price;
             }
             txtTotalPrice.Text = total.ToString("C0");
-            foreach (var item in listItem) 
+            foreach (var item in listItem)
             {
                 createPPF(item.ProductName, item.lblProductPrice, item.lblproductSoLuong, item.productPicture);
                 productDTOList.Add(item.product);
@@ -56,11 +53,11 @@ namespace foodordering
             loadflpExtraFood();
         }
 
-        private void createPPF(string name, string Price, string Sl ,Image img)
+        private void createPPF(string name, string Price, string Sl, Image img)
         {
             Product_Payment_Form frm = new Product_Payment_Form()
             {
-                lblname =name,
+                lblname = name,
                 Price = Price,
                 SoLuong = "x" + Sl
             };
@@ -84,8 +81,8 @@ namespace foodordering
             flpExtraFood.Controls.Clear();
 
             flpExtraFood.FlowDirection = FlowDirection.LeftToRight; // Hiển thị sản phẩm theo chiều ngang
-            flpExtraFood.WrapContents = false; 
-            flpExtraFood.AutoScroll = true; 
+            flpExtraFood.WrapContents = false;
+            flpExtraFood.AutoScroll = true;
 
             List<ProductDTO> products = productBL.GetProducts_Seller(seller.Id)
                 .Where(product => !productDTOList.Any(p => p.ProductName == product.ProductName))
@@ -131,7 +128,7 @@ namespace foodordering
                 };
 
                 productItem.cart.Hide();
-                productItem.Width = 100; 
+                productItem.Width = 100;
                 productItem.Height = flpExtraFood.Height - 20; // Fit với chiều cao của FlowLayoutPanel
 
                 flpExtraFood.Controls.Add(productItem);

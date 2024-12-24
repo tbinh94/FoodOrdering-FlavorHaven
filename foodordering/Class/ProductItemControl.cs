@@ -1,8 +1,9 @@
 ﻿using Food_BL;
-using Guna.UI2.WinForms;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Guna;
+using Guna.UI2.WinForms;
 namespace foodordering
 {
     public partial class ProductItemControl : UserControl
@@ -60,7 +61,7 @@ namespace foodordering
         public Guna2PictureBox pbx
         {
             get => pictureBoxProduct;
-            set => pictureBoxProduct= value;
+            set => pictureBoxProduct = value;
         }
 
         public Button cart

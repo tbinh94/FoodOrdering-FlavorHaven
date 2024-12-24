@@ -24,6 +24,7 @@ namespace foodordering
         public static int iduser;
         private ProductBL productBL;
         BorderButton selectedButton = null;
+
         public static Form1 Instance
         {
             get
@@ -85,10 +86,24 @@ namespace foodordering
             //flpAds.AutoSize = true;
             this.DoubleBuffered = true;
 
+            InitializeSuggestionListBox();
             // để tạo thời chờ làm phần login account rồi xử lí
 
 
         }
+        private void InitializeSuggestionListBox()
+        {
+            suggestionsListBox = new ListBox
+            {
+                Visible = false,
+                Width = searchBar.Width,
+                Top = searchBar.Bottom, // Đặt nó ngay dưới searchBar
+                Left = searchBar.Left
+            };
+            suggestionsListBox.Click += SuggestionsListBox_Click; // Sự kiện khi chọn gợi ý
+            this.Controls.Add(suggestionsListBox);
+        }
+
         public void loadCart()
         {
             list = new CartBL().GetCart(iduser);
@@ -265,9 +280,9 @@ namespace foodordering
             ads = ShuffleList(ads).Take(4).ToList();
             foreach (var adDto in ads)
             {
-                AdItemBL adItem = AdItemBL.FromDTO(adDto); 
+                AdItemBL adItem = AdItemBL.FromDTO(adDto);
 
-              
+
                 string imagePath = Path.Combine(Application.StartupPath, "Resources", "PromoIMG", adItem.Image);
                 System.Drawing.Image image;
 
@@ -302,7 +317,7 @@ namespace foodordering
 
                 flpAds.Controls.Add(adItemControl);
 
-                image.Dispose(); 
+                image.Dispose();
             }
         }
         private void MakeButtonTransparent(System.Windows.Forms.Button btn)
@@ -446,7 +461,7 @@ namespace foodordering
             cmsMenu.Items.Add(history);
             cmsMenu.Items.Add(edit);
             cmsMenu.Items.Add(signOut);
-            
+
             cmsMenu.Show(btnLogin, new Point(0, btnLogin.Height));
 
         }
@@ -670,8 +685,8 @@ namespace foodordering
         {
             if (selectedButton != null)
             {
-                selectedButton.BackColor = Color.White; 
-                selectedButton.ForeColor = Color.Black;     
+                selectedButton.BackColor = Color.White;
+                selectedButton.ForeColor = Color.Black;
             }
 
             // Đổi màu của button hiện tại
@@ -785,8 +800,8 @@ namespace foodordering
             {
                 if (ctrl is FlowLayoutPanel flp)
                 {
-                    flp.Width = fLP1.ClientSize.Width - 20;
-                    flp.Margin = new Padding(10);
+                    flp.Width = fLP1.ClientSize.Width - 10;
+                    flp.Margin = new Padding(5);
                     panel2.Width = fLP1.Width;
                 }
             }
@@ -797,7 +812,7 @@ namespace foodordering
             adsShowAll.Visible = false;
             AdsShowAllForm showAllAds = new AdsShowAllForm();
             AddControlToPanel(showAllAds);
-            
+
         }
     }
 }

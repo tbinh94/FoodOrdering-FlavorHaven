@@ -90,7 +90,7 @@ namespace Food_DL
                 Disconnect();
             }
         }
-        public bool updateQuantity(int userID, int id,int quantity)
+        public bool updateQuantity(int userID, int id, int quantity)
         {
             string query = $"UPDATE Cart_Item SET Quantity = " + quantity + " WHERE UserID = " + userID + "AND ProductID = " + id;
             try

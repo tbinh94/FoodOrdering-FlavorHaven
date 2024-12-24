@@ -1,8 +1,4 @@
-﻿using Food_DTO;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
+﻿using System;
 using System.Windows.Forms;
 
 namespace foodordering

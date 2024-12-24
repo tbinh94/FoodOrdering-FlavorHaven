@@ -31,7 +31,7 @@ namespace foodordering
             };
             tLP.BackColor = Color.Transparent;
             tLP.BackgroundImage = ResizeImg.ResizeImage(Properties.Resources.background1, 1440, 768);
-            
+
         }
 
         private void AddElementsToTableLayout()
@@ -128,7 +128,7 @@ namespace foodordering
                 form2.SetProductDetails(productName, productPrice, address, productImage, randomRating);
                 AddControlToPanel(form2);
 
-                
+
             }
         }
         private void AddControlToPanel(Form form)

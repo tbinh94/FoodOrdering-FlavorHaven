@@ -1,12 +1,5 @@
 ﻿using Food_BL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace foodordering
@@ -63,7 +56,7 @@ namespace foodordering
                 MessageBox.Show("Lỗi: " + ex.Message, "Thông báo");
             }
         }
-     
+
 
         private void frmEditAccount_Load(object sender, EventArgs e)
         {

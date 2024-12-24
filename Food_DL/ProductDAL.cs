@@ -227,7 +227,7 @@ namespace Food_DL
             }
             return products;
         }
-        public bool edit_product(int idproduct, decimal price,string description,string address,int sl)
+        public bool edit_product(int idproduct, decimal price, string description, string address, int sl)
         {
             try
             {

@@ -7,7 +7,6 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Documents;
 using System.Windows.Forms;
 namespace foodordering
 {
@@ -136,7 +135,7 @@ namespace foodordering
                     count++;
                 }
             }
-            if (count ==1 )
+            if (count == 1)
                 fLP1.Controls.Remove(panel);
             setText();
             setTotal();
@@ -219,7 +218,7 @@ namespace foodordering
             else
             {
                 btn_buy.Enabled = true;
-            }    
+            }
 
         }
         public void setTotal()

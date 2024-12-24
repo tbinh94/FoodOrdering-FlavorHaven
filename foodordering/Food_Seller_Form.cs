@@ -118,8 +118,10 @@ namespace foodordering
                     productItems.Anchor = AnchorStyles.None;
                     productItems.Enabled = true;
                     productItems.cart.Hide();
-                    productItems.pbx.Click += (_,__) => {
-                        AddControlToPanel(new edit_productSeller_form(product.id)); };
+                    productItems.pbx.Click += (_, __) =>
+                    {
+                        AddControlToPanel(new edit_productSeller_form(product.id));
+                    };
                     ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
                     contextMenuStrip.Items.Add("Chỉnh sửa sản phẩm", null, (_, __) =>
                     {

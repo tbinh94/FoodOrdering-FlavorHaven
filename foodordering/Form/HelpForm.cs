@@ -12,7 +12,7 @@ namespace foodordering
         public HelpForm()
         {
             InitializeComponent();
-            
+
             btnLogo.Image = ResizeImg.ResizeImage(Properties.Resources.logo, 140, 140);
             ConfigureImageButton(btnLogo);
 
@@ -41,7 +41,7 @@ namespace foodordering
         private void InitializeTimer()
         {
             timer1 = new Timer();
-            timer1.Interval = 5000; 
+            timer1.Interval = 5000;
             timer1.Tick += Timer_Tick;
             timer1.Start();
         }
@@ -57,16 +57,16 @@ namespace foodordering
         private void OpenCategoryDetail(string filePath, string categoryTitle)
         {
             CategoryDetail detailForm = new CategoryDetail(filePath);
-            detailForm.ShowDialog(); 
+            detailForm.ShowDialog();
         }
         private void ConfigureImageButton(System.Windows.Forms.Button btn)
         {
-            btn.Size = new Size(100, 100);  
+            btn.Size = new Size(100, 100);
             btn.FlatStyle = FlatStyle.Flat;
             btn.FlatAppearance.BorderSize = 0;
             btn.ImageAlign = ContentAlignment.MiddleCenter;
-            btn.BackColor = Color.Transparent; 
-            btn.FlatAppearance.MouseOverBackColor = Color.Transparent; 
+            btn.BackColor = Color.Transparent;
+            btn.FlatAppearance.MouseOverBackColor = Color.Transparent;
         }
 
         private void btnLogo_Click(object sender, EventArgs e)
