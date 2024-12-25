@@ -8,6 +8,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 namespace foodordering
 {
     public partial class PaymentForm : Form
@@ -23,6 +24,7 @@ namespace foodordering
         private DiscountBL discountBL;
         public PaymentForm(List<Item_Cart> l)
         {
+            this.StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
             user = Form1.user;
             discountRate = 0;
@@ -115,7 +117,7 @@ namespace foodordering
 
                 try
                 {
-                    if (File.Exists(imagePath))
+                    if (System.IO.File.Exists(imagePath))
                     {
                         image = System.Drawing.Image.FromFile(imagePath);
                     }
@@ -166,7 +168,7 @@ namespace foodordering
 
             try
             {
-                if (File.Exists(imagePath))
+                if (System.IO.File.Exists(imagePath))
                 {
                     image = System.Drawing.Image.FromFile(imagePath);
                 }
@@ -187,6 +189,7 @@ namespace foodordering
         }
         public void SetDiscountRate(double discountRate)
         {
+            this.discountRate = discountRate;
             lblDiscount.Text = $"Giảm giá: {discountRate * 100:0.##}%";
             setTotal_Discount();
         }
@@ -195,11 +198,25 @@ namespace foodordering
             discountBL = new DiscountBL();
             // Lấy danh sách discount từ BL
             List<DiscountDTO> discounts = discountBL.GetActiveDiscounts();
+            if (discounts == null || discounts.Count == 0)
+            {
+                MessageBox.Show("No active discounts available.");
+                return;
+            }
 
             // Hiển thị DiscountForm
             DiscountListForm discountForm = new DiscountListForm(this);
             discountForm.LoadDiscounts(discounts); // Load danh sách discount vào form
             discountForm.ShowDialog();
+        }
+
+        private void flpFoodList_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, flpFoodList.ClientRectangle,
+                Color.DarkOrange, 2, ButtonBorderStyle.Solid,  
+                Color.DarkOrange, 2, ButtonBorderStyle.Solid, 
+                Color.DarkOrange, 2, ButtonBorderStyle.Solid,  
+                Color.DarkOrange, 2, ButtonBorderStyle.Solid); 
         }
     }
 }

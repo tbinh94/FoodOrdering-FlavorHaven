@@ -75,6 +75,7 @@
             this.flpFoodList.Name = "flpFoodList";
             this.flpFoodList.Size = new System.Drawing.Size(389, 206);
             this.flpFoodList.TabIndex = 3;
+            this.flpFoodList.Paint += new System.Windows.Forms.PaintEventHandler(this.flpFoodList_Paint);
             // 
             // label3
             // 
@@ -154,7 +155,7 @@
             this.btnBank.FillColor = System.Drawing.Color.Transparent;
             this.btnBank.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
             this.btnBank.ForeColor = System.Drawing.Color.Tomato;
-            this.btnBank.Location = new System.Drawing.Point(16, 657);
+            this.btnBank.Location = new System.Drawing.Point(16, 640);
             this.btnBank.Name = "btnBank";
             this.btnBank.Size = new System.Drawing.Size(185, 37);
             this.btnBank.TabIndex = 9;
@@ -174,7 +175,7 @@
             this.btnCash.FillColor = System.Drawing.Color.Transparent;
             this.btnCash.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
             this.btnCash.ForeColor = System.Drawing.Color.Tomato;
-            this.btnCash.Location = new System.Drawing.Point(220, 657);
+            this.btnCash.Location = new System.Drawing.Point(220, 640);
             this.btnCash.Name = "btnCash";
             this.btnCash.Size = new System.Drawing.Size(185, 37);
             this.btnCash.TabIndex = 10;
@@ -194,7 +195,7 @@
             this.btnOrder.FillColor = System.Drawing.Color.Tomato;
             this.btnOrder.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOrder.ForeColor = System.Drawing.Color.White;
-            this.btnOrder.Location = new System.Drawing.Point(16, 700);
+            this.btnOrder.Location = new System.Drawing.Point(16, 683);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Size = new System.Drawing.Size(389, 37);
             this.btnOrder.TabIndex = 11;
@@ -239,8 +240,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(422, 389);
+            this.ClientSize = new System.Drawing.Size(422, 454);
             this.Controls.Add(this.tlpBuyerInfo);
             this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.btnCash);

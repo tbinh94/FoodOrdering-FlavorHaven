@@ -76,15 +76,13 @@ namespace foodordering
                 if (discount != null)
                 {
                     paymentForm.SetDiscountRate(discount.DiscountRate);
-                    paymentForm.discountRate = discount.DiscountRate;
-                    paymentForm.Show();
 
-                    this.Hide();
+                    this.Close();
                 }
             }
         }
 
 
 
-    }
+        }
 }
