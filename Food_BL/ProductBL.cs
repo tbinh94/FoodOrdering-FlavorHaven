@@ -138,7 +138,7 @@ namespace Food_BL
             }
         }
 
-        public List<string> GetProductSuggestions(string searchText)
+        public List<string> GetProductSuggestions(string searchText) // lấy 10 sp
         {
             try
             {
@@ -155,7 +155,7 @@ namespace Food_BL
                 throw;
             }
         }
-        public ProductDTO GetProductDetails(string productName)
+        public ProductDTO GetProductDetails(string productName) // gợi ý truyền qua ItemDetail
         {
             return productDAL.GetProductByName(productName);
         }
