@@ -14,23 +14,38 @@ namespace Food_DL
         {
             List<ProductDTO> products = new List<ProductDTO>();
 
-            // Replace with actual SQL connection and query code
-            using (cn)
+            try
             {
-                cn.Open();
-                SqlCommand command = new SqlCommand("SELECT ProductID, ProductName, Price, Image, Address FROM Products", cn);
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
+                if (cn.State == ConnectionState.Closed)
                 {
-                    products.Add(new ProductDTO
+                    cn.Open();
+                }
+
+                SqlCommand command = new SqlCommand("SELECT ProductID, ProductName, Price, Image, Address FROM Products", cn);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
                     {
-                        ProductID = reader.GetInt32(0),
-                        ProductName = reader.GetString(1),
-                        Price = reader.GetDecimal(2),
-                        ImagePath = reader.GetString(3),
-                        Address = reader.GetString(4),
-                    });
+                        products.Add(new ProductDTO
+                        {
+                            ProductID = reader.GetInt32(0),
+                            ProductName = reader.GetString(1),
+                            Price = reader.GetDecimal(2),
+                            ImagePath = reader.GetString(3),
+                            Address = reader.GetString(4),
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error getting products: " + ex.Message);
+            }
+            finally
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
                 }
             }
 
@@ -274,43 +289,90 @@ namespace Food_DL
             }
         }
 
-        public List<ProductDTO> GetSuggestedProducts(string searchQuery)
+        public List<string> GetProductNames(string searchText)
         {
-            List<ProductDTO> products = new List<ProductDTO>();
+            List<string> productNames = new List<string>();
 
-            if (string.IsNullOrEmpty(searchQuery))
+            try
             {
-                return products;
-            }
-
-            string query = "SELECT ProductName FROM Products WHERE ProductName LIKE @searchQuery";
-
-            using (cn)
-            {
-                SqlCommand command = new SqlCommand(query, cn);
-                command.Parameters.AddWithValue("@searchQuery", "%" + searchQuery + "%");
-
-                try
+                if (cn.State == ConnectionState.Closed)
                 {
                     cn.Open();
-                    SqlDataReader reader = command.ExecuteReader();
+                }
 
+                string query = "SELECT DISTINCT ProductName FROM Products WHERE ProductName LIKE @searchText";
+                SqlCommand command = new SqlCommand(query, cn);
+                command.Parameters.AddWithValue("@searchText", "%" + searchText + "%");
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
                     while (reader.Read())
                     {
-                        products.Add(new ProductDTO
-                        {
-                            ProductName = reader["ProductName"].ToString(),
-                        });
+                        string name = reader.GetString(0);
+                        productNames.Add(name);
+                        System.Diagnostics.Debug.WriteLine($"DAL found product: {name}");
                     }
                 }
-                catch (Exception ex)
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"DAL Error: {ex.Message}");
+                throw;
+            }
+            finally
+            {
+                if (cn.State == ConnectionState.Open)
                 {
-                    MessageBox.Show("Lỗi kết nối cơ sở dữ liệu: " + ex.Message);
+                    cn.Close();
                 }
             }
 
-            return products;
+            System.Diagnostics.Debug.WriteLine($"DAL returned {productNames.Count} products");
+            return productNames;
+        } // để gợi ý
+        public ProductDTO GetProductByName(string productName) // để lấy truyền qua itemdetail
+        {
+            ProductDTO product = null;
+            try
+            {
+                if (cn.State == ConnectionState.Closed)
+                {
+                    cn.Open();
+                }
+
+                string query = "SELECT ProductID, ProductName, Price, Image, Address FROM Products WHERE ProductName = @productName";
+                SqlCommand command = new SqlCommand(query, cn);
+                command.Parameters.AddWithValue("@productName", productName);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        product = new ProductDTO
+                        {
+                            ProductID = reader.GetInt32(0),
+                            ProductName = reader.GetString(1),
+                            Price = reader.GetDecimal(2),
+                            ImagePath = reader.GetString(3),
+                            Address = reader.GetString(4)
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error getting product details: " + ex.Message);
+            }
+            finally
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+            }
+            return product;
         }
+
     }
 
 

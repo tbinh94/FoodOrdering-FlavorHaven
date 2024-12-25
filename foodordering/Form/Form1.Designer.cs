@@ -43,12 +43,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.hintContainerPanel = new System.Windows.Forms.Panel();
+            this.suggestionsListBox = new System.Windows.Forms.ListBox();
+            this.searchBar = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.feature_containerPanel = new System.Windows.Forms.Panel();
             this.flpFeatures = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.searchBar = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.fLP1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanelProducts = new System.Windows.Forms.FlowLayoutPanel();
@@ -59,7 +61,6 @@
             this.lblAds = new System.Windows.Forms.Label();
             this.lblFLPProduct = new System.Windows.Forms.Label();
             this.cmsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.suggestionsListBox = new System.Windows.Forms.ListBox();
             this.btnFood = new foodordering.BorderButton();
             this.panel1.SuspendLayout();
             this.fLPCategory.SuspendLayout();
@@ -67,6 +68,7 @@
             this.loadingPanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.leftPanel.SuspendLayout();
+            this.hintContainerPanel.SuspendLayout();
             this.feature_containerPanel.SuspendLayout();
             this.fLP1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -235,7 +237,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(936, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(157, 20);
+            this.label3.Size = new System.Drawing.Size(197, 25);
             this.label3.TabIndex = 0;
             this.label3.Text = "© 2024 Flavor Haven\r\n";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -256,10 +258,10 @@
             // 
             this.leftPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.leftPanel.Controls.Add(this.searchBar);
+            this.leftPanel.Controls.Add(this.hintContainerPanel);
             this.leftPanel.Controls.Add(this.btnSearch);
+            this.leftPanel.Controls.Add(this.searchBar);
             this.leftPanel.Controls.Add(this.feature_containerPanel);
-            this.leftPanel.Controls.Add(this.suggestionsListBox);
             this.leftPanel.Controls.Add(this.label2);
             this.leftPanel.Controls.Add(this.label1);
             this.leftPanel.Location = new System.Drawing.Point(0, 0);
@@ -267,10 +269,66 @@
             this.leftPanel.Size = new System.Drawing.Size(422, 594);
             this.leftPanel.TabIndex = 54;
             // 
+            // hintContainerPanel
+            // 
+            this.hintContainerPanel.Controls.Add(this.suggestionsListBox);
+            this.hintContainerPanel.Location = new System.Drawing.Point(25, 157);
+            this.hintContainerPanel.Name = "hintContainerPanel";
+            this.hintContainerPanel.Size = new System.Drawing.Size(373, 146);
+            this.hintContainerPanel.TabIndex = 69;
+            this.hintContainerPanel.Visible = false;
+            // 
+            // suggestionsListBox
+            // 
+            this.suggestionsListBox.BackColor = System.Drawing.Color.White;
+            this.suggestionsListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.suggestionsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.suggestionsListBox.FormattingEnabled = true;
+            this.suggestionsListBox.ItemHeight = 16;
+            this.suggestionsListBox.Location = new System.Drawing.Point(0, 0);
+            this.suggestionsListBox.Name = "suggestionsListBox";
+            this.suggestionsListBox.Size = new System.Drawing.Size(373, 146);
+            this.suggestionsListBox.TabIndex = 73;
+            this.suggestionsListBox.Click += new System.EventHandler(this.suggestionsListBox_Click_1);
+            this.suggestionsListBox.Leave += new System.EventHandler(this.suggestionsListBox_Leave_1);
+            // 
+            // searchBar
+            // 
+            this.searchBar.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchBar.DefaultText = "";
+            this.searchBar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.searchBar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.searchBar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.searchBar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.searchBar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.searchBar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.searchBar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.searchBar.Location = new System.Drawing.Point(25, 105);
+            this.searchBar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.searchBar.Name = "searchBar";
+            this.searchBar.PasswordChar = '\0';
+            this.searchBar.PlaceholderText = "";
+            this.searchBar.SelectedText = "";
+            this.searchBar.Size = new System.Drawing.Size(337, 42);
+            this.searchBar.TabIndex = 72;
+            this.searchBar.TextChanged += new System.EventHandler(this.searchBar_TextChanged);
+            this.searchBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchBar_KeyDown);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Location = new System.Drawing.Point(359, 105);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(39, 42);
+            this.btnSearch.TabIndex = 71;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click_2);
+            // 
             // feature_containerPanel
             // 
             this.feature_containerPanel.Controls.Add(this.flpFeatures);
-            this.feature_containerPanel.Location = new System.Drawing.Point(27, 275);
+            this.feature_containerPanel.Location = new System.Drawing.Point(25, 315);
             this.feature_containerPanel.Name = "feature_containerPanel";
             this.feature_containerPanel.Size = new System.Drawing.Size(373, 157);
             this.feature_containerPanel.TabIndex = 68;
@@ -293,9 +351,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(24, 460);
+            this.label2.Location = new System.Drawing.Point(3, 540);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(321, 36);
+            this.label2.Size = new System.Drawing.Size(422, 48);
             this.label2.TabIndex = 66;
             this.label2.Text = "Sử dụng App Flavor Haven để có nhiều giảm giá\r\nvà trải nghiệm tốt hơn";
             // 
@@ -305,46 +363,11 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(23, 159);
+            this.label1.Location = new System.Drawing.Point(12, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(377, 40);
+            this.label1.Size = new System.Drawing.Size(461, 50);
             this.label1.TabIndex = 65;
             this.label1.Text = "Đặt Đồ ăn, giao hàng từ 20\'...\r\ncó 84993 địa điểm ở TP. HCM từ 00:00 - 23:59\r\n";
-            // 
-            // searchBar
-            // 
-            this.searchBar.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.searchBar.DefaultText = "";
-            this.searchBar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.searchBar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.searchBar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.searchBar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.searchBar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.searchBar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.searchBar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.searchBar.Location = new System.Drawing.Point(23, 219);
-            this.searchBar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.searchBar.Name = "searchBar";
-            this.searchBar.PasswordChar = '\0';
-            this.searchBar.PlaceholderText = "";
-            this.searchBar.SelectedText = "";
-            this.searchBar.Size = new System.Drawing.Size(339, 36);
-            this.searchBar.TabIndex = 54;
-            this.searchBar.TextChanged += new System.EventHandler(this.searchBar_TextChanged);
-            this.searchBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchBar_KeyDown);
-            this.searchBar.Leave += new System.EventHandler(this.suggestionsListBox_Leave_1);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(357, 219);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(43, 36);
-            this.btnSearch.TabIndex = 53;
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click_2);
             // 
             // fLP1
             // 
@@ -436,7 +459,7 @@
             this.lblAds.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAds.Location = new System.Drawing.Point(13, 200);
             this.lblAds.Name = "lblAds";
-            this.lblAds.Size = new System.Drawing.Size(98, 16);
+            this.lblAds.Size = new System.Drawing.Size(133, 20);
             this.lblAds.TabIndex = 25;
             this.lblAds.Text = "KHUYẾN MÃI";
             // 
@@ -447,7 +470,7 @@
             this.lblFLPProduct.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFLPProduct.Location = new System.Drawing.Point(13, 7);
             this.lblFLPProduct.Name = "lblFLPProduct";
-            this.lblFLPProduct.Size = new System.Drawing.Size(58, 16);
+            this.lblFLPProduct.Size = new System.Drawing.Size(79, 20);
             this.lblFLPProduct.TabIndex = 24;
             this.lblFLPProduct.Text = "ƯU ĐÃI";
             // 
@@ -456,17 +479,6 @@
             this.cmsMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.cmsMenu.Name = "contextMenuStrip1";
             this.cmsMenu.Size = new System.Drawing.Size(61, 4);
-            // 
-            // suggestionsListBox
-            // 
-            this.suggestionsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.suggestionsListBox.FormattingEnabled = true;
-            this.suggestionsListBox.Location = new System.Drawing.Point(23, 257);
-            this.suggestionsListBox.Name = "suggestionsListBox";
-            this.suggestionsListBox.Size = new System.Drawing.Size(377, 121);
-            this.suggestionsListBox.TabIndex = 70;
-            this.suggestionsListBox.Visible = false;
             // 
             // btnFood
             // 
@@ -506,6 +518,7 @@
             this.panel3.ResumeLayout(false);
             this.leftPanel.ResumeLayout(false);
             this.leftPanel.PerformLayout();
+            this.hintContainerPanel.ResumeLayout(false);
             this.feature_containerPanel.ResumeLayout(false);
             this.feature_containerPanel.PerformLayout();
             this.fLP1.ResumeLayout(false);
@@ -535,8 +548,6 @@
         private System.Windows.Forms.Panel leftPanel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2TextBox searchBar;
-        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.FlowLayoutPanel flpFeatures;
         private System.Windows.Forms.Panel feature_containerPanel;
         private System.Windows.Forms.FlowLayoutPanel fLPCategory;
@@ -548,6 +559,9 @@
         private Guna.UI2.WinForms.Guna2Button adsShowAll;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelProducts;
+        private System.Windows.Forms.Panel hintContainerPanel;
         private System.Windows.Forms.ListBox suggestionsListBox;
+        private Guna.UI2.WinForms.Guna2TextBox searchBar;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

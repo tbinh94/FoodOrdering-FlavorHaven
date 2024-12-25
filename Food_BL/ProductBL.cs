@@ -1,7 +1,9 @@
 ﻿using Food_DL;
 using Food_DTO;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace Food_BL
 {
@@ -136,9 +138,26 @@ namespace Food_BL
             }
         }
 
-        public List<ProductDTO> GetSuggestedProductNames(string searchQuery)
+        public List<string> GetProductSuggestions(string searchText)
         {
-            return productDAL.GetSuggestedProducts(searchQuery);
+            try
+            {
+                var suggestions = productDAL.GetProductNames(searchText)
+                    .Take(10)
+                    .ToList();
+
+                System.Diagnostics.Debug.WriteLine($"BL returned {suggestions.Count} suggestions");
+                return suggestions;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"BL Error: {ex.Message}");
+                throw;
+            }
+        }
+        public ProductDTO GetProductDetails(string productName)
+        {
+            return productDAL.GetProductByName(productName);
         }
     }
 

@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
 
 namespace foodordering
@@ -40,79 +41,58 @@ namespace foodordering
         public Form1()
         {
             InitializeComponent();
+
+            // 1. Sự kiện liên quan đến Form
             this.Resize += new EventHandler(Form1_Resize);
-            iduser = foodordering.Properties.Settings.Default.userID == 0 ? 0 : foodordering.Properties.Settings.Default.userID;
-            user = foodordering.Properties.Settings.Default.userID == 0 ? null : new UserBL().getUser(iduser, foodordering.Properties.Settings.Default.isSeller);
-            list = new CartBL().GetCart(iduser);
-            flowLayoutPanelProducts.AutoScroll = true;
             this.WindowState = FormWindowState.Maximized;
+            this.DoubleBuffered = true;
+
+            // 2. Khởi tạo các thành phần dữ liệu
+            productBL = new ProductBL();
+            iduser = foodordering.Properties.Settings.Default.userID == 0 ? 0 : foodordering.Properties.Settings.Default.userID;
+            user = foodordering.Properties.Settings.Default.userID == 0
+                ? null
+                : new UserBL().getUser(iduser, foodordering.Properties.Settings.Default.isSeller);
+            list = new CartBL().GetCart(iduser);
+            listProduct = new ProductBL().GetAllProducts();
+
+            // 3. Cấu hình các thành phần giao diện cơ bản
             searchBar.Text = "Tìm địa điểm, món ăn, địa chỉ...";
             searchBar.ForeColor = Color.Gray;
-            flpDetail.WrapContents = true;
             searchBar.Enter += searchBar_Enter;
             searchBar.Leave += searchBar_Leave;
 
-            // Resize và set ảnh cho buttons
+            flowLayoutPanelProducts.AutoScroll = true;
+            flpDetail.WrapContents = true;
+            flpDetail.AutoScroll = false;
+
+            // 4. Thiết lập các nút và ảnh
             btnSearch.Image = ResizeImg.ResizeImage(Properties.Resources.searchicon, 20, 20);
             cartButton.Image = ResizeImg.ResizeImage(Properties.Resources.carticon, 40, 40);
             btnLogo.Image = ResizeImg.ResizeImage(Properties.Resources.logo, 100, 100);
-
             panel3.BackgroundImage = ResizeImg.ResizeImage(Properties.Resources.background, 1440, 768);
 
-            ApplyTransparentStyleToAllButtons(panel3);
-            //fLP1.FlowDirection = FlowDirection.TopDown;
-            fLP1.AutoScroll = true;
-            flpDetail.AutoScroll = false;
-            //fLP1.AutoSize = true;
-            //fLP1.WrapContents = false;
-            // override hàm trên
             btnSearch.FlatAppearance.BorderSize = 0;
             btnSearch.BackColor = Color.LightBlue;
 
-            // Cấu hình button
+            ApplyTransparentStyleToAllButtons(panel3);
             ConfigureImageButton(cartButton);
             ConfigureImageButton(btnLogo);
-            LoadProducts();
-            LoadProductItemControl();
-            LoadAds();
-            pn3 = panel3;
-            listProduct = new ProductBL().GetAllProducts();
-
-            productBL = new ProductBL();
-            LoadFeaturedProducts();
 
             flowLayoutPanelProducts.HorizontalScroll.Visible = false;
             flpAds.AutoScroll = false;
-            //flpAds.AutoSize = true;
-            this.DoubleBuffered = true;
 
+            // 5. Tải dữ liệu và giao diện
+            LoadProducts();
+            LoadProductItemControl();
+            LoadAds();
+            LoadFeaturedProducts();
 
-            InitializesuggestionsListBox();
-            // để tạo thời chờ làm phần login account rồi xử lí
-
-
+            // 6. Cấu hình bổ sung
+            SetupSuggestionControls();
+            pn3 = panel3;
         }
-        private void InitializesuggestionsListBox()
-        {
-            suggestionsListBox = new ListBox
-            {
-                Visible = false,
-                Width = searchBar.Width,
-                Top = searchBar.Bottom, // Đặt nó ngay dưới searchBar
-                Left = searchBar.Left
-            };
-            suggestionsListBox.Click += SuggestionsListBox_Click; // Sự kiện khi chọn gợi ý
-            this.Controls.Add(suggestionsListBox);
-        }
-        private void SuggestionsListBox_Click(object sender, EventArgs e)
-        {
-            if (suggestionsListBox.SelectedItem != null)
-            {
-                searchBar.Text = suggestionsListBox.SelectedItem.ToString();
-                suggestionsListBox.Visible = false; // Ẩn danh sách gợi ý
-                btnSearch_Click_2(sender, e); // Thực hiện tìm kiếm sau khi chọn gợi ý
-            }
-        }
+
 
         public void loadCart()
         {
@@ -142,7 +122,7 @@ namespace foodordering
                 else
                 {
                     // Nếu không tìm thấy ảnh, tải ảnh mặc định
-                    string defaultImagePath = Path.Combine(Application.StartupPath, "Resources", "1.jpg");
+                    string defaultImagePath = Path.Combine(Application.StartupPath, "Resources", "default.png");
                     return await Task.Run(() => System.Drawing.Image.FromFile(defaultImagePath));
                 }
             }
@@ -226,7 +206,7 @@ namespace foodordering
                     }
                     else
                     {
-                        imagePath = Path.Combine(Application.StartupPath, "Resources", "1.jpg");
+                        imagePath = Path.Combine(Application.StartupPath, "Resources", "default.png");
                         image = System.Drawing.Image.FromFile(imagePath);
                     }
                 }
@@ -616,6 +596,7 @@ namespace foodordering
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             // Kiểm tra xem người dùng đã đăng nhập trước đó hay chưa
             if (foodordering.Properties.Settings.Default.userID != 0)
             {
@@ -662,7 +643,7 @@ namespace foodordering
             List<string> categories = new ProductBL().CategoryProduct();
             int indexctg = 0;
 
-            foreach (Control control in fLPCategory.Controls)
+            foreach (System.Windows.Forms.Control control in fLPCategory.Controls)
             {
                 if (control is BorderButton button)
                 {
@@ -690,7 +671,6 @@ namespace foodordering
                 button.Show();
 
 
-                //productSearchForm = new ProductSearchForm();
                 suggestionsListBox.Visible = false;
             }
         }
@@ -730,8 +710,6 @@ namespace foodordering
         private void btnSearch_Click_2(object sender, EventArgs e)
         {
             string searchQuery = searchBar.Text.Trim();
-
-            var productSearchForm = new ProductSearchForm();
             productSearchForm.FilterProducts(searchQuery);
 
             var searchResultForm = new SearchResult();
@@ -743,6 +721,11 @@ namespace foodordering
 
         private void searchBar_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Down && suggestionsListBox.Visible)
+            {
+                suggestionsListBox.Focus();
+                suggestionsListBox.SelectedIndex = 0;
+            }
             if (e.KeyCode == Keys.Enter)
             {
                 btnSearch_Click_2(sender, e);
@@ -811,7 +794,7 @@ namespace foodordering
 
         private void AdjustRightPanelLayout()
         {
-            foreach (Control ctrl in fLP1.Controls)
+            foreach (System.Windows.Forms.Control ctrl in fLP1.Controls)
             {
                 if (ctrl is FlowLayoutPanel flp)
                 {
@@ -832,37 +815,114 @@ namespace foodordering
 
         private void searchBar_TextChanged(object sender, EventArgs e)
         {
-            suggestionsListBox.Visible = true;
-            string input = searchBar.Text.Trim();
+            string searchText = searchBar.Text.Trim();
+            //System.Diagnostics.Debug.WriteLine($"Search text: '{searchText}'");
 
-            if (string.IsNullOrEmpty(input))
+            if (string.IsNullOrEmpty(searchText))
             {
-                suggestionsListBox.Visible = false; // Ẩn suggestionsListBox khi không có gì nhập
+                hintContainerPanel.Visible = false;
                 return;
             }
 
-            var productSearchForm = new ProductSearchForm();
-            // Gọi hàm từ ProductSearchForm để lấy danh sách gợi ý
-            var suggestedProducts = productSearchForm.GetSuggestedProductNames(input);
-
-            // Nếu không có gợi ý, ẩn suggestionsListBox
-            if (!suggestedProducts.Any())
+            try
             {
-                suggestionsListBox.Visible = false;
-                return;
+                List<string> suggestions = productBL.GetProductSuggestions(searchText);
+                //System.Diagnostics.Debug.WriteLine($"PL received {suggestions.Count} suggestions");
+
+                suggestionsListBox.Items.Clear();
+                if (suggestions.Any())
+                {
+                    foreach (var suggestion in suggestions)
+                    {
+                        //System.Diagnostics.Debug.WriteLine($"Adding suggestion: {suggestion}");
+                        suggestionsListBox.Items.Add(suggestion);
+                    }
+
+                    // Đảm bảo panel và listbox được cấu hình đúng
+                    hintContainerPanel.Visible = true;
+                    hintContainerPanel.BringToFront();
+                    suggestionsListBox.Visible = true;
+
+                    //System.Diagnostics.Debug.WriteLine($"Panel visible: {hintContainerPanel.Visible}");
+                    //System.Diagnostics.Debug.WriteLine($"ListBox visible: {suggestionsListBox.Visible}");
+                    //System.Diagnostics.Debug.WriteLine($"Panel location: {hintContainerPanel.Location}");
+                    //System.Diagnostics.Debug.WriteLine($"ListBox items: {suggestionsListBox.Items.Count}");
+                }
+                else
+                {
+                    hintContainerPanel.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                //System.Diagnostics.Debug.WriteLine($"PL Error: {ex.Message}");
+                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message);
             }
 
-            // Cập nhật danh sách gợi ý vào suggestionsListBox
-            suggestionsListBox.DataSource = suggestedProducts;
-            
         }
 
         private void suggestionsListBox_Click_1(object sender, EventArgs e)
         {
             if (suggestionsListBox.SelectedItem != null)
             {
-                searchBar.Text = suggestionsListBox.SelectedItem.ToString();
-                suggestionsListBox.Visible = false; // Ẩn danh sách gợi ý
+                string selectedProductName = suggestionsListBox.SelectedItem.ToString();
+                searchBar.Text = selectedProductName;
+                hintContainerPanel.Visible = false;
+
+                try
+                {
+                    // Lấy thông tin chi tiết sản phẩm
+                    ProductDTO product = productBL.GetProductDetails(selectedProductName);
+                    if (product != null)
+                    {
+                        // Xử lý load hình ảnh
+                        string imagePath = Path.Combine(Application.StartupPath, "Resources", "ProductImage", product.ImagePath);
+                        System.Drawing.Image productImage;
+
+                        try
+                        {
+                            if (File.Exists(imagePath))
+                            {
+                                productImage = System.Drawing.Image.FromFile(imagePath);
+                            }
+                            else
+                            {
+                                // Sử dụng ảnh mặc định nếu không tìm thấy
+                                imagePath = Path.Combine(Application.StartupPath, "Resources", "default.png");
+                                productImage = System.Drawing.Image.FromFile(imagePath);
+                            }
+
+                            // Resize ảnh nếu cần
+                            System.Drawing.Image resizedImage = ResizeImg.ResizeImage(productImage, 381, 310);
+
+                            // Tạo và hiển thị ItemDetail
+                            Random random = new Random();
+                            int randomRating = random.Next(1, 6);
+
+                            ItemDetail form2 = new ItemDetail();
+                            form2.SetProductDetails(
+                                product.ProductName,
+                                product.Price.ToString("C0"), 
+                                product.Address,
+                                resizedImage,
+                                randomRating
+                            );
+                            AddControlToPanel(form2);
+
+                            // Giải phóng tài nguyên
+                            productImage.Dispose();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Không thể tải hình ảnh cho {product.ProductName}: {ex.Message}");
+                            return;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi hiển thị chi tiết sản phẩm: " + ex.Message);
+                }
             }
         }
 
@@ -877,6 +937,31 @@ namespace foodordering
                 }
             });
             suggestionsListBox.Visible = false;
+        }
+        private void SetupSuggestionControls()
+        {
+            hintContainerPanel.BorderStyle = BorderStyle.FixedSingle;
+            hintContainerPanel.BackColor = Color.White;
+            hintContainerPanel.Visible = false;
+
+            // Đặt vị trí panel ngay dưới searchBar
+            hintContainerPanel.Location = new Point(
+                searchBar.Location.X,
+                searchBar.Location.Y + searchBar.Height
+            );
+
+     
+            suggestionsListBox.BorderStyle = BorderStyle.None;
+            suggestionsListBox.BackColor = Color.White;
+            suggestionsListBox.Dock = DockStyle.Fill;
+            suggestionsListBox.Margin= new Padding(10);
+            suggestionsListBox.Font = new Font("Verdana", 11, FontStyle.Regular);
+
+            // Đảm bảo panel có kích thước phù hợp
+            hintContainerPanel.Size = new Size(
+                searchBar.Width,
+                150 
+            );
         }
     }
 }
