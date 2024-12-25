@@ -44,9 +44,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.leftPanel = new System.Windows.Forms.Panel();
             this.hintContainerPanel = new System.Windows.Forms.Panel();
-            this.suggestionsListBox = new System.Windows.Forms.ListBox();
-            this.searchBar = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.searchBar = new Guna.UI2.WinForms.Guna2TextBox();
             this.feature_containerPanel = new System.Windows.Forms.Panel();
             this.flpFeatures = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,10 +56,11 @@
             this.lblDetail = new System.Windows.Forms.Label();
             this.adsShowAll = new Guna.UI2.WinForms.Guna2Button();
             this.flpAds = new System.Windows.Forms.FlowLayoutPanel();
-            this.flpDetail = new System.Windows.Forms.FlowLayoutPanel();
             this.lblAds = new System.Windows.Forms.Label();
             this.lblFLPProduct = new System.Windows.Forms.Label();
             this.cmsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.suggestionsListBox = new System.Windows.Forms.ListBox();
+            this.flpDetail = new System.Windows.Forms.FlowLayoutPanel();
             this.btnFood = new foodordering.BorderButton();
             this.panel1.SuspendLayout();
             this.fLPCategory.SuspendLayout();
@@ -272,25 +272,22 @@
             // hintContainerPanel
             // 
             this.hintContainerPanel.Controls.Add(this.suggestionsListBox);
-            this.hintContainerPanel.Location = new System.Drawing.Point(25, 157);
+            this.hintContainerPanel.Location = new System.Drawing.Point(25, 292);
             this.hintContainerPanel.Name = "hintContainerPanel";
             this.hintContainerPanel.Size = new System.Drawing.Size(373, 146);
             this.hintContainerPanel.TabIndex = 69;
             this.hintContainerPanel.Visible = false;
             // 
-            // suggestionsListBox
+            // btnSearch
             // 
-            this.suggestionsListBox.BackColor = System.Drawing.Color.White;
-            this.suggestionsListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.suggestionsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.suggestionsListBox.FormattingEnabled = true;
-            this.suggestionsListBox.ItemHeight = 16;
-            this.suggestionsListBox.Location = new System.Drawing.Point(0, 0);
-            this.suggestionsListBox.Name = "suggestionsListBox";
-            this.suggestionsListBox.Size = new System.Drawing.Size(373, 146);
-            this.suggestionsListBox.TabIndex = 73;
-            this.suggestionsListBox.Click += new System.EventHandler(this.suggestionsListBox_Click_1);
-            this.suggestionsListBox.Leave += new System.EventHandler(this.suggestionsListBox_Leave_1);
+            this.btnSearch.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Location = new System.Drawing.Point(359, 240);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(39, 42);
+            this.btnSearch.TabIndex = 71;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click_2);
             // 
             // searchBar
             // 
@@ -303,7 +300,7 @@
             this.searchBar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.searchBar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.searchBar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.searchBar.Location = new System.Drawing.Point(25, 105);
+            this.searchBar.Location = new System.Drawing.Point(25, 240);
             this.searchBar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.searchBar.Name = "searchBar";
             this.searchBar.PasswordChar = '\0';
@@ -313,17 +310,6 @@
             this.searchBar.TabIndex = 72;
             this.searchBar.TextChanged += new System.EventHandler(this.searchBar_TextChanged);
             this.searchBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchBar_KeyDown);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(359, 105);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(39, 42);
-            this.btnSearch.TabIndex = 71;
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click_2);
             // 
             // feature_containerPanel
             // 
@@ -351,7 +337,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(3, 540);
+            this.label2.Location = new System.Drawing.Point(0, 513);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(422, 48);
             this.label2.TabIndex = 66;
@@ -363,7 +349,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 51);
+            this.label1.Location = new System.Drawing.Point(12, 144);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(461, 50);
             this.label1.TabIndex = 65;
@@ -373,13 +359,14 @@
             // 
             this.fLP1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.fLP1.AutoScroll = true;
             this.fLP1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.fLP1.BackColor = System.Drawing.Color.White;
+            this.fLP1.Controls.Add(this.flpDetail);
             this.fLP1.Controls.Add(this.panel2);
             this.fLP1.Controls.Add(this.lblDetail);
             this.fLP1.Controls.Add(this.adsShowAll);
             this.fLP1.Controls.Add(this.flpAds);
-            this.fLP1.Controls.Add(this.flpDetail);
             this.fLP1.Controls.Add(this.lblAds);
             this.fLP1.Controls.Add(this.lblFLPProduct);
             this.fLP1.Location = new System.Drawing.Point(419, 0);
@@ -411,7 +398,7 @@
             this.lblDetail.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetail.Location = new System.Drawing.Point(13, 381);
             this.lblDetail.Name = "lblDetail";
-            this.lblDetail.Size = new System.Drawing.Size(184, 16);
+            this.lblDetail.Size = new System.Drawing.Size(184, 21);
             this.lblDetail.TabIndex = 27;
             this.lblDetail.Text = "BÁN CHẠY";
             // 
@@ -425,9 +412,9 @@
             this.adsShowAll.FillColor = System.Drawing.Color.Transparent;
             this.adsShowAll.Font = new System.Drawing.Font("Verdana", 8.25F);
             this.adsShowAll.ForeColor = System.Drawing.Color.Blue;
-            this.adsShowAll.Location = new System.Drawing.Point(586, 200);
+            this.adsShowAll.Location = new System.Drawing.Point(547, 196);
             this.adsShowAll.Name = "adsShowAll";
-            this.adsShowAll.Size = new System.Drawing.Size(92, 16);
+            this.adsShowAll.Size = new System.Drawing.Size(136, 24);
             this.adsShowAll.TabIndex = 28;
             this.adsShowAll.Text = "Xem tất cả";
             this.adsShowAll.UseTransparentBackground = true;
@@ -441,16 +428,6 @@
             this.flpAds.Name = "flpAds";
             this.flpAds.Size = new System.Drawing.Size(674, 159);
             this.flpAds.TabIndex = 22;
-            // 
-            // flpDetail
-            // 
-            this.flpDetail.AutoScroll = true;
-            this.flpDetail.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flpDetail.BackColor = System.Drawing.Color.Transparent;
-            this.flpDetail.Location = new System.Drawing.Point(9, 400);
-            this.flpDetail.Name = "flpDetail";
-            this.flpDetail.Size = new System.Drawing.Size(674, 188);
-            this.flpDetail.TabIndex = 23;
             // 
             // lblAds
             // 
@@ -479,6 +456,28 @@
             this.cmsMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.cmsMenu.Name = "contextMenuStrip1";
             this.cmsMenu.Size = new System.Drawing.Size(61, 4);
+            // 
+            // suggestionsListBox
+            // 
+            this.suggestionsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.suggestionsListBox.FormattingEnabled = true;
+            this.suggestionsListBox.ItemHeight = 16;
+            this.suggestionsListBox.Location = new System.Drawing.Point(0, 0);
+            this.suggestionsListBox.Name = "suggestionsListBox";
+            this.suggestionsListBox.Size = new System.Drawing.Size(373, 146);
+            this.suggestionsListBox.TabIndex = 0;
+            this.suggestionsListBox.Click += new System.EventHandler(this.suggestionsListBox_Click_1);
+            this.suggestionsListBox.Leave += new System.EventHandler(this.suggestionsListBox_Leave_1);
+            // 
+            // flpDetail
+            // 
+            this.flpDetail.AutoScroll = true;
+            this.flpDetail.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flpDetail.BackColor = System.Drawing.Color.Transparent;
+            this.flpDetail.Location = new System.Drawing.Point(9, 406);
+            this.flpDetail.Name = "flpDetail";
+            this.flpDetail.Size = new System.Drawing.Size(674, 188);
+            this.flpDetail.TabIndex = 30;
             // 
             // btnFood
             // 
@@ -535,7 +534,6 @@
         private System.Windows.Forms.Button btnLogo;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.FlowLayoutPanel flpDetail;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Panel loadingPanel;
         private System.Windows.Forms.Button btnLanguage;
@@ -560,8 +558,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelProducts;
         private System.Windows.Forms.Panel hintContainerPanel;
-        private System.Windows.Forms.ListBox suggestionsListBox;
         private Guna.UI2.WinForms.Guna2TextBox searchBar;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.ListBox suggestionsListBox;
+        private System.Windows.Forms.FlowLayoutPanel flpDetail;
     }
 }

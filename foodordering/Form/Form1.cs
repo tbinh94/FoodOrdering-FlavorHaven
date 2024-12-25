@@ -710,6 +710,7 @@ namespace foodordering
         private void btnSearch_Click_2(object sender, EventArgs e)
         {
             string searchQuery = searchBar.Text.Trim();
+            var productSearchForm = new ProductSearchForm();
             productSearchForm.FilterProducts(searchQuery);
 
             var searchResultForm = new SearchResult();
@@ -777,7 +778,7 @@ namespace foodordering
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-            int panelLeftWidth = (int)(panel3.Width * 0.33);
+            int panelLeftWidth = (int)(panel3.Width * 0.41);
 
 
             leftPanel.Width = panelLeftWidth;
@@ -950,7 +951,6 @@ namespace foodordering
                 searchBar.Location.Y + searchBar.Height
             );
 
-     
             suggestionsListBox.BorderStyle = BorderStyle.None;
             suggestionsListBox.BackColor = Color.White;
             suggestionsListBox.Dock = DockStyle.Fill;
