@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,6 +12,7 @@ namespace foodordering
 {
     public partial class PaymentForm : Form
     {
+        public double discountRate;
         public UserDTO user;
         public List<Item_Cart> listItem;
         public UserDTO seller;
@@ -23,6 +25,7 @@ namespace foodordering
         {
             InitializeComponent();
             user = Form1.user;
+            discountRate = 0;
             listItem = Cart.instance.products_choosed;
             seller = null;
             productBL = new ProductBL();
@@ -37,16 +40,10 @@ namespace foodordering
             lblInfoUser.Text = user.Username + " | " + user.PhoneNumber;
             seller = new UserBL().getUser(productBL.GetProduct(listItem[0].id).SellerID, true);
             lblInfoSeller.Text = seller.Username;
-            lblSl.Text = "Tổng giá món (" + listItem.Count + " món)";
-            decimal total = 0;
             foreach (var item in listItem)
+
             {
-                //total += int.Parse(item.lblproductSoLuong) * item.product.Price;
-            }
-            txtTotalPrice.Text = total.ToString("C0");
-            foreach (var item in listItem)
-            {
-                createPPF(item.ProductName, item.lblProductPrice, item.lblproductSoLuong, item.productPicture);
+                createPPF(item.product.ProductName, item.lblProductPrice, item.lblproductSoLuong, item.productPicture);
                 productDTOList.Add(item.product);
                 productName.Add(item.product.ProductName);
             }
@@ -70,6 +67,27 @@ namespace foodordering
             frm.Show();
             flpFoodList.Controls.Add(frm);
             formList.Add(frm);
+            setText();
+        }
+        private void setText()
+        {
+            int totalSl = 0;
+            decimal total = 0;
+            foreach (var item in formList)
+            {
+                totalSl += int.Parse(item.SoLuong.Substring(1));
+                total += int.Parse(item.SoLuong.Substring(1)) * Decimal.Parse(item.Price, NumberStyles.Currency);
+            }
+            lblSl.Text = "Tổng giá món (" + totalSl.ToString() + " món)";
+            txtTotalPrice.Text = total.ToString("C0");
+            setTotal_Discount();
+
+        }
+        private void setTotal_Discount()
+        {
+            decimal total = Decimal.Parse(txtTotalPrice.Text, NumberStyles.Currency) * (decimal.Parse(discountRate.ToString()) + 1);
+            total = Math.Round(total, 2);
+            btnOrder.Text = "Đặt đơn - (" + total + ")";
         }
         public static List<T> ShuffleList<T>(List<T> inputList)
         {
@@ -170,6 +188,7 @@ namespace foodordering
         public void SetDiscountRate(double discountRate)
         {
             lblDiscount.Text = $"Giảm giá: {discountRate * 100:0.##}%";
+            setTotal_Discount();
         }
         private void voucherPanel_Click(object sender, EventArgs e)
         {

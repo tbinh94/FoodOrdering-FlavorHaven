@@ -12,7 +12,7 @@ namespace Food_DL
         {
             // (localdb)\\localPC   (localdb)\\localLap
             // localhost
-            string cnStr = "Data Source =  (localdb)\\localLap; Initial Catalog = Test; Integrated Security = True";
+            string cnStr = "Data Source =  localhost; Initial Catalog = Test; Integrated Security = True";
             cn = new SqlConnection(cnStr);
         }
         public void Connect()
