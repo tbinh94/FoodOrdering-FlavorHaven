@@ -778,7 +778,7 @@ namespace foodordering
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-            int panelLeftWidth = (int)(panel3.Width * 0.41);
+            int panelLeftWidth = (int)(panel3.Width * 0.33);
 
 
             leftPanel.Width = panelLeftWidth;
