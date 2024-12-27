@@ -45,7 +45,10 @@
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtAddress = new Guna.UI2.WinForms.Guna2TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnChooseAvatar = new Guna.UI2.WinForms.Guna2Button();
+            this.picAvatar = new Guna.UI2.WinForms.Guna2PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_sign_up
@@ -59,7 +62,7 @@
             this.btn_sign_up.FillColor = System.Drawing.Color.Green;
             this.btn_sign_up.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btn_sign_up.ForeColor = System.Drawing.Color.White;
-            this.btn_sign_up.Location = new System.Drawing.Point(42, 422);
+            this.btn_sign_up.Location = new System.Drawing.Point(12, 535);
             this.btn_sign_up.Name = "btn_sign_up";
             this.btn_sign_up.Size = new System.Drawing.Size(114, 35);
             this.btn_sign_up.TabIndex = 3;
@@ -77,7 +80,7 @@
             this.btn_exit.FillColor = System.Drawing.Color.Green;
             this.btn_exit.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btn_exit.ForeColor = System.Drawing.Color.White;
-            this.btn_exit.Location = new System.Drawing.Point(182, 422);
+            this.btn_exit.Location = new System.Drawing.Point(311, 535);
             this.btn_exit.Name = "btn_exit";
             this.btn_exit.Size = new System.Drawing.Size(114, 35);
             this.btn_exit.TabIndex = 4;
@@ -90,7 +93,7 @@
             this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 7.875F, System.Drawing.FontStyle.Underline);
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(343, 408);
+            this.label4.Location = new System.Drawing.Point(16, 594);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 14);
             this.label4.TabIndex = 7;
@@ -106,7 +109,7 @@
             this.checkSeller.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.checkSeller.CheckMarkColor = System.Drawing.Color.Green;
             this.checkSeller.Font = new System.Drawing.Font("Times New Roman", 9.75F);
-            this.checkSeller.Location = new System.Drawing.Point(343, 458);
+            this.checkSeller.Location = new System.Drawing.Point(343, 589);
             this.checkSeller.Name = "checkSeller";
             this.checkSeller.Size = new System.Drawing.Size(82, 19);
             this.checkSeller.TabIndex = 14;
@@ -328,7 +331,7 @@
             this.tableLayoutPanel1.Controls.Add(this.txtRePass, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.lblRePass, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.lblEmail, 0, 6);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 117);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 12;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333332F));
@@ -346,11 +349,44 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(413, 393);
             this.tableLayoutPanel1.TabIndex = 21;
             // 
+            // btnChooseAvatar
+            // 
+            this.btnChooseAvatar.AutoRoundedCorners = true;
+            this.btnChooseAvatar.BackColor = System.Drawing.Color.Transparent;
+            this.btnChooseAvatar.BorderRadius = 16;
+            this.btnChooseAvatar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnChooseAvatar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnChooseAvatar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnChooseAvatar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnChooseAvatar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnChooseAvatar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnChooseAvatar.ForeColor = System.Drawing.Color.Black;
+            this.btnChooseAvatar.Location = new System.Drawing.Point(161, 44);
+            this.btnChooseAvatar.Name = "btnChooseAvatar";
+            this.btnChooseAvatar.Size = new System.Drawing.Size(130, 35);
+            this.btnChooseAvatar.TabIndex = 22;
+            this.btnChooseAvatar.Text = "Thêm ảnh đại diện";
+            this.btnChooseAvatar.UseTransparentBackground = true;
+            this.btnChooseAvatar.Click += new System.EventHandler(this.btnChooseAvatar_Click);
+            // 
+            // picAvatar
+            // 
+            this.picAvatar.BackColor = System.Drawing.Color.Transparent;
+            this.picAvatar.ImageRotate = 0F;
+            this.picAvatar.Location = new System.Drawing.Point(59, 25);
+            this.picAvatar.Name = "picAvatar";
+            this.picAvatar.Size = new System.Drawing.Size(87, 77);
+            this.picAvatar.TabIndex = 23;
+            this.picAvatar.TabStop = false;
+            this.picAvatar.UseTransparentBackground = true;
+            // 
             // Sign_up
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 489);
+            this.ClientSize = new System.Drawing.Size(436, 618);
+            this.Controls.Add(this.picAvatar);
+            this.Controls.Add(this.btnChooseAvatar);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.checkSeller);
             this.Controls.Add(this.label4);
@@ -364,6 +400,7 @@
             this.Text = "login";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -387,5 +424,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
         private Guna.UI2.WinForms.Guna2TextBox txtAddress;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private Guna.UI2.WinForms.Guna2Button btnChooseAvatar;
+        private Guna.UI2.WinForms.Guna2PictureBox picAvatar;
     }
 }

@@ -3,6 +3,7 @@
     public class UserSession
     {
         private static UserSession instance;
+
         public static UserSession Instance
         {
             get
@@ -14,6 +15,8 @@
         }
 
         public string LoggedInUsername { get; set; }
+        public string AvatarPath { get; set; }
+
         private UserSession() { }
     }
 

@@ -25,6 +25,10 @@ namespace Food_BL
         // Đăng ký
         public bool Signup(UserDTO acc, bool isSeller)
         {
+            if (string.IsNullOrEmpty(acc.Avatar))
+            {
+                acc.Avatar = "..\\..\\Resources\\default_avatar.png"; 
+            }
             try
             {
                 if (loginDL.IsUsernameExists(acc.Username))
@@ -68,9 +72,17 @@ namespace Food_BL
                 throw ex;
             }
         }
-        public bool UpdatePassword(int userId, string newPassword, bool isSeller)
+        public bool UpdatePassword(int userId, string newPassword, string avatarPath, bool isSeller)
         {
-            return loginDL.UpdatePassword(userId, newPassword, isSeller);
+            if (string.IsNullOrEmpty(avatarPath))
+            {
+                avatarPath = "..\\..\\Resources\\default_avatar.png"; // Đường dẫn mặc định
+            }
+            return loginDL.UpdatePassword(userId, newPassword, avatarPath, isSeller);
+        }
+        public string GetAvatarPath(string username)
+        {
+            return loginDL.GetAvatarPath(username);
         }
 
 

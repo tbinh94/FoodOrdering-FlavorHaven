@@ -596,6 +596,8 @@ namespace foodordering
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            EnsureUserAvatarFolder(); 
+            CopyDefaultAvatar();
 
             // Kiểm tra xem người dùng đã đăng nhập trước đó hay chưa
             if (foodordering.Properties.Settings.Default.userID != 0)
@@ -963,5 +965,37 @@ namespace foodordering
                 150 
             );
         }
+
+        private void EnsureUserAvatarFolder()
+        {
+            // Đường dẫn tới thư mục Resources/UserAvatar
+            string resourcePath = Path.Combine(Application.StartupPath, "Resources");
+            string avatarFolderPath = Path.Combine(resourcePath, "UserAvatar");
+
+            // Tạo thư mục Resources nếu chưa có
+            if (!Directory.Exists(resourcePath))
+            {
+                Directory.CreateDirectory(resourcePath);
+            }
+
+            // Tạo thư mục UserAvatar nếu chưa có
+            if (!Directory.Exists(avatarFolderPath))
+            {
+                Directory.CreateDirectory(avatarFolderPath);
+            }
+        }
+        private void CopyDefaultAvatar()
+        {
+            string avatarFolderPath = Path.Combine(Application.StartupPath, "Resources", "UserAvatar");
+            string defaultAvatarPath = Path.Combine(avatarFolderPath, "default_avatar.png");
+
+            if (!File.Exists(defaultAvatarPath))
+            {
+                // Lấy ảnh mặc định từ Resources và lưu vào UserAvatar
+                Properties.Resources.default_avatar.Save(defaultAvatarPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+            }
+        }
+
+
     }
 }

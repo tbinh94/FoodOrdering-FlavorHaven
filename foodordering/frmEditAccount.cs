@@ -1,11 +1,15 @@
 ﻿using Food_BL;
 using System;
+using System.Drawing;
+using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace foodordering
 {
     public partial class frmEditAccount : Form
     {
+        UserBL userBL = new UserBL();
         public frmEditAccount()
         {
             InitializeComponent();
@@ -21,6 +25,47 @@ namespace foodordering
             string newPassword = txtNewPassword.Text.Trim();
             string confirmPassword = txtConfirmPassword.Text.Trim();
 
+            string projectPath = Application.StartupPath; // Thư mục gốc của project
+            string avatarFolderPath = Path.Combine(projectPath, "UserAvatar");
+            string defaultAvatarPath = Path.Combine(projectPath, "Resources", "default_avatar.png");
+            string avatarPath;
+
+            // Kiểm tra và tạo thư mục nếu chưa tồn tại
+            if (!Directory.Exists(avatarFolderPath))
+            {
+                Directory.CreateDirectory(avatarFolderPath);
+            }
+
+            if (picAvatar.Image != null)
+            {
+                try
+                {
+                    // Lưu avatar mới nếu người dùng chọn ảnh
+                    string userAvatarFileName = $"{UserSession.Instance.LoggedInUsername}_avatar_temp.jpg";
+                    avatarPath = Path.Combine(avatarFolderPath, userAvatarFileName);
+
+                    // Sử dụng MemoryStream để lưu ảnh
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        picAvatar.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg); // Lưu ảnh vào MemoryStream
+                        File.WriteAllBytes(avatarPath, ms.ToArray());  // Ghi ảnh vào tệp
+                    }
+                    picAvatar.Image.Dispose();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi lưu avatar: " + ex.Message, "Thông báo");
+                    return;
+                }
+            }
+            else
+            {
+                // Sử dụng avatar hiện tại hoặc ảnh mặc định
+                avatarPath = UserSession.Instance.AvatarPath ?? defaultAvatarPath;
+            }
+
+            // Kiểm tra mật khẩu
             if (string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmPassword))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo");
@@ -40,7 +85,7 @@ namespace foodordering
 
             try
             {
-                bool isUpdated = userBL.UpdatePassword(userId, newPassword, isSeller);
+                bool isUpdated = userBL.UpdatePassword(userId, newPassword, avatarPath, isSeller);
                 if (isUpdated)
                 {
                     MessageBox.Show("Cập nhật mật khẩu thành công!", "Thông báo");
@@ -62,6 +107,20 @@ namespace foodordering
         {
             txtUsername.Text = UserSession.Instance.LoggedInUsername;
             txtUsername.ReadOnly = true;
+
+            string avatarPath = userBL.GetAvatarPath(UserSession.Instance.LoggedInUsername);
+
+            string projectPath = Application.StartupPath; 
+            string defaultAvatarPath = Path.Combine(projectPath, "Resources", "default_avatar.png");
+
+            if (!string.IsNullOrEmpty(avatarPath) && File.Exists(avatarPath))
+            {
+                picAvatar.Image = Image.FromFile(avatarPath);
+            }
+            else
+            {
+                picAvatar.Image = Image.FromFile(defaultAvatarPath);
+            }
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -69,6 +128,19 @@ namespace foodordering
             this.Hide();
             Sign_up f = new Sign_up();
             f.Show();
+        }
+
+        private void btnSelectAvatar_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;";
+            openFileDialog.Title = "Chọn ảnh đại diện";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Hiển thị ảnh được chọn trong picAvatar
+                picAvatar.Image = Image.FromFile(openFileDialog.FileName);
+            }
         }
     }
 }

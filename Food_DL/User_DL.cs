@@ -33,8 +33,8 @@ namespace Food_DL
         public bool Signup(UserDTO acc, bool isSeller)
         {
             string tableName = isSeller ? "Seller" : "Users";
-            string sql = $"INSERT INTO {tableName} (Username, Password, Email, PhoneNumber, Address) " +
-                         "VALUES (@Username, @Password, @Email, @PhoneNumber, @Address)";
+            string sql = $"INSERT INTO {tableName} (Username, Password, Email, PhoneNumber, Address, Avatar) " +
+                         "VALUES (@Username, @Password, @Email, @PhoneNumber, @Address, @Avatar)";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>
                 {
@@ -42,7 +42,8 @@ namespace Food_DL
                     { "@Password", acc.Password },
                     { "@Email", acc.Email },
                     { "@PhoneNumber", acc.PhoneNumber },
-                    { "@Address", acc.Address }
+                    { "@Address", acc.Address },
+                    { "@Avatar", acc.Avatar }
                 };
 
             try
@@ -128,7 +129,7 @@ namespace Food_DL
                 throw ex;
             }
         }
-        public bool UpdatePassword(int userId, string newPassword, bool isSeller)
+        public bool UpdatePassword(int userId, string newPassword, string avatarPath, bool isSeller)
         {
             try
             {
@@ -136,13 +137,13 @@ namespace Food_DL
                 {
                     cn.Open();
                     string tableName = isSeller ? "Seller" : "Users";
-                    string query = $"UPDATE {tableName} SET Password = @Password WHERE UserID = @UserID";
+                    string query = $"UPDATE {tableName} SET Password = @Password, Avatar = @Avatar  WHERE UserID = @UserID";
 
                     using (SqlCommand cmd = new SqlCommand(query, cn))
                     {
                         cmd.Parameters.AddWithValue("@Password", newPassword);
                         cmd.Parameters.AddWithValue("@UserID", userId);
-
+                        cmd.Parameters.AddWithValue("@Avatar", avatarPath);
                         int rowsAffected = cmd.ExecuteNonQuery();
                         return rowsAffected > 0;
                     }
@@ -152,6 +153,27 @@ namespace Food_DL
             {
                 throw ex;
             }
+        }
+
+        public string GetAvatarPath(string username)
+        {
+            string avatarPath = null;
+            string query = "SELECT Avatar FROM Users WHERE Username = @Username";
+
+            using (cn)
+            {
+                SqlCommand cmd = new SqlCommand(query, cn);
+                cmd.Parameters.AddWithValue("@Username", username);
+
+                cn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    avatarPath = reader["Avatar"] as string;
+                }
+            }
+
+            return avatarPath;
         }
 
 
