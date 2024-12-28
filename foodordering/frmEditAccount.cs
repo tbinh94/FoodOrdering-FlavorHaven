@@ -40,25 +40,27 @@ namespace foodordering
             {
                 try
                 {
-                    // Lưu avatar mới nếu người dùng chọn ảnh
                     string userAvatarFileName = $"{UserSession.Instance.LoggedInUsername}_avatar_temp.jpg";
                     avatarPath = Path.Combine(avatarFolderPath, userAvatarFileName);
 
                     // Sử dụng MemoryStream để lưu ảnh
                     using (MemoryStream ms = new MemoryStream())
                     {
-                        picAvatar.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg); // Lưu ảnh vào MemoryStream
-                        File.WriteAllBytes(avatarPath, ms.ToArray());  // Ghi ảnh vào tệp
+                        picAvatar.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        File.WriteAllBytes(avatarPath, ms.ToArray());
                     }
-                    picAvatar.Image.Dispose();
-
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Lỗi khi lưu avatar: " + ex.Message, "Thông báo");
                     return;
                 }
+                finally
+                {
+                    picAvatar.Image.Dispose(); 
+                }
             }
+
             else
             {
                 // Sử dụng avatar hiện tại hoặc ảnh mặc định
@@ -138,9 +140,18 @@ namespace foodordering
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // Hiển thị ảnh được chọn trong picAvatar
-                picAvatar.Image = Image.FromFile(openFileDialog.FileName);
+                if (picAvatar.Image != null)
+                {
+                    picAvatar.Image.Dispose();
+                }
+
+                // Đọc ảnh từ tệp vào MemoryStream
+                using (FileStream fs = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                {
+                    picAvatar.Image = Image.FromStream(fs); 
+                }
             }
         }
+
     }
 }
