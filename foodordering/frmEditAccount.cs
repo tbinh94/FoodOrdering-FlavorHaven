@@ -13,6 +13,9 @@ namespace foodordering
         public frmEditAccount()
         {
             InitializeComponent();
+            picAvatar.SizeMode = PictureBoxSizeMode.Zoom;
+            picAvatar.BackColor = Color.White; 
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -25,7 +28,7 @@ namespace foodordering
             string newPassword = txtNewPassword.Text.Trim();
             string confirmPassword = txtConfirmPassword.Text.Trim();
 
-            string projectPath = Application.StartupPath; // Thư mục gốc của project
+            string projectPath = Application.StartupPath; 
             string avatarFolderPath = Path.Combine(projectPath, "UserAvatar");
             string defaultAvatarPath = Path.Combine(projectPath, "Resources", "default_avatar.png");
             string avatarPath;
@@ -43,11 +46,10 @@ namespace foodordering
                     string userAvatarFileName = $"{UserSession.Instance.LoggedInUsername}_avatar_temp.jpg";
                     avatarPath = Path.Combine(avatarFolderPath, userAvatarFileName);
 
-                    // Sử dụng MemoryStream để lưu ảnh
-                    using (MemoryStream ms = new MemoryStream())
+                    // Xử lý việc lưu ảnh JPG
+                    using (Bitmap bmp = new Bitmap(picAvatar.Image))
                     {
-                        picAvatar.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        File.WriteAllBytes(avatarPath, ms.ToArray());
+                        bmp.Save(avatarPath, System.Drawing.Imaging.ImageFormat.Jpeg);
                     }
                 }
                 catch (Exception ex)
@@ -55,12 +57,7 @@ namespace foodordering
                     MessageBox.Show("Lỗi khi lưu avatar: " + ex.Message, "Thông báo");
                     return;
                 }
-                finally
-                {
-                    picAvatar.Image.Dispose(); 
-                }
             }
-
             else
             {
                 // Sử dụng avatar hiện tại hoặc ảnh mặc định
@@ -105,6 +102,7 @@ namespace foodordering
         }
 
 
+
         private void frmEditAccount_Load(object sender, EventArgs e)
         {
             txtUsername.Text = UserSession.Instance.LoggedInUsername;
@@ -145,13 +143,14 @@ namespace foodordering
                     picAvatar.Image.Dispose();
                 }
 
-                // Đọc ảnh từ tệp vào MemoryStream
-                using (FileStream fs = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                // Đọc ảnh từ tệp mà không khóa tệp
+                using (var stream = new MemoryStream(File.ReadAllBytes(openFileDialog.FileName)))
                 {
-                    picAvatar.Image = Image.FromStream(fs); 
+                    picAvatar.Image = Image.FromStream(stream);
                 }
             }
         }
+
 
     }
 }

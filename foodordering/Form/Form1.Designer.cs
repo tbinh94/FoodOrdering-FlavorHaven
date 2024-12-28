@@ -32,7 +32,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.fLPCategory = new System.Windows.Forms.FlowLayoutPanel();
             this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
-            this.btnLanguage = new System.Windows.Forms.Button();
             this.btnSellerChannel = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.cartButton = new System.Windows.Forms.Button();
@@ -44,6 +43,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.leftPanel = new System.Windows.Forms.Panel();
             this.hintContainerPanel = new System.Windows.Forms.Panel();
+            this.suggestionsListBox = new System.Windows.Forms.ListBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.searchBar = new Guna.UI2.WinForms.Guna2TextBox();
             this.feature_containerPanel = new System.Windows.Forms.Panel();
@@ -51,6 +51,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.fLP1 = new System.Windows.Forms.Panel();
+            this.flpDetail = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanelProducts = new System.Windows.Forms.FlowLayoutPanel();
             this.lblDetail = new System.Windows.Forms.Label();
@@ -59,8 +60,6 @@
             this.lblAds = new System.Windows.Forms.Label();
             this.lblFLPProduct = new System.Windows.Forms.Label();
             this.cmsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.suggestionsListBox = new System.Windows.Forms.ListBox();
-            this.flpDetail = new System.Windows.Forms.FlowLayoutPanel();
             this.btnFood = new foodordering.BorderButton();
             this.panel1.SuspendLayout();
             this.fLPCategory.SuspendLayout();
@@ -79,7 +78,6 @@
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.fLPCategory);
             this.panel1.Controls.Add(this.btnLogin);
-            this.panel1.Controls.Add(this.btnLanguage);
             this.panel1.Controls.Add(this.btnSellerChannel);
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.cartButton);
@@ -111,26 +109,12 @@
             this.btnLogin.FillColor = System.Drawing.Color.Transparent;
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.OrangeRed;
-            this.btnLogin.Location = new System.Drawing.Point(667, 5);
+            this.btnLogin.Location = new System.Drawing.Point(683, 5);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(147, 29);
             this.btnLogin.TabIndex = 19;
             this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
-            // btnLanguage
-            // 
-            this.btnLanguage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLanguage.FlatAppearance.BorderSize = 0;
-            this.btnLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLanguage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLanguage.ForeColor = System.Drawing.Color.Black;
-            this.btnLanguage.Location = new System.Drawing.Point(1022, 5);
-            this.btnLanguage.Name = "btnLanguage";
-            this.btnLanguage.Size = new System.Drawing.Size(75, 29);
-            this.btnLanguage.TabIndex = 15;
-            this.btnLanguage.Text = "Tiếng Việt";
-            this.btnLanguage.UseVisualStyleBackColor = true;
             // 
             // btnSellerChannel
             // 
@@ -139,7 +123,7 @@
             this.btnSellerChannel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSellerChannel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSellerChannel.ForeColor = System.Drawing.Color.Black;
-            this.btnSellerChannel.Location = new System.Drawing.Point(820, 5);
+            this.btnSellerChannel.Location = new System.Drawing.Point(836, 5);
             this.btnSellerChannel.Name = "btnSellerChannel";
             this.btnSellerChannel.Size = new System.Drawing.Size(115, 29);
             this.btnSellerChannel.TabIndex = 16;
@@ -154,7 +138,7 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.Black;
-            this.button6.Location = new System.Drawing.Point(941, 5);
+            this.button6.Location = new System.Drawing.Point(957, 5);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 29);
             this.button6.TabIndex = 18;
@@ -237,7 +221,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(936, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(197, 25);
+            this.label3.Size = new System.Drawing.Size(157, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "© 2024 Flavor Haven\r\n";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -277,6 +261,17 @@
             this.hintContainerPanel.Size = new System.Drawing.Size(373, 146);
             this.hintContainerPanel.TabIndex = 69;
             this.hintContainerPanel.Visible = false;
+            // 
+            // suggestionsListBox
+            // 
+            this.suggestionsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.suggestionsListBox.FormattingEnabled = true;
+            this.suggestionsListBox.Location = new System.Drawing.Point(0, 0);
+            this.suggestionsListBox.Name = "suggestionsListBox";
+            this.suggestionsListBox.Size = new System.Drawing.Size(373, 146);
+            this.suggestionsListBox.TabIndex = 0;
+            this.suggestionsListBox.Click += new System.EventHandler(this.suggestionsListBox_Click_1);
+            this.suggestionsListBox.Leave += new System.EventHandler(this.suggestionsListBox_Leave_1);
             // 
             // btnSearch
             // 
@@ -339,7 +334,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(0, 513);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(422, 48);
+            this.label2.Size = new System.Drawing.Size(321, 36);
             this.label2.TabIndex = 66;
             this.label2.Text = "Sử dụng App Flavor Haven để có nhiều giảm giá\r\nvà trải nghiệm tốt hơn";
             // 
@@ -351,7 +346,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 144);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(461, 50);
+            this.label1.Size = new System.Drawing.Size(377, 40);
             this.label1.TabIndex = 65;
             this.label1.Text = "Đặt Đồ ăn, giao hàng từ 20\'...\r\ncó 84993 địa điểm ở TP. HCM từ 00:00 - 23:59\r\n";
             // 
@@ -373,6 +368,16 @@
             this.fLP1.Name = "fLP1";
             this.fLP1.Size = new System.Drawing.Size(686, 594);
             this.fLP1.TabIndex = 53;
+            // 
+            // flpDetail
+            // 
+            this.flpDetail.AutoScroll = true;
+            this.flpDetail.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flpDetail.BackColor = System.Drawing.Color.Transparent;
+            this.flpDetail.Location = new System.Drawing.Point(9, 406);
+            this.flpDetail.Name = "flpDetail";
+            this.flpDetail.Size = new System.Drawing.Size(674, 188);
+            this.flpDetail.TabIndex = 30;
             // 
             // panel2
             // 
@@ -436,7 +441,7 @@
             this.lblAds.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAds.Location = new System.Drawing.Point(13, 200);
             this.lblAds.Name = "lblAds";
-            this.lblAds.Size = new System.Drawing.Size(133, 20);
+            this.lblAds.Size = new System.Drawing.Size(98, 16);
             this.lblAds.TabIndex = 25;
             this.lblAds.Text = "KHUYẾN MÃI";
             // 
@@ -447,7 +452,7 @@
             this.lblFLPProduct.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFLPProduct.Location = new System.Drawing.Point(13, 7);
             this.lblFLPProduct.Name = "lblFLPProduct";
-            this.lblFLPProduct.Size = new System.Drawing.Size(79, 20);
+            this.lblFLPProduct.Size = new System.Drawing.Size(58, 16);
             this.lblFLPProduct.TabIndex = 24;
             this.lblFLPProduct.Text = "ƯU ĐÃI";
             // 
@@ -456,28 +461,6 @@
             this.cmsMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.cmsMenu.Name = "contextMenuStrip1";
             this.cmsMenu.Size = new System.Drawing.Size(61, 4);
-            // 
-            // suggestionsListBox
-            // 
-            this.suggestionsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.suggestionsListBox.FormattingEnabled = true;
-            this.suggestionsListBox.ItemHeight = 16;
-            this.suggestionsListBox.Location = new System.Drawing.Point(0, 0);
-            this.suggestionsListBox.Name = "suggestionsListBox";
-            this.suggestionsListBox.Size = new System.Drawing.Size(373, 146);
-            this.suggestionsListBox.TabIndex = 0;
-            this.suggestionsListBox.Click += new System.EventHandler(this.suggestionsListBox_Click_1);
-            this.suggestionsListBox.Leave += new System.EventHandler(this.suggestionsListBox_Leave_1);
-            // 
-            // flpDetail
-            // 
-            this.flpDetail.AutoScroll = true;
-            this.flpDetail.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flpDetail.BackColor = System.Drawing.Color.Transparent;
-            this.flpDetail.Location = new System.Drawing.Point(9, 406);
-            this.flpDetail.Name = "flpDetail";
-            this.flpDetail.Size = new System.Drawing.Size(674, 188);
-            this.flpDetail.TabIndex = 30;
             // 
             // btnFood
             // 
@@ -536,7 +519,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Panel loadingPanel;
-        private System.Windows.Forms.Button btnLanguage;
         private System.Windows.Forms.Button btnSellerChannel;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button cartButton;
