@@ -417,9 +417,9 @@
             this.adsShowAll.FillColor = System.Drawing.Color.Transparent;
             this.adsShowAll.Font = new System.Drawing.Font("Verdana", 8.25F);
             this.adsShowAll.ForeColor = System.Drawing.Color.Blue;
-            this.adsShowAll.Location = new System.Drawing.Point(547, 196);
+            this.adsShowAll.Location = new System.Drawing.Point(585, 192);
             this.adsShowAll.Name = "adsShowAll";
-            this.adsShowAll.Size = new System.Drawing.Size(136, 24);
+            this.adsShowAll.Size = new System.Drawing.Size(101, 24);
             this.adsShowAll.TabIndex = 28;
             this.adsShowAll.Text = "Xem tất cả";
             this.adsShowAll.UseTransparentBackground = true;

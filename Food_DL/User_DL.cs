@@ -137,13 +137,16 @@ namespace Food_DL
                 {
                     cn.Open();
                     string tableName = isSeller ? "Seller" : "Users";
-                    string query = $"UPDATE {tableName} SET Password = @Password, Avatar = @Avatar  WHERE UserID = @UserID";
+                    string idColumn = isSeller ? "SellerID" : "UserID";
+
+                    string query = $"UPDATE {tableName} SET Password = @Password, Avatar = @Avatar WHERE {idColumn} = @UserID";
 
                     using (SqlCommand cmd = new SqlCommand(query, cn))
                     {
                         cmd.Parameters.AddWithValue("@Password", newPassword);
                         cmd.Parameters.AddWithValue("@UserID", userId);
                         cmd.Parameters.AddWithValue("@Avatar", avatarPath);
+
                         int rowsAffected = cmd.ExecuteNonQuery();
                         return rowsAffected > 0;
                     }
@@ -154,6 +157,7 @@ namespace Food_DL
                 throw ex;
             }
         }
+
 
         public string GetAvatarPath(string username)
         {
