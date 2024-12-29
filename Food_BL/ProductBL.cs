@@ -159,6 +159,25 @@ namespace Food_BL
         {
             return productDAL.GetProductByName(productName);
         }
+        public List<ProductDTO> FilterProductsByDistrict(List<ProductDTO> products, HashSet<string> districts)
+        {
+            if (districts.Count == 0)
+                return products;
+
+            return products.Where(p => districts.Any(d =>
+                p.Address != null && p.Address.Trim().Equals(d.Trim(), StringComparison.OrdinalIgnoreCase)
+            )).ToList();
+        }
+        public List<ProductDTO> FilterProductsBySearch(List<ProductDTO> products, string searchQuery)
+        {
+            if (string.IsNullOrEmpty(searchQuery))
+                return products;
+
+            return products.Where(p =>
+                p.ProductName.ToLower().Contains(searchQuery.ToLower()) ||
+                p.Description.ToLower().Contains(searchQuery.ToLower())
+            ).ToList();
+        }
     }
 
 }

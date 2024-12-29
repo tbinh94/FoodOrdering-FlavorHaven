@@ -80,9 +80,9 @@ namespace Food_BL
             }
             return loginDL.UpdatePassword(userId, newPassword, avatarPath, isSeller);
         }
-        public string GetAvatarPath(string username)
+        public string GetAvatarPath(string username, bool isSeller)
         {
-            return loginDL.GetAvatarPath(username);
+            return loginDL.GetAvatarPath(username,isSeller);
         }
 
 

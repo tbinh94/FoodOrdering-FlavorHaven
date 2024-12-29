@@ -9,7 +9,7 @@ namespace foodordering
 {
     public partial class DiscountListForm : Form
     {
-        private DiscountBL discountBL;
+        //private DiscountBL discountBL;
         private PaymentForm paymentForm;
 
 

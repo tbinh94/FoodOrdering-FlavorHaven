@@ -285,7 +285,7 @@
         private Guna.UI2.WinForms.Guna2TextBox ProductSoLuong;
         private System.Windows.Forms.Label lblSLText;
         private System.Windows.Forms.Label ProductPrice;
-        private System.Windows.Forms.Label ProductName;
+        private new System.Windows.Forms.Label ProductName;
         private Guna.UI2.WinForms.Guna2Button congSL;
         private Guna.UI2.WinForms.Guna2Button truSL;
         private System.Windows.Forms.Panel panel1;

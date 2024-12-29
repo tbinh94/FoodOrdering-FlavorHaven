@@ -1,40 +1,39 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
-
+using Food_DTO;
 namespace foodordering
 {
     public partial class SearchResult : Form
     {
         private bool isExpanded = false;
-
+        private ProductSearchForm currentProductSearchForm;
+        private Dictionary<string, CheckBox> districtCheckboxes = new Dictionary<string, CheckBox>();
 
         public SearchResult()
         {
             InitializeComponent();
-
         }
+
         public void LoadProductSearchForm(ProductSearchForm productSearchForm)
         {
+            currentProductSearchForm = productSearchForm;
             productSearchForm.TopLevel = false;
             productSearchForm.FormBorderStyle = FormBorderStyle.None;
             productSearchForm.Dock = DockStyle.Fill;
-
-            // Thêm ProductSearchForm vào containerPanel
             containerPanel.Controls.Add(productSearchForm);
-
-            // Đảm bảo panelCbox luôn nằm trên cùng
             containerPanel.Controls.SetChildIndex(panelCbox, 0);
-
             productSearchForm.Show();
         }
 
 
-        string[] areas = { "Quận 6", "Quận 7", "Quận 8", "Quận 9", "Quận 10", "Quận 11",
+        string[] areas = { "Quận 6", "Quận 7", "Quận 8", "Quận 10", "Quận 11",
                                "Quận 12", "Bình Thạnh", "Bình Tân", "Phú Nhuận",
                                "Thành phố Thủ Đức", "Bình Chánh", "Cần Giờ",
-                               "Củ Chi", "Tân Bình", "Tân Phú", "Hóc Môn", "Nhà Bè" };
-        string[] cate = { "Đồ ăn nhanh", "Đồ uống", "Món ăn chính", "Tráng miệng", "Đồ chay", "Khai vị", "Đồ hải sản",
-                "Salad", "Súp", "Bánh ngọt" };
+                               "Củ Chi", "Tân Bình", "Tân Phú", "Hóc Môn", "Nhà Bè", "Quận Tân Bình", "Quận 1", "Quận 5", "Quận 3",
+                            "Quận 2", "Quận 4"};
+
 
         private void btnDistrict_Click(object sender, EventArgs e)
         {
@@ -44,17 +43,6 @@ namespace foodordering
             if (isExpanded)
             {
                 LoadCheckBoxes(areas);
-            }
-        }
-
-        private void btnCategory_Click(object sender, EventArgs e)
-        {
-            isExpanded = !isExpanded;
-            panelCbox.Visible = isExpanded;
-
-            if (isExpanded)
-            {
-                LoadCheckBoxes(cate);
             }
         }
         private void LoadCheckBoxes(string[] items)
@@ -76,10 +64,30 @@ namespace foodordering
                 cb.Text = item;
                 cb.AutoSize = true;
                 cb.Margin = new Padding(10); // Tạo khoảng cách giữa các checkbox
+                cb.CheckedChanged += CheckBox_CheckedChanged;
+
                 panelCbox.Controls.Add(cb);
             }
         }
+        private void CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (currentProductSearchForm != null)
+            {
+                var selectedDistricts = new HashSet<string>();
 
+                // Lặp qua tất cả checkbox trong panel
+                foreach (Control control in panelCbox.Controls)
+                {
+                    if (control is CheckBox checkbox && checkbox.Checked)
+                    {
+                        selectedDistricts.Add(checkbox.Text.Trim());
+                    }
+                }
+
+                // Gọi phương thức mới để lọc theo quận
+                currentProductSearchForm.FilterByDistricts(selectedDistricts);
+            }
+        }
 
     }
 }

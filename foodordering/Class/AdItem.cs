@@ -7,7 +7,7 @@ namespace foodordering
 {
     public partial class AdItem : UserControl
     {
-        public event EventHandler AdClicked;
+        //public event EventHandler AdClicked;
 
         public AdItem()
         {

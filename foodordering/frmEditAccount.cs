@@ -108,14 +108,30 @@ namespace foodordering
             txtUsername.Text = UserSession.Instance.LoggedInUsername;
             txtUsername.ReadOnly = true;
 
-            string avatarPath = userBL.GetAvatarPath(UserSession.Instance.LoggedInUsername);
-
-            string projectPath = Application.StartupPath; 
+            string projectPath = Application.StartupPath;
             string defaultAvatarPath = Path.Combine(projectPath, "Resources", "default_avatar.png");
+            string avatarFolderPath = Path.Combine(projectPath, "UserAvatar");
+
+            if (!Directory.Exists(avatarFolderPath))
+            {
+                Directory.CreateDirectory(avatarFolderPath);
+            }
+
+            bool isSeller = foodordering.Properties.Settings.Default.isSeller;
+
+            string avatarPath = userBL.GetAvatarPath(UserSession.Instance.LoggedInUsername, isSeller);
 
             if (!string.IsNullOrEmpty(avatarPath) && File.Exists(avatarPath))
             {
-                picAvatar.Image = Image.FromFile(avatarPath);
+                try
+                {
+                    picAvatar.Image = Image.FromFile(avatarPath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi tải ảnh đại diện: " + ex.Message, "Thông báo");
+                    picAvatar.Image = Image.FromFile(defaultAvatarPath); 
+                }
             }
             else
             {

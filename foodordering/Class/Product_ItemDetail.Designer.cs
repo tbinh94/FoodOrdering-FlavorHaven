@@ -91,7 +91,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox productPic;
-        private System.Windows.Forms.Label ProductName;
+        private new System.Windows.Forms.Label ProductName;
         private System.Windows.Forms.Label ProductDescription;
         private System.Windows.Forms.Label ProductPrice;
     }

@@ -31,7 +31,6 @@
             this.containerPanel = new System.Windows.Forms.Panel();
             this.panelCbox = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnCategory = new System.Windows.Forms.Button();
             this.btnDistrict = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.containerPanel.SuspendLayout();
@@ -59,26 +58,12 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnCategory);
             this.panel1.Controls.Add(this.btnDistrict);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(816, 54);
             this.panel1.TabIndex = 4;
-            // 
-            // btnCategory
-            // 
-            this.btnCategory.FlatAppearance.BorderSize = 0;
-            this.btnCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCategory.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategory.Location = new System.Drawing.Point(112, 10);
-            this.btnCategory.Name = "btnCategory";
-            this.btnCategory.Size = new System.Drawing.Size(94, 41);
-            this.btnCategory.TabIndex = 3;
-            this.btnCategory.Text = "PHÂN LOẠI\r\n⇩";
-            this.btnCategory.UseVisualStyleBackColor = true;
-            this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
             // 
             // btnDistrict
             // 
@@ -123,7 +108,6 @@
         private System.Windows.Forms.Panel containerPanel;
         private System.Windows.Forms.FlowLayoutPanel panelCbox;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnCategory;
         private System.Windows.Forms.Button btnDistrict;
         private System.Windows.Forms.Panel panel2;
     }

@@ -180,7 +180,7 @@ namespace foodordering
             }
             catch (Exception ex)
             {
-                return;
+                throw ex;
             }
 
             createPPF(product.ProductName, product.Price.ToString(), "1", image);

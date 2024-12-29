@@ -114,26 +114,6 @@ namespace foodordering
         }
         private void addCart_Click(object sender, EventArgs e)
         {
-            //Cart cart = new Cart(Form1.Instance.list);
-            //_f = Application.OpenForms.OfType<Form1>().FirstOrDefault();
-
-            //if (new CartBL().check_Exist(Form1.iduser, id))
-            //{
-            //    cart = new Cart(Form1.Instance.list);
-            //}
-            //else if (new CartBL().add_Item_Cart(Form1.iduser, id))
-            //{
-            //    Form1.Instance.list = new CartBL().GetCart(Form1.iduser);
-            //    cart = new Cart(Form1.Instance.list);
-            //    addCart.Text = "🛍️";
-            //}
-            //_f.Enabled = false;
-            //DialogResult dialog = cart.ShowDialog();
-            //if (dialog == DialogResult.OK)
-            //{
-            //    _f.Enabled = true;
-            //}
-
             CartBL cartBL = new CartBL();
             if (cartBL.check_Exist(Form1.iduser, id))
             {

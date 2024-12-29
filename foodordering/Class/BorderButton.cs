@@ -10,7 +10,7 @@ namespace foodordering
         public Color HoverTextColor { get; set; } = Color.OrangeRed; // Màu chữ khi hover
         public Color DefaultTextColor { get; set; } = Color.Black; // Màu chữ mặc định
 
-        private bool isHovering = false;
+        private bool isHovering =false;
 
         public BorderButton()
         {

@@ -159,10 +159,13 @@ namespace Food_DL
         }
 
 
-        public string GetAvatarPath(string username)
+        public string GetAvatarPath(string username, bool isSeller)
         {
             string avatarPath = null;
-            string query = "SELECT Avatar FROM Users WHERE Username = @Username";
+
+            string tableName = isSeller ? "Seller" : "Users";
+
+            string query = $"SELECT Avatar FROM {tableName} WHERE Username = @Username";
 
             using (cn)
             {
@@ -175,10 +178,12 @@ namespace Food_DL
                 {
                     avatarPath = reader["Avatar"] as string;
                 }
+                cn.Close();
             }
 
             return avatarPath;
         }
+
 
 
     }

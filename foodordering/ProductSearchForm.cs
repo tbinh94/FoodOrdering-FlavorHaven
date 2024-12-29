@@ -7,17 +7,23 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-
 namespace foodordering
 {
     public partial class ProductSearchForm : Form
     {
         public List<ProductDTO> products;
-        //private ProductBL productBL;
+        private List<ProductDTO> filteredProducts;
+        private HashSet<string> selectedDistricts = new HashSet<string>();
+        private ProductBL productBL;
+        private string currentSearchQuery = string.Empty;
+        public string SearchText { get; private set; } = string.Empty;
+        private List<ProductDTO> initialSearchResults;
+
         public ProductSearchForm()
         {
             InitializeComponent();
             products = new ProductBL().GetAllProducts(); // Lấy tất cả sản phẩm
+            productBL = new ProductBL();
             tLP.ColumnCount = 4;
             tLP.Dock = DockStyle.Fill;
             tLP.AutoSize = true;
@@ -111,11 +117,11 @@ namespace foodordering
             }
             tLP.RowCount += 1;
         }
+
         private void ProductItem_ProductClicked(object sender, EventArgs e)
         {
             if (sender is ProductItemControl productItem)
             {
-                // Lấy dữ liệu sản phẩm từ ProductItemControl
                 string productName = productItem.ProductName;
                 string productPrice = productItem.ProductPrice;
                 string address = productItem.Address;
@@ -123,7 +129,6 @@ namespace foodordering
                 Random random = new Random();
                 int randomRating = random.Next(1, 6);
 
-                // Tạo Form2 và truyền dữ liệu
                 ItemDetail form2 = new ItemDetail();
                 form2.SetProductDetails(productName, productPrice, address, productImage, randomRating);
                 AddControlToPanel(form2);
@@ -145,8 +150,9 @@ namespace foodordering
         {
             var filteredProducts = products
                 .Where(p =>
-                    (!string.IsNullOrEmpty(p.ProductName) && p.ProductName.Trim().ToLower().Contains(searchQuery.Trim().ToLower())) ||
-                    (!string.IsNullOrEmpty(p.Description) && p.Description.Trim().ToLower().Contains(searchQuery.Trim().ToLower())))
+                    (string.IsNullOrEmpty(searchQuery) ||
+                     (!string.IsNullOrEmpty(p.ProductName) && p.ProductName.Trim().ToLower().Contains(searchQuery.Trim().ToLower())) ||
+                     (!string.IsNullOrEmpty(p.Description) && p.Description.Trim().ToLower().Contains(searchQuery.Trim().ToLower()))))
                 .ToList();
 
             if (!filteredProducts.Any())
@@ -154,11 +160,99 @@ namespace foodordering
                 MessageBox.Show("Thông tin tìm kiếm không phù hợp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+
+            initialSearchResults = new List<ProductDTO>(filteredProducts); // Lưu lại kết quả ban đầu
             products = filteredProducts;
             AddElementsToTableLayout();
         }
 
+        // Thêm phương thức mới để xử lý việc lọc theo quận
+        public void FilterByDistricts(HashSet<string> districts)
+        {
+            if (districts.Count == 0)
+            {
+                // Nếu không có quận nào được chọn, quay về kết quả tìm kiếm ban đầu
+                products = new List<ProductDTO>(initialSearchResults);
+            }
+            else
+            {
+                // Lọc từ kết quả tìm kiếm ban đầu
+                products = initialSearchResults
+                    .Where(p => districts.Contains(p.Address))
+                    .ToList();
+            }
 
+            if (!products.Any())
+            {
+                MessageBox.Show("Không tìm thấy sản phẩm phù hợp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            AddElementsToTableLayout();
+        }
+        public void ApplyFilters(HashSet<string> districts)
+        {
+            selectedDistricts = districts;
+
+            // Bắt đầu với tất cả sản phẩm
+            filteredProducts = products;
+
+            // Áp dụng lọc theo từ khóa tìm kiếm đã lưu trước
+            if (!string.IsNullOrEmpty(currentSearchQuery))
+            {
+                filteredProducts = productBL.FilterProductsBySearch(filteredProducts, currentSearchQuery);
+            }
+
+            // Áp dụng lọc theo quận nếu có
+            if (districts.Count > 0)
+            {
+                filteredProducts = productBL.FilterProductsByDistrict(filteredProducts, districts);
+            }
+
+            if (!filteredProducts.Any())
+            {
+                MessageBox.Show("Không tìm thấy sản phẩm phù hợp!", "Thông báo",
+                              MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DisplayFilteredProducts();
+        }
+
+        public void ApplyFilters(string searchQuery)
+        {
+            currentSearchQuery = searchQuery; // Lưu lại từ khóa tìm kiếm
+
+            // Bắt đầu với tất cả sản phẩm
+            filteredProducts = products;
+
+            // Áp dụng lọc theo từ khóa tìm kiếm
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                filteredProducts = productBL.FilterProductsBySearch(filteredProducts, searchQuery);
+            }
+
+            // Áp dụng lọc theo quận/huyện nếu có
+            if (selectedDistricts.Count > 0)
+            {
+                filteredProducts = productBL.FilterProductsByDistrict(filteredProducts, selectedDistricts);
+            }
+
+            if (!filteredProducts.Any())
+            {
+                MessageBox.Show("Không tìm thấy sản phẩm phù hợp!", "Thông báo",
+                              MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DisplayFilteredProducts();
+        }
+
+        private void DisplayFilteredProducts()
+        {
+            products = filteredProducts;
+            AddElementsToTableLayout();
+        }
 
 
     }
