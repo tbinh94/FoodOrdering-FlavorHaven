@@ -361,7 +361,7 @@
             this.btnChooseAvatar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btnChooseAvatar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnChooseAvatar.ForeColor = System.Drawing.Color.Black;
-            this.btnChooseAvatar.Location = new System.Drawing.Point(161, 44);
+            this.btnChooseAvatar.Location = new System.Drawing.Point(294, 69);
             this.btnChooseAvatar.Name = "btnChooseAvatar";
             this.btnChooseAvatar.Size = new System.Drawing.Size(130, 35);
             this.btnChooseAvatar.TabIndex = 22;
@@ -373,9 +373,9 @@
             // 
             this.picAvatar.BackColor = System.Drawing.Color.Transparent;
             this.picAvatar.ImageRotate = 0F;
-            this.picAvatar.Location = new System.Drawing.Point(59, 25);
+            this.picAvatar.Location = new System.Drawing.Point(167, 12);
             this.picAvatar.Name = "picAvatar";
-            this.picAvatar.Size = new System.Drawing.Size(87, 77);
+            this.picAvatar.Size = new System.Drawing.Size(105, 92);
             this.picAvatar.TabIndex = 23;
             this.picAvatar.TabStop = false;
             this.picAvatar.UseTransparentBackground = true;

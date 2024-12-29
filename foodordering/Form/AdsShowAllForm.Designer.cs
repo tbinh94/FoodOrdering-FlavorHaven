@@ -47,14 +47,15 @@
             this.tLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tLP.Size = new System.Drawing.Size(800, 450);
             this.tLP.TabIndex = 0;
+            this.tLP.Paint += new System.Windows.Forms.PaintEventHandler(this.tLP_Paint);
             // 
-            // ProductSearchForm
+            // AdsShowAllForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tLP);
-            this.Name = "ProductSearchForm";
+            this.Name = "AdsShowAllForm";
             this.Text = "ProductSearchForm";
             this.ResumeLayout(false);
 

@@ -3,6 +3,7 @@ using Food_DTO;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Windows.Forms;
 
@@ -28,10 +29,15 @@ namespace foodordering
                 AddElementsToTableLayout();
             };
             tLP.BackColor = Color.Transparent;
-            tLP.BackgroundImage = ResizeImg.ResizeImage(Properties.Resources.background1, 1440, 768);
+            DoubleBuffering(tLP);
 
         }
-
+        private void DoubleBuffering(Panel panel)
+        {
+            typeof(Panel).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.SetProperty | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic,
+                null, panel, new object[] { true });
+        }
         private void AddElementsToTableLayout()
         {
             tLP.Controls.Clear();
@@ -123,6 +129,19 @@ namespace foodordering
             form.Show();
         }
 
+        private void tLP_Paint(object sender, PaintEventArgs e)
+        {
+            var bounds = new Rectangle(Point.Empty, tLP.DisplayRectangle.Size);
+
+            // Tạo LinearGradientBrush cho gradient
+            using (LinearGradientBrush brush = new LinearGradientBrush(bounds,
+                Color.FromArgb(255, 123, 104, 238), // Màu tím nhạt
+                Color.FromArgb(255, 70, 130, 180),  // Màu xanh dương
+                LinearGradientMode.Vertical))                 // Hướng gradient (theo chiều dọc)
+            {
+                e.Graphics.FillRectangle(brush, bounds);
+            }
+        }
     }
 
 }

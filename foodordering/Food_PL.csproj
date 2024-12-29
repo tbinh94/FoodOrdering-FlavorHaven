@@ -89,10 +89,10 @@
     <Compile Include="Class\CustomTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DiscountListForm.cs">
+    <Compile Include="Form\DiscountListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DiscountListForm.Designer.cs">
+    <Compile Include="Form\DiscountListForm.Designer.cs">
       <DependentUpon>DiscountListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="discount_productSeller_form.cs">
@@ -155,28 +155,28 @@
     <Compile Include="Class\Product_ItemDetail.Designer.cs">
       <DependentUpon>Product_ItemDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEditAccount.cs">
+    <Compile Include="Form\frmEditAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEditAccount.Designer.cs">
+    <Compile Include="Form\frmEditAccount.Designer.cs">
       <DependentUpon>frmEditAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdsShowAllForm.cs">
+    <Compile Include="Form\AdsShowAllForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdsShowAllForm.Designer.cs">
+    <Compile Include="Form\AdsShowAllForm.Designer.cs">
       <DependentUpon>AdsShowAllForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PaymentForm.cs">
+    <Compile Include="Form\PaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PaymentForm.Designer.cs">
+    <Compile Include="Form\PaymentForm.Designer.cs">
       <DependentUpon>PaymentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductSearchForm.cs">
+    <Compile Include="Form\ProductSearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductSearchForm.Designer.cs">
+    <Compile Include="Form\ProductSearchForm.Designer.cs">
       <DependentUpon>ProductSearchForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Product_Payment_Form.cs">
@@ -217,16 +217,16 @@
     <Compile Include="save_productSeller_form.Designer.cs">
       <DependentUpon>save_productSeller_form.cs</DependentUpon>
     </Compile>
-    <Compile Include="SearchResult.cs">
+    <Compile Include="Form\SearchResult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SearchResult.Designer.cs">
+    <Compile Include="Form\SearchResult.Designer.cs">
       <DependentUpon>SearchResult.cs</DependentUpon>
     </Compile>
-    <Compile Include="SellerInterface.cs">
+    <Compile Include="Form\SellerInterface.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SellerInterface.Designer.cs">
+    <Compile Include="Form\SellerInterface.Designer.cs">
       <DependentUpon>SellerInterface.cs</DependentUpon>
     </Compile>
     <Compile Include="SQL.cs" />
@@ -251,7 +251,7 @@
     <EmbeddedResource Include="Class\Cart.resx">
       <DependentUpon>Cart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DiscountListForm.resx">
+    <EmbeddedResource Include="Form\DiscountListForm.resx">
       <DependentUpon>DiscountListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="discount_productSeller_form.resx">
@@ -284,16 +284,16 @@
     <EmbeddedResource Include="Class\Product_ItemDetail.resx">
       <DependentUpon>Product_ItemDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEditAccount.resx">
+    <EmbeddedResource Include="Form\frmEditAccount.resx">
       <DependentUpon>frmEditAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdsShowAllForm.resx">
+    <EmbeddedResource Include="Form\AdsShowAllForm.resx">
       <DependentUpon>AdsShowAllForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PaymentForm.resx">
+    <EmbeddedResource Include="Form\PaymentForm.resx">
       <DependentUpon>PaymentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductSearchForm.resx">
+    <EmbeddedResource Include="Form\ProductSearchForm.resx">
       <DependentUpon>ProductSearchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Product_Payment_Form.resx">
@@ -316,10 +316,10 @@
     <EmbeddedResource Include="save_productSeller_form.resx">
       <DependentUpon>save_productSeller_form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SearchResult.resx">
+    <EmbeddedResource Include="Form\SearchResult.resx">
       <DependentUpon>SearchResult.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SellerInterface.resx">
+    <EmbeddedResource Include="Form\SellerInterface.resx">
       <DependentUpon>SellerInterface.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test.resx">

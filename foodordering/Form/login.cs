@@ -139,7 +139,7 @@ namespace foodordering
         }
         private void label3_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             Sign_up f = new Sign_up();
             f.Show();
         }
