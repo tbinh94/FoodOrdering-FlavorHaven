@@ -47,6 +47,7 @@
             this.tLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tLP.Size = new System.Drawing.Size(800, 450);
             this.tLP.TabIndex = 0;
+            this.tLP.Paint += new System.Windows.Forms.PaintEventHandler(this.tLP_Paint);
             // 
             // ProductSearchForm
             // 

@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using Panel = System.Windows.Forms.Panel;
 
 namespace foodordering
 {
@@ -46,6 +47,7 @@ namespace foodordering
             this.Resize += new EventHandler(Form1_Resize);
             this.WindowState = FormWindowState.Maximized;
             this.DoubleBuffered = true;
+            DoubleBuffering(panel3);
 
             // 2. Khởi tạo các thành phần dữ liệu
             productBL = new ProductBL();
@@ -93,7 +95,12 @@ namespace foodordering
             pn3 = panel3;
         }
 
-
+        private void DoubleBuffering(Panel panel)
+        {
+            typeof(Panel).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.SetProperty | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic,
+                null, panel, new object[] { true });
+        }
         public void loadCart()
         {
             list = new CartBL().GetCart(iduser);
