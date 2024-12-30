@@ -85,9 +85,11 @@ namespace foodordering
             flpAds.AutoScroll = false;
 
             // 5. Tải dữ liệu và giao diện
-            LoadProducts();
+            //LoadProducts();
             LoadProductItemControl();
+            LoadProductsForFlowLayout();
             LoadAds();
+            LoadProductsForDetail();
             LoadFeaturedProducts();
 
             // 6. Cấu hình bổ sung
@@ -139,18 +141,121 @@ namespace foodordering
                 return null;
             }
         }
-        public void LoadProducts()
+        //public void LoadProducts()
+        //{
+        //    flowLayoutPanelProducts.Controls.Clear();
+        //    flpDetail.Controls.Clear();
+
+        //    if (listProduct == null)
+        //        listProduct = new ProductBL().GetAllProducts();
+
+        //    List<ProductDTO> shuffledProducts = ShuffleList(new List<ProductDTO>(listProduct));
+
+        //    // Thêm sản phẩm vào flowLayoutPanelProducts
+        //    foreach (var productDto in listProduct) // Dùng listProduct gốc cho flowLayoutPanelProducts
+        //    {
+        //        ProductBL product = ProductBL.FromDTO(productDto);
+        //        string imagePath = Path.Combine(Application.StartupPath, "Resources", "ProductImage", product.Image);
+        //        System.Drawing.Image image;
+
+        //        try
+        //        {
+        //            if (File.Exists(imagePath))
+        //            {
+        //                image = System.Drawing.Image.FromFile(imagePath);
+        //            }
+        //            else
+        //            {
+        //                imagePath = Path.Combine(Application.StartupPath, "Resources", "default.png");
+        //                image = System.Drawing.Image.FromFile(imagePath);
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show($"Không thể tải hình ảnh cho {product.Name}: {ex.Message}");
+        //            continue;
+        //        }
+
+        //        ProductItemControl productItem = new ProductItemControl
+        //        {
+        //            ProductName = product.Name,
+        //            ProductPrice = product.Price.ToString("C0"),
+        //            ProductDescription = product.Description,
+        //            ProductImage = ResizeImg.ResizeImage(image, 381, 310),
+        //            Address = product.Address,
+        //            DiscountText = product.DiscountText,
+        //            BorderStyle = BorderStyle.FixedSingle,
+        //            Margin = new Padding(10, 7, 10, 20),
+        //            BackColor = Color.FromArgb(230, 170, 170),
+        //            id = product.id,
+        //        };
+
+        //        flowLayoutPanelProducts.Height += (productItem.Height + 35) / 2;
+        //        flowLayoutPanelProducts.Controls.Add(productItem);
+        //        productItem.ProductClicked += ProductItem_ProductClicked;
+        //        productItem.Cursor = Cursors.Hand;
+
+        //        image.Dispose();
+        //    }
+
+        //    flowLayoutPanelProducts.Width = panel2.Width - 20;
+
+        //    foreach (var productDto in shuffledProducts) // Dùng danh sách đã xáo trộn cho flpDetail
+        //    {
+        //        ProductBL product = ProductBL.FromDTO(productDto);
+
+        //        string imagePath = Path.Combine(Application.StartupPath, "Resources", "ProductImage", product.Image);
+        //        System.Drawing.Image image;
+
+        //        try
+        //        {
+        //            if (File.Exists(imagePath))
+        //            {
+        //                image = System.Drawing.Image.FromFile(imagePath);
+        //            }
+        //            else
+        //            {
+        //                imagePath = Path.Combine(Application.StartupPath, "Resources", "default.png");
+        //                image = System.Drawing.Image.FromFile(imagePath);
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show($"Không thể tải hình ảnh cho {product.Name}: {ex.Message}");
+        //            continue;
+        //        }
+
+        //        ProductItemControl productItemDetail = new ProductItemControl // cho flpDetail
+        //        {
+        //            ProductName = product.Name,
+        //            ProductPrice = product.Price.ToString("C0"),
+        //            ProductDescription = product.Description,
+        //            ProductImage = ResizeImg.ResizeImage(image, 381, 310),
+        //            Address = product.Address,
+        //            DiscountText = product.DiscountText,
+        //            BorderStyle = BorderStyle.FixedSingle,
+        //            Margin = new Padding(10, 7, 10, 20),
+        //            BackColor = Color.FromArgb(230, 170, 170),
+        //            id = product.id,
+        //        };
+
+        //        flpDetail.Controls.Add(productItemDetail);
+        //        flpDetail.Height += (productItemDetail.Height + 35) / 3;
+        //        image.Dispose();
+        //    }
+        //}
+        private void LoadProductsForFlowLayout()
         {
             flowLayoutPanelProducts.Controls.Clear();
-            flpDetail.Controls.Clear();
 
+            // Lấy danh sách sản phẩm xáo trộn và chọn 8 sản phẩm đầu tiên
             if (listProduct == null)
                 listProduct = new ProductBL().GetAllProducts();
 
             List<ProductDTO> shuffledProducts = ShuffleList(new List<ProductDTO>(listProduct));
+            List<ProductDTO> top8Products = shuffledProducts.Take(8).ToList();
 
-            // Thêm sản phẩm vào flowLayoutPanelProducts
-            foreach (var productDto in listProduct) // Dùng listProduct gốc cho flowLayoutPanelProducts
+            foreach (var productDto in top8Products)
             {
                 ProductBL product = ProductBL.FromDTO(productDto);
                 string imagePath = Path.Combine(Application.StartupPath, "Resources", "ProductImage", product.Image);
@@ -188,20 +293,25 @@ namespace foodordering
                     id = product.id,
                 };
 
-                flowLayoutPanelProducts.Height += (productItem.Height + 35) / 2;
                 flowLayoutPanelProducts.Controls.Add(productItem);
                 productItem.ProductClicked += ProductItem_ProductClicked;
                 productItem.Cursor = Cursors.Hand;
-
                 image.Dispose();
             }
+        }
+        private void LoadProductsForDetail()
+        {
+            flpDetail.Controls.Clear();
+            int totalHeight = 0;
 
-            flowLayoutPanelProducts.Width = panel2.Width - 20;
+            if (listProduct == null)
+                listProduct = new ProductBL().GetAllProducts();
 
-            foreach (var productDto in shuffledProducts) // Dùng danh sách đã xáo trộn cho flpDetail
+            List<ProductDTO> shuffledProducts = ShuffleList(new List<ProductDTO>(listProduct));
+
+            foreach (var productDto in shuffledProducts)
             {
                 ProductBL product = ProductBL.FromDTO(productDto);
-
                 string imagePath = Path.Combine(Application.StartupPath, "Resources", "ProductImage", product.Image);
                 System.Drawing.Image image;
 
@@ -223,7 +333,7 @@ namespace foodordering
                     continue;
                 }
 
-                ProductItemControl productItemDetail = new ProductItemControl // cho flpDetail
+                ProductItemControl productItemDetail = new ProductItemControl
                 {
                     ProductName = product.Name,
                     ProductPrice = product.Price.ToString("C0"),
@@ -238,10 +348,14 @@ namespace foodordering
                 };
 
                 flpDetail.Controls.Add(productItemDetail);
-                flpDetail.Height += (productItemDetail.Height + 35) / 3;
+                totalHeight += productItemDetail.Height + productItemDetail.Margin.Top + productItemDetail.Margin.Bottom;
+
                 image.Dispose();
             }
+            flpDetail.Height = totalHeight;
+            flpDetail.Width = fLP1.Width - 20;
         }
+
         public static List<T> ShuffleList<T>(List<T> inputList)
         {
             Random random = new Random();
@@ -587,7 +701,7 @@ namespace foodordering
             //f.Show();
             List<ProductDTO> products = new ProductBL().GetProducts_byCategorieID(i);
             listProduct = products;
-            LoadProducts();
+            LoadProductsForDetail();
         }
 
         private void guna2Button1_Paint(object sender, PaintEventArgs e) { }
