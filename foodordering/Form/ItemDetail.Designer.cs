@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemDetail));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
@@ -55,13 +56,17 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pProducts = new System.Windows.Forms.Panel();
+            this.panelQR = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.picQR = new Guna.UI2.WinForms.Guna2PictureBox();
             this.productPic = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panelQR.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picQR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productPic)).BeginInit();
             this.SuspendLayout();
             // 
@@ -161,7 +166,7 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label4.Location = new System.Drawing.Point(572, 280);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 16);
+            this.label4.Size = new System.Drawing.Size(100, 16);
             this.label4.TabIndex = 12;
             this.label4.Text = "Flavor Haven";
             // 
@@ -173,7 +178,7 @@
             this.guna2Panel1.Controls.Add(this.btnMainFood);
             this.guna2Panel1.Controls.Add(this.label5);
             this.guna2Panel1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Panel1.Location = new System.Drawing.Point(19, 71);
+            this.guna2Panel1.Location = new System.Drawing.Point(19, 90);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(115, 131);
             this.guna2Panel1.TabIndex = 13;
@@ -374,7 +379,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1028, 609);
+            this.panel1.Size = new System.Drawing.Size(1028, 623);
             this.panel1.TabIndex = 15;
             // 
             // tableLayoutPanel1
@@ -385,13 +390,14 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.44747F));
             this.tableLayoutPanel1.Controls.Add(this.guna2Panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pProducts, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panelQR, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 336);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 312);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1028, 273);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1028, 311);
             this.tableLayoutPanel1.TabIndex = 17;
             // 
             // pProducts
@@ -400,10 +406,19 @@
             this.pProducts.Location = new System.Drawing.Point(156, 2);
             this.pProducts.Margin = new System.Windows.Forms.Padding(2);
             this.pProducts.Name = "pProducts";
-            this.pProducts.Size = new System.Drawing.Size(556, 269);
+            this.pProducts.Size = new System.Drawing.Size(556, 307);
             this.pProducts.TabIndex = 14;
             this.pProducts.Scroll += new System.Windows.Forms.ScrollEventHandler(this.pProducts_Scroll);
             this.pProducts.Paint += new System.Windows.Forms.PaintEventHandler(this.pProducts_Paint);
+            // 
+            // panelQR
+            // 
+            this.panelQR.Controls.Add(this.picQR);
+            this.panelQR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelQR.Location = new System.Drawing.Point(717, 3);
+            this.panelQR.Name = "panelQR";
+            this.panelQR.Size = new System.Drawing.Size(308, 305);
+            this.panelQR.TabIndex = 15;
             // 
             // panel3
             // 
@@ -425,8 +440,21 @@
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1028, 336);
+            this.panel3.Size = new System.Drawing.Size(1028, 312);
             this.panel3.TabIndex = 16;
+            // 
+            // picQR
+            // 
+            this.picQR.BackColor = System.Drawing.Color.Transparent;
+            this.picQR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picQR.Image = ((System.Drawing.Image)(resources.GetObject("picQR.Image")));
+            this.picQR.ImageRotate = 0F;
+            this.picQR.Location = new System.Drawing.Point(0, 0);
+            this.picQR.Name = "picQR";
+            this.picQR.Size = new System.Drawing.Size(308, 305);
+            this.picQR.TabIndex = 0;
+            this.picQR.TabStop = false;
+            this.picQR.UseTransparentBackground = true;
             // 
             // productPic
             // 
@@ -443,7 +471,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 609);
+            this.ClientSize = new System.Drawing.Size(1028, 623);
             this.Controls.Add(this.panel1);
             this.Name = "ItemDetail";
             this.Text = "ItemDetail";
@@ -455,8 +483,10 @@
             this.guna2Panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panelQR.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picQR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productPic)).EndInit();
             this.ResumeLayout(false);
 
@@ -492,5 +522,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel pProducts;
+        private System.Windows.Forms.Panel panelQR;
+        private Guna.UI2.WinForms.Guna2PictureBox picQR;
     }
 }

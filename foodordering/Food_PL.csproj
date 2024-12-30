@@ -394,6 +394,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\1363709.png" />
+    <None Include="Resources\Capture.PNG" />
+    <None Include="Resources\fast-food.png" />
     <Content Include="Resources\ProductImage\bakhia.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
