@@ -393,6 +393,7 @@
     <None Include="Resources\default_avatar.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\1363709.png" />
     <Content Include="Resources\ProductImage\bakhia.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

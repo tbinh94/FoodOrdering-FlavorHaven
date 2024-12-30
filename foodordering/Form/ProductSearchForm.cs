@@ -261,13 +261,13 @@ namespace foodordering
         {
             var bounds = new Rectangle(Point.Empty, tLP.DisplayRectangle.Size);
 
-            // Tạo LinearGradientBrush cho gradient
-            using (LinearGradientBrush brush = new LinearGradientBrush(bounds,                                        
-                Color.FromArgb(255, 123, 104, 238), // Màu tím nhạt
-                Color.FromArgb(255, 70, 130, 180),  // Màu xanh dương
-                LinearGradientMode.Vertical))                 // Hướng gradient (theo chiều dọc)
+            using (LinearGradientBrush brush = new LinearGradientBrush(
+                bounds,
+                Color.FromArgb(255, 255, 94, 58),   // Màu đỏ cam (gần mặt trời)
+                Color.FromArgb(255, 38, 57, 118),  // Màu xanh tím (gần rừng)
+                LinearGradientMode.Vertical))      // Hướng gradient (theo chiều dọc)
             {
-                e.Graphics.FillRectangle(brush, bounds);      
+                e.Graphics.FillRectangle(brush, bounds);
             }
         }
     }
