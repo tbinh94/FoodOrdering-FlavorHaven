@@ -35,6 +35,7 @@ namespace foodordering
             btnDiscount2.Image = ResizeImg.ResizeImage(Properties.Resources.discount, 30, 30);
             btnDiscount3.Image = ResizeImg.ResizeImage(Properties.Resources.discount, 30, 30);
             btnSearch.Image = ResizeImg.ResizeImage(Properties.Resources.searchicon, 20, 20);
+            picQR.Image = Properties.Resources.QR;
             picQR.SizeMode = PictureBoxSizeMode.Zoom;
 
 

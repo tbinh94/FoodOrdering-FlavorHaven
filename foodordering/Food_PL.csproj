@@ -65,10 +65,10 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoryDetail.cs">
+    <Compile Include="Form\CategoryDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CategoryDetail.Designer.cs">
+    <Compile Include="Form\CategoryDetail.Designer.cs">
       <DependentUpon>CategoryDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\AdItem.cs">
@@ -80,10 +80,10 @@
     <Compile Include="Class\BorderButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Class\Cart.cs">
+    <Compile Include="Form\Cart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Class\Cart.Designer.cs">
+    <Compile Include="Form\Cart.Designer.cs">
       <DependentUpon>Cart.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\CustomTextBox.cs">
@@ -95,16 +95,16 @@
     <Compile Include="Form\DiscountListForm.Designer.cs">
       <DependentUpon>DiscountListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="discount_productSeller_form.cs">
+    <Compile Include="Form\discount_productSeller_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="discount_productSeller_form.Designer.cs">
+    <Compile Include="Form\discount_productSeller_form.Designer.cs">
       <DependentUpon>discount_productSeller_form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Food_Seller_Form.cs">
+    <Compile Include="Form\Food_Seller_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Food_Seller_Form.Designer.cs">
+    <Compile Include="Form\Food_Seller_Form.Designer.cs">
       <DependentUpon>Food_Seller_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\Form1.cs">
@@ -137,10 +137,10 @@
     <Compile Include="Form\ItemDetail.Designer.cs">
       <DependentUpon>ItemDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="Class\Item_Cart.cs">
+    <Compile Include="Form\Item_Cart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Class\Item_Cart.Designer.cs">
+    <Compile Include="Form\Item_Cart.Designer.cs">
       <DependentUpon>Item_Cart.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\ProductItemControl.cs">
@@ -179,10 +179,10 @@
     <Compile Include="Form\ProductSearchForm.Designer.cs">
       <DependentUpon>ProductSearchForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Product_Payment_Form.cs">
+    <Compile Include="Form\Product_Payment_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Product_Payment_Form.Designer.cs">
+    <Compile Include="Form\Product_Payment_Form.Designer.cs">
       <DependentUpon>Product_Payment_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -205,16 +205,16 @@
       <DependentUpon>Sign_up.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\ResizeImg.cs" />
-    <Compile Include="edit_productSeller_form.cs">
+    <Compile Include="Form\edit_productSeller_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="edit_productSeller_form.Designer.cs">
+    <Compile Include="Form\edit_productSeller_form.Designer.cs">
       <DependentUpon>edit_productSeller_form.cs</DependentUpon>
     </Compile>
-    <Compile Include="save_productSeller_form.cs">
+    <Compile Include="Form\save_productSeller_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="save_productSeller_form.Designer.cs">
+    <Compile Include="Form\save_productSeller_form.Designer.cs">
       <DependentUpon>save_productSeller_form.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\SearchResult.cs">
@@ -242,22 +242,22 @@
       <DependentUpon>TestDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Class\UserSession.cs" />
-    <EmbeddedResource Include="CategoryDetail.resx">
+    <EmbeddedResource Include="Form\CategoryDetail.resx">
       <DependentUpon>CategoryDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Class\AdItem.resx">
       <DependentUpon>AdItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Class\Cart.resx">
+    <EmbeddedResource Include="Form\Cart.resx">
       <DependentUpon>Cart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\DiscountListForm.resx">
       <DependentUpon>DiscountListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="discount_productSeller_form.resx">
+    <EmbeddedResource Include="Form\discount_productSeller_form.resx">
       <DependentUpon>discount_productSeller_form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Food_Seller_Form.resx">
+    <EmbeddedResource Include="Form\Food_Seller_Form.resx">
       <DependentUpon>Food_Seller_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\Form1.resx">
@@ -275,7 +275,7 @@
     <EmbeddedResource Include="Form\Policies.resx">
       <DependentUpon>Policies.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Class\Item_Cart.resx">
+    <EmbeddedResource Include="Form\Item_Cart.resx">
       <DependentUpon>Item_Cart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Class\ProductItemControl.resx">
@@ -296,7 +296,7 @@
     <EmbeddedResource Include="Form\ProductSearchForm.resx">
       <DependentUpon>ProductSearchForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Product_Payment_Form.resx">
+    <EmbeddedResource Include="Form\Product_Payment_Form.resx">
       <DependentUpon>Product_Payment_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -310,10 +310,10 @@
     <EmbeddedResource Include="Form\Sign_up.resx">
       <DependentUpon>Sign_up.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="edit_productSeller_form.resx">
+    <EmbeddedResource Include="Form\edit_productSeller_form.resx">
       <DependentUpon>edit_productSeller_form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="save_productSeller_form.resx">
+    <EmbeddedResource Include="Form\save_productSeller_form.resx">
       <DependentUpon>save_productSeller_form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\SearchResult.resx">

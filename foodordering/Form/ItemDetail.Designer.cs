@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemDetail));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
@@ -447,7 +446,6 @@
             // 
             this.picQR.BackColor = System.Drawing.Color.Transparent;
             this.picQR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picQR.Image = ((System.Drawing.Image)(resources.GetObject("picQR.Image")));
             this.picQR.ImageRotate = 0F;
             this.picQR.Location = new System.Drawing.Point(0, 0);
             this.picQR.Name = "picQR";

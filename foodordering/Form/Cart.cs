@@ -112,7 +112,7 @@ namespace foodordering
                     item_Cart.AutoSize = true;
                     //item_Cart.Anchor = AnchorStyles.Top | AnchorStyles.Left;
                     item_Cart.Padding = new Padding(10, 10, 10, 10);
-                    item_Cart.Width = fLP1.Width - 30;
+                    item_Cart.Width = fLP1.Width - 28;
                     flow.Controls.Add(item_Cart);
                     item_Cart.Show();
                     p1.Add(item_Cart);

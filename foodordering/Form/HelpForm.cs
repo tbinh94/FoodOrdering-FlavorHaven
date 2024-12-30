@@ -11,6 +11,7 @@ namespace foodordering
         private int currentIndex = 0;
         public HelpForm()
         {
+            this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
 
             btnLogo.Image = ResizeImg.ResizeImage(Properties.Resources.logo, 140, 140);

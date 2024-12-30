@@ -533,10 +533,10 @@ namespace foodordering
         private void button6_Click(object sender, EventArgs e)
         {
             Hide();
-            //HelpForm form = new HelpForm();
-            //form.Show();
-            Food_Seller_Form form = new Food_Seller_Form(1);
+            HelpForm form = new HelpForm();
             form.Show();
+            //Food_Seller_Form form = new Food_Seller_Form(1);
+            //form.Show();
         }
 
         private void AddControlToPanel(Form form)
