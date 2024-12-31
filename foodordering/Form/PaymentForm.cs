@@ -30,7 +30,7 @@ namespace foodordering
             this.StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
             user = Form1.user;
-            this.Width = flpFoodList.Width + 30;
+            this.Width = flpFoodList.Width + 35;
             discountRate = 0;
             listItem = Cart.instance.products_choosed;
             seller = null;

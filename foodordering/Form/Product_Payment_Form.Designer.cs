@@ -48,17 +48,19 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(938, 169);
+            this.panel1.Size = new System.Drawing.Size(469, 88);
             this.panel1.TabIndex = 0;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(233, 18);
+            this.lblName.Location = new System.Drawing.Point(116, 9);
+            this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(135, 37);
+            this.lblName.Size = new System.Drawing.Size(66, 20);
             this.lblName.TabIndex = 2;
             this.lblName.Text = "lblName";
             // 
@@ -67,18 +69,20 @@
             this.panel3.Controls.Add(this.lblSoLuong);
             this.panel3.Controls.Add(this.lblPrice);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(217, 130);
+            this.panel3.Location = new System.Drawing.Point(108, 68);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(721, 39);
+            this.panel3.Size = new System.Drawing.Size(361, 20);
             this.panel3.TabIndex = 1;
             // 
             // lblSoLuong
             // 
             this.lblSoLuong.AutoSize = true;
             this.lblSoLuong.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblSoLuong.Location = new System.Drawing.Point(601, 0);
+            this.lblSoLuong.Location = new System.Drawing.Point(301, 0);
+            this.lblSoLuong.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSoLuong.Name = "lblSoLuong";
-            this.lblSoLuong.Size = new System.Drawing.Size(120, 25);
+            this.lblSoLuong.Size = new System.Drawing.Size(60, 13);
             this.lblSoLuong.TabIndex = 1;
             this.lblSoLuong.Text = "lblSoLuong";
             // 
@@ -87,8 +91,9 @@
             this.lblPrice.AutoSize = true;
             this.lblPrice.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblPrice.Location = new System.Drawing.Point(0, 0);
+            this.lblPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(83, 25);
+            this.lblPrice.Size = new System.Drawing.Size(41, 13);
             this.lblPrice.TabIndex = 0;
             this.lblPrice.Text = "lblPrice";
             // 
@@ -97,26 +102,29 @@
             this.panel2.Controls.Add(this.img);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(217, 169);
+            this.panel2.Size = new System.Drawing.Size(108, 88);
             this.panel2.TabIndex = 0;
             // 
             // img
             // 
             this.img.Dock = System.Windows.Forms.DockStyle.Fill;
             this.img.Location = new System.Drawing.Point(0, 0);
+            this.img.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.img.Name = "img";
-            this.img.Size = new System.Drawing.Size(217, 169);
+            this.img.Size = new System.Drawing.Size(108, 88);
             this.img.TabIndex = 1;
             this.img.TabStop = false;
             // 
             // Product_Payment_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(938, 169);
+            this.ClientSize = new System.Drawing.Size(469, 88);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Product_Payment_Form";
             this.Text = "Product_Payment_Form";
             this.panel1.ResumeLayout(false);
