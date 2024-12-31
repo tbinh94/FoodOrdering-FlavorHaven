@@ -19,13 +19,15 @@ namespace foodordering
     public partial class odersHistory : Form
     {
         public List<OderDTO> listOder;
+
         public odersHistory()
         {
             InitializeComponent();
             this.StartPosition=FormStartPosition.CenterScreen;
             listOder = new OderBL().getOderByUserID(Form1.iduser);
             listOder.Reverse();
-            fLP.Width = this.Width - 20;
+            this.Width = fLP.Width + 35;
+
         }
 
         private void odersHistory_Load(object sender, EventArgs e)
@@ -34,8 +36,9 @@ namespace foodordering
             //int i = 0;
             foreach (var order in listOder)
             {
-
                 OderPerItem frm = new OderPerItem(order);
+                frm.Margin = new Padding(10, 0, 0, 10);
+
                 fLP.Controls.Add(frm);
                 frm.Show();
                 this.Height = Screen.PrimaryScreen.WorkingArea.Height;

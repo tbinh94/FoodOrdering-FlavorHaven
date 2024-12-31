@@ -95,7 +95,7 @@ namespace foodordering
         }
         private void setTotal_Discount()
         {
-            decimal total = Decimal.Parse(txtTotalPrice.Text, NumberStyles.Currency) * (decimal.Parse(discountRate.ToString()) + 1);
+            decimal total = Decimal.Parse(txtTotalPrice.Text, NumberStyles.Currency) * (1 - decimal.Parse(discountRate.ToString()));
             total = Math.Round(total, 2);
             btnOrder.Text = "Đặt đơn - (" + total + ")";
         }

@@ -19,6 +19,7 @@ namespace foodordering
     public partial class OderPerItem : UserControl
     {
         public OderDTO order;
+
         public OderPerItem(OderDTO o)
         {
             InitializeComponent();
@@ -62,6 +63,17 @@ namespace foodordering
             //fLP.VerticalScroll.Visible = false;
             this.Refresh();
             this.BorderStyle = BorderStyle.FixedSingle;
+        }
+
+        private void btnRebuy_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void borderButton1_Click(object sender, EventArgs e)
+        {
+            odersHistory frm = new odersHistory();
+            frm.Hide();
         }
     }
 }

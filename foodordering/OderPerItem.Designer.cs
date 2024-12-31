@@ -30,7 +30,6 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.total = new System.Windows.Forms.Label();
-            this.borderButton1 = new foodordering.BorderButton();
             this.fLP = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -46,40 +45,23 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.total);
-            this.panel1.Controls.Add(this.borderButton1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 425);
+            this.panel1.Location = new System.Drawing.Point(0, 221);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(938, 72);
+            this.panel1.Size = new System.Drawing.Size(469, 37);
             this.panel1.TabIndex = 1;
             // 
             // total
             // 
+            this.total.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.total.AutoSize = true;
-            this.total.Dock = System.Windows.Forms.DockStyle.Right;
-            this.total.Location = new System.Drawing.Point(715, 0);
+            this.total.Location = new System.Drawing.Point(359, 24);
+            this.total.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.total.Name = "total";
-            this.total.Size = new System.Drawing.Size(53, 25);
+            this.total.Size = new System.Drawing.Size(27, 13);
             this.total.TabIndex = 1;
             this.total.Text = "total";
-            // 
-            // borderButton1
-            // 
-            this.borderButton1.BackColor = System.Drawing.Color.Transparent;
-            this.borderButton1.BorderColor = System.Drawing.Color.OrangeRed;
-            this.borderButton1.BorderWidth = 2;
-            this.borderButton1.DefaultTextColor = System.Drawing.Color.Black;
-            this.borderButton1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.borderButton1.FlatAppearance.BorderSize = 0;
-            this.borderButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.borderButton1.ForeColor = System.Drawing.Color.Black;
-            this.borderButton1.HoverTextColor = System.Drawing.Color.OrangeRed;
-            this.borderButton1.Location = new System.Drawing.Point(768, 0);
-            this.borderButton1.Name = "borderButton1";
-            this.borderButton1.Size = new System.Drawing.Size(170, 72);
-            this.borderButton1.TabIndex = 0;
-            this.borderButton1.Text = "Mua lại";
-            this.borderButton1.UseVisualStyleBackColor = false;
             // 
             // fLP
             // 
@@ -88,8 +70,9 @@
             this.fLP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fLP.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.fLP.Location = new System.Drawing.Point(0, 0);
+            this.fLP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.fLP.Name = "fLP";
-            this.fLP.Size = new System.Drawing.Size(938, 367);
+            this.fLP.Size = new System.Drawing.Size(469, 191);
             this.fLP.TabIndex = 2;
             this.fLP.WrapContents = false;
             // 
@@ -99,17 +82,19 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(938, 425);
+            this.panel2.Size = new System.Drawing.Size(469, 221);
             this.panel2.TabIndex = 3;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.fLP);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 58);
+            this.panel4.Location = new System.Drawing.Point(0, 30);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(938, 367);
+            this.panel4.Size = new System.Drawing.Size(469, 191);
             this.panel4.TabIndex = 1;
             // 
             // panel3
@@ -118,37 +103,41 @@
             this.panel3.Controls.Add(this.shopName);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(938, 58);
+            this.panel3.Size = new System.Drawing.Size(469, 30);
             this.panel3.TabIndex = 0;
             // 
             // time
             // 
             this.time.AutoSize = true;
             this.time.Dock = System.Windows.Forms.DockStyle.Right;
-            this.time.Location = new System.Drawing.Point(886, 0);
+            this.time.Location = new System.Drawing.Point(443, 0);
+            this.time.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.time.Name = "time";
-            this.time.Size = new System.Drawing.Size(52, 25);
+            this.time.Size = new System.Drawing.Size(26, 13);
             this.time.TabIndex = 1;
             this.time.Text = "time";
             // 
             // shopName
             // 
             this.shopName.AutoSize = true;
-            this.shopName.Location = new System.Drawing.Point(29, 14);
+            this.shopName.Location = new System.Drawing.Point(14, 7);
+            this.shopName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.shopName.Name = "shopName";
-            this.shopName.Size = new System.Drawing.Size(115, 25);
+            this.shopName.Size = new System.Drawing.Size(58, 13);
             this.shopName.TabIndex = 0;
             this.shopName.Text = "shopName";
             // 
             // OderPerItem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "OderPerItem";
-            this.Size = new System.Drawing.Size(938, 497);
+            this.Size = new System.Drawing.Size(469, 258);
             this.Load += new System.EventHandler(this.OderPerItem_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -165,7 +154,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.FlowLayoutPanel fLP;
-        private BorderButton borderButton1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;

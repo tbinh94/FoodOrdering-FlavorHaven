@@ -805,7 +805,7 @@ namespace foodordering
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-            int panelLeftWidth = (int)(panel3.Width * 0.33);
+            int panelLeftWidth = (int)(panel3.Width * 0.41);
 
 
             leftPanel.Width = panelLeftWidth;
@@ -844,7 +844,6 @@ namespace foodordering
         private void searchBar_TextChanged(object sender, EventArgs e)
         {
             string searchText = searchBar.Text.Trim();
-            //System.Diagnostics.Debug.WriteLine($"Search text: '{searchText}'");
 
             if (string.IsNullOrEmpty(searchText))
             {
@@ -855,26 +854,20 @@ namespace foodordering
             try
             {
                 List<string> suggestions = productBL.GetProductSuggestions(searchText);
-                //System.Diagnostics.Debug.WriteLine($"PL received {suggestions.Count} suggestions");
 
                 suggestionsListBox.Items.Clear();
                 if (suggestions.Any())
                 {
                     foreach (var suggestion in suggestions)
                     {
-                        //System.Diagnostics.Debug.WriteLine($"Adding suggestion: {suggestion}");
                         suggestionsListBox.Items.Add(suggestion);
                     }
 
-                    // Đảm bảo panel và listbox được cấu hình đúng
                     hintContainerPanel.Visible = true;
                     hintContainerPanel.BringToFront();
                     suggestionsListBox.Visible = true;
 
-                    //System.Diagnostics.Debug.WriteLine($"Panel visible: {hintContainerPanel.Visible}");
-                    //System.Diagnostics.Debug.WriteLine($"ListBox visible: {suggestionsListBox.Visible}");
-                    //System.Diagnostics.Debug.WriteLine($"Panel location: {hintContainerPanel.Location}");
-                    //System.Diagnostics.Debug.WriteLine($"ListBox items: {suggestionsListBox.Items.Count}");
+
                 }
                 else
                 {

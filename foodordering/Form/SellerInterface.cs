@@ -33,7 +33,6 @@ namespace foodordering
             // Cập nhật trạng thái Visible cho các nút
             btnMyProducts.Visible = isExpanded;
             btnAddProduct.Visible = isExpanded;
-            btnSuspended.Visible = isExpanded;
         }
 
         private void SellerInterface_Load(object sender, EventArgs e)

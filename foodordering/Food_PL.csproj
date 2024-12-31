@@ -188,10 +188,10 @@
     <Compile Include="OderPerItem.Designer.cs">
       <DependentUpon>OderPerItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="odersHistory.cs">
+    <Compile Include="Form\odersHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="odersHistory.Designer.cs">
+    <Compile Include="Form\odersHistory.Designer.cs">
       <DependentUpon>odersHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -238,10 +238,10 @@
     <Compile Include="Form\SellerInterface.Designer.cs">
       <DependentUpon>SellerInterface.cs</DependentUpon>
     </Compile>
-    <Compile Include="QRfrm.cs">
+    <Compile Include="Form\QRfrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QRfrm.Designer.cs">
+    <Compile Include="Form\QRfrm.Designer.cs">
       <DependentUpon>QRfrm.cs</DependentUpon>
     </Compile>
     <Compile Include="SQL.cs" />
@@ -317,7 +317,7 @@
     <EmbeddedResource Include="OderPerItem.resx">
       <DependentUpon>OderPerItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="odersHistory.resx">
+    <EmbeddedResource Include="Form\odersHistory.resx">
       <DependentUpon>odersHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -343,7 +343,7 @@
     <EmbeddedResource Include="Form\SellerInterface.resx">
       <DependentUpon>SellerInterface.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QRfrm.resx">
+    <EmbeddedResource Include="Form\QRfrm.resx">
       <DependentUpon>QRfrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test.resx">
