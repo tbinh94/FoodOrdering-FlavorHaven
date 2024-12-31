@@ -44,6 +44,7 @@
     <Compile Include="AdItemBl.cs" />
     <Compile Include="CartBL.cs" />
     <Compile Include="DiscountBL.cs" />
+    <Compile Include="OderBL.cs" />
     <Compile Include="ProductBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBL.cs" />

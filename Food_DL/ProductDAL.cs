@@ -270,6 +270,24 @@ namespace Food_DL
                 throw ex;
             }
         }
+        public bool updateIventory(int id, int sl)
+        {
+            string query = $"UPDATE Products SET Inventory = " + sl + " WHERE ProductID=" + id;
+            try
+            {
+                MyExecuteNonQuery(query);
+                return true;
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                Disconnect();
+            }
+        }
         public bool removeProduct(int id)
         {
             string sql = "DELETE FROM Products WHERE ProductID = " + id;

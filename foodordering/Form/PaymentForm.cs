@@ -3,6 +3,7 @@ using Food_DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -21,6 +22,8 @@ namespace foodordering
         public List<Product_Payment_Form> formList;
         public List<ProductDTO> productDTOList;
         public List<String> productName;
+        List<Tuple<int, int, decimal>> listProduct;
+
         private DiscountBL discountBL;
         public PaymentForm(List<Item_Cart> l)
         {
@@ -34,6 +37,7 @@ namespace foodordering
             formList = new List<Product_Payment_Form>();
             productDTOList = new List<ProductDTO>();
             productName = new List<String>();
+            listProduct = new List<Tuple<int, int, decimal>>();
             discountBL = new DiscountBL();
         }
 
@@ -42,17 +46,18 @@ namespace foodordering
             lblInfoUser.Text = user.Username + " | " + user.PhoneNumber;
             seller = new UserBL().getUser(productBL.GetProduct(listItem[0].id).SellerID, true);
             lblInfoSeller.Text = seller.Username;
+            label8.Text = user.Address;
             foreach (var item in listItem)
 
             {
-                createPPF(item.product.ProductName, item.lblProductPrice, item.lblproductSoLuong, item.productPicture);
+                createPPF(item.product.ProductName, item.id, item.lblProductPrice, item.lblproductSoLuong, item.productPicture);
                 productDTOList.Add(item.product);
                 productName.Add(item.product.ProductName);
             }
             loadflpExtraFood();
         }
 
-        private void createPPF(string name, string Price, string Sl, Image img)
+        private void createPPF(string name, int id, string Price, string Sl, Image img)
         {
             Product_Payment_Form frm = new Product_Payment_Form()
             {
@@ -68,6 +73,8 @@ namespace foodordering
             frm.Width = flpFoodList.Width - 30;
             frm.Show();
             flpFoodList.Controls.Add(frm);
+            listProduct.Add(new Tuple<int, int, decimal>(id, int.Parse(Sl), Math.Round(Decimal.Parse(Price, NumberStyles.Currency))));
+
             formList.Add(frm);
             setText();
         }
@@ -183,7 +190,7 @@ namespace foodordering
                 throw ex;
             }
 
-            createPPF(product.ProductName, product.Price.ToString(), "1", image);
+            createPPF(product.ProductName, product.ProductID, product.Price.ToString(), "1", image);
             productDTOList.Add(product);
             loadflpExtraFood();
         }
@@ -213,10 +220,77 @@ namespace foodordering
         private void flpFoodList_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, flpFoodList.ClientRectangle,
-                Color.DarkOrange, 2, ButtonBorderStyle.Solid,  
-                Color.DarkOrange, 2, ButtonBorderStyle.Solid, 
-                Color.DarkOrange, 2, ButtonBorderStyle.Solid,  
-                Color.DarkOrange, 2, ButtonBorderStyle.Solid); 
+                Color.DarkOrange, 2, ButtonBorderStyle.Solid,
+                Color.DarkOrange, 2, ButtonBorderStyle.Solid,
+                Color.DarkOrange, 2, ButtonBorderStyle.Solid,
+                Color.DarkOrange, 2, ButtonBorderStyle.Solid);
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            if (btnBank.Checked)
+            {
+                QRfrm f = new QRfrm();
+                DialogResult a = f.ShowDialog();
+                if (a == DialogResult.OK)
+                {
+                    OderDTO oder = new OderDTO
+                    {
+                        UserID = user.Id,
+                        OderDate = DateTime.Now,
+                        OrderItemsList = listProduct,
+                        Total = Decimal.Parse(txtTotalPrice.Text, NumberStyles.Currency)
+                    };
+                    new OderBL().addOder(oder);
+                    updateInventory();
+                    this.Close();
+                }
+            }
+            else if (btnCash.Checked)
+            {
+                OderDTO oder = new OderDTO
+                {
+                    UserID = user.Id,
+                    OderDate = DateTime.Now,
+                    OrderItemsList = listProduct,
+                    Total = Decimal.Parse(txtTotalPrice.Text, NumberStyles.Currency)
+                };
+                new OderBL().addOder(oder);
+                updateInventory();
+                this.Close();
+            }
+            else
+                MessageBox.Show("Vui lòng chọn phương thức thanh toán!");
+
+        }
+
+        private void btnBank_Click(object sender, EventArgs e)
+        {
+            btnBank.Checked = true;
+            btnCash.Checked = false;
+        }
+
+        private void btnCash_Click(object sender, EventArgs e)
+        {
+            btnBank.Checked = false;
+            btnCash.Checked = true;
+        }
+        private void updateInventory()
+        {
+            int i = 0;
+            foreach (var product in productDTOList)
+            {
+                if (new ProductBL().updateInventory(product.ProductID, product.Inventory - int.Parse(listItem[i].soluong.Text)))
+                { }
+                else
+                { }
+
+            }
+        }
+
+        private void PaymentForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DialogResult = DialogResult.OK;
         }
     }
 }

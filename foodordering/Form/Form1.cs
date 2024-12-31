@@ -591,8 +591,14 @@ namespace foodordering
             // Hiển thị form Lịch sử đơn hàng
             //HelpForm orderHistory = new HelpForm();
             //orderHistory.ShowDialog();
-
-            MessageBox.Show("Bạn đã nhấn vào 'Lịch sử đơn hàng'", "Test", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Enabled = false;
+            using (odersHistory f = new odersHistory())
+            {
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    this.Enabled = true;
+                }
+            }
         }
 
         private void SignOutItem_Click(object sender, EventArgs e)

@@ -308,6 +308,7 @@ namespace foodordering
                 if (pay.ShowDialog() == DialogResult.OK)
                 {
                     this.Enabled = true;
+                    this.Close();
                 }
             }
         }

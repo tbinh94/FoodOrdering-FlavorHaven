@@ -126,6 +126,17 @@ namespace Food_BL
                 throw ex;
             }
         }
+        public bool updateInventory(int id, int sl)
+        {
+            try
+            {
+                return (productDAL.updateIventory(id, sl));
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
         public bool remove_product(int id)
         {
             try
