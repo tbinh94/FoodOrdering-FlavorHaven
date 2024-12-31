@@ -31,7 +31,7 @@ namespace foodordering
         private void odersHistory_Load(object sender, EventArgs e)
         {
             this.Location = new Point(0, 0);
-            int i = 0;
+            //int i = 0;
             foreach (var order in listOder)
             {
 

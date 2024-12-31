@@ -141,109 +141,6 @@ namespace foodordering
                 return null;
             }
         }
-        //public void LoadProducts()
-        //{
-        //    flowLayoutPanelProducts.Controls.Clear();
-        //    flpDetail.Controls.Clear();
-
-        //    if (listProduct == null)
-        //        listProduct = new ProductBL().GetAllProducts();
-
-        //    List<ProductDTO> shuffledProducts = ShuffleList(new List<ProductDTO>(listProduct));
-
-        //    // Thêm sản phẩm vào flowLayoutPanelProducts
-        //    foreach (var productDto in listProduct) // Dùng listProduct gốc cho flowLayoutPanelProducts
-        //    {
-        //        ProductBL product = ProductBL.FromDTO(productDto);
-        //        string imagePath = Path.Combine(Application.StartupPath, "Resources", "ProductImage", product.Image);
-        //        System.Drawing.Image image;
-
-        //        try
-        //        {
-        //            if (File.Exists(imagePath))
-        //            {
-        //                image = System.Drawing.Image.FromFile(imagePath);
-        //            }
-        //            else
-        //            {
-        //                imagePath = Path.Combine(Application.StartupPath, "Resources", "default.png");
-        //                image = System.Drawing.Image.FromFile(imagePath);
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show($"Không thể tải hình ảnh cho {product.Name}: {ex.Message}");
-        //            continue;
-        //        }
-
-        //        ProductItemControl productItem = new ProductItemControl
-        //        {
-        //            ProductName = product.Name,
-        //            ProductPrice = product.Price.ToString("C0"),
-        //            ProductDescription = product.Description,
-        //            ProductImage = ResizeImg.ResizeImage(image, 381, 310),
-        //            Address = product.Address,
-        //            DiscountText = product.DiscountText,
-        //            BorderStyle = BorderStyle.FixedSingle,
-        //            Margin = new Padding(10, 7, 10, 20),
-        //            BackColor = Color.FromArgb(230, 170, 170),
-        //            id = product.id,
-        //        };
-
-        //        flowLayoutPanelProducts.Height += (productItem.Height + 35) / 2;
-        //        flowLayoutPanelProducts.Controls.Add(productItem);
-        //        productItem.ProductClicked += ProductItem_ProductClicked;
-        //        productItem.Cursor = Cursors.Hand;
-
-        //        image.Dispose();
-        //    }
-
-        //    flowLayoutPanelProducts.Width = panel2.Width - 20;
-
-        //    foreach (var productDto in shuffledProducts) // Dùng danh sách đã xáo trộn cho flpDetail
-        //    {
-        //        ProductBL product = ProductBL.FromDTO(productDto);
-
-        //        string imagePath = Path.Combine(Application.StartupPath, "Resources", "ProductImage", product.Image);
-        //        System.Drawing.Image image;
-
-        //        try
-        //        {
-        //            if (File.Exists(imagePath))
-        //            {
-        //                image = System.Drawing.Image.FromFile(imagePath);
-        //            }
-        //            else
-        //            {
-        //                imagePath = Path.Combine(Application.StartupPath, "Resources", "default.png");
-        //                image = System.Drawing.Image.FromFile(imagePath);
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show($"Không thể tải hình ảnh cho {product.Name}: {ex.Message}");
-        //            continue;
-        //        }
-
-        //        ProductItemControl productItemDetail = new ProductItemControl // cho flpDetail
-        //        {
-        //            ProductName = product.Name,
-        //            ProductPrice = product.Price.ToString("C0"),
-        //            ProductDescription = product.Description,
-        //            ProductImage = ResizeImg.ResizeImage(image, 381, 310),
-        //            Address = product.Address,
-        //            DiscountText = product.DiscountText,
-        //            BorderStyle = BorderStyle.FixedSingle,
-        //            Margin = new Padding(10, 7, 10, 20),
-        //            BackColor = Color.FromArgb(230, 170, 170),
-        //            id = product.id,
-        //        };
-
-        //        flpDetail.Controls.Add(productItemDetail);
-        //        flpDetail.Height += (productItemDetail.Height + 35) / 3;
-        //        image.Dispose();
-        //    }
-        //}
         private void LoadProductsForFlowLayout()
         {
             flowLayoutPanelProducts.Controls.Clear();
@@ -296,6 +193,55 @@ namespace foodordering
                 flowLayoutPanelProducts.Controls.Add(productItem);
                 productItem.ProductClicked += ProductItem_ProductClicked;
                 productItem.Cursor = Cursors.Hand;
+                image.Dispose();
+            }
+        }
+        private void LoadAds()
+        {
+            flpAds.Controls.Clear(); // Làm sạch các control hiện tại trong panel
+
+            AdItemBL adItemBL = new AdItemBL();
+            List<AdItemDTO> ads = adItemBL.GetAllAds(); // Lấy danh sách quảng cáo từ BL
+            ads = ShuffleList(ads).Take(4).ToList();
+            foreach (var adDto in ads)
+            {
+                AdItemBL adItem = AdItemBL.FromDTO(adDto);
+
+
+                string imagePath = Path.Combine(Application.StartupPath, "Resources", "PromoIMG", adItem.Image);
+                System.Drawing.Image image;
+
+                try
+                {
+                    if (File.Exists(imagePath))
+                    {
+                        image = System.Drawing.Image.FromFile(imagePath);
+                    }
+                    else
+                    {
+                        imagePath = Path.Combine(Application.StartupPath, "Resources", "default.png");
+                        image = System.Drawing.Image.FromFile(imagePath);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Không thể tải hình ảnh cho quảng cáo {adItem.AdName}: {ex.Message}");
+                    continue;
+                }
+
+                // Tạo AdItemControl với thông tin quảng cáo
+                AdItem adItemControl = new AdItem
+                {
+                    DiscountDescription = adItem.AdDescription,
+                    AdImage = ResizeImg.ResizeImage(image, 381, 310),
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Margin = new Padding(10, 7, 10, 20),
+                    BackColor = Color.FromArgb(230, 170, 170),
+                    Id = adItem.Id
+                };
+
+                flpAds.Controls.Add(adItemControl);
+
                 image.Dispose();
             }
         }
@@ -382,55 +328,7 @@ namespace foodordering
             }
         }
 
-        private void LoadAds()
-        {
-            flpAds.Controls.Clear(); // Làm sạch các control hiện tại trong panel
-
-            AdItemBL adItemBL = new AdItemBL();
-            List<AdItemDTO> ads = adItemBL.GetAllAds(); // Lấy danh sách quảng cáo từ BL
-            ads = ShuffleList(ads).Take(4).ToList();
-            foreach (var adDto in ads)
-            {
-                AdItemBL adItem = AdItemBL.FromDTO(adDto);
-
-
-                string imagePath = Path.Combine(Application.StartupPath, "Resources", "PromoIMG", adItem.Image);
-                System.Drawing.Image image;
-
-                try
-                {
-                    if (File.Exists(imagePath))
-                    {
-                        image = System.Drawing.Image.FromFile(imagePath);
-                    }
-                    else
-                    {
-                        imagePath = Path.Combine(Application.StartupPath, "Resources", "default.png");
-                        image = System.Drawing.Image.FromFile(imagePath);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Không thể tải hình ảnh cho quảng cáo {adItem.AdName}: {ex.Message}");
-                    continue;
-                }
-
-                // Tạo AdItemControl với thông tin quảng cáo
-                AdItem adItemControl = new AdItem
-                {
-                    DiscountDescription = adItem.AdDescription,
-                    AdImage = ResizeImg.ResizeImage(image, 381, 310),
-                    BorderStyle = BorderStyle.FixedSingle,
-                    Margin = new Padding(10, 7, 10, 20),
-                    BackColor = Color.FromArgb(230, 170, 170),
-                    Id = adItem.Id
-                };
-
-                flpAds.Controls.Add(adItemControl);
-
-                image.Dispose();
-            }
-        }
+       
         private void MakeButtonTransparent(System.Windows.Forms.Button btn)
         {
             btn.FlatStyle = FlatStyle.Flat;

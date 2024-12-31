@@ -30,6 +30,7 @@ namespace foodordering
             this.StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
             user = Form1.user;
+            this.Width = flpFoodList.Width + 30;
             discountRate = 0;
             listItem = Cart.instance.products_choosed;
             seller = null;
@@ -70,7 +71,7 @@ namespace foodordering
             frm.TopLevel = false;
             frm.AutoSize = true;
             frm.Padding = new Padding(10, 10, 10, 10);
-            frm.Width = flpFoodList.Width - 30;
+            frm.Width = flpFoodList.Width - 20;
             frm.Show();
             flpFoodList.Controls.Add(frm);
             listProduct.Add(new Tuple<int, int, decimal>(id, int.Parse(Sl), Math.Round(Decimal.Parse(Price, NumberStyles.Currency))));
