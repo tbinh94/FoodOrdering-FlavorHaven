@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace foodordering
@@ -34,18 +35,6 @@ namespace foodordering
             btnMyProducts.Visible = isExpanded;
             btnAddProduct.Visible = isExpanded;
         }
-
-        private void SellerInterface_Load(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(Form1.LoggedInSellerName))
-            {
-                lblWelcome.Text = "Xin chào, " + Form1.LoggedInSellerName;
-            }
-            else
-            {
-                lblWelcome.Text = "Xin chào bạn!";
-            }
-        }
         private void AddControlToPanel(Form form)
         {
             form.TopLevel = false;
@@ -65,6 +54,40 @@ namespace foodordering
         {
             save_productSeller_form frm = new save_productSeller_form(Form1.iduser);
             AddControlToPanel(frm);
+        }
+
+        private void SellerInterface_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SellerInterface_Resize(object sender, EventArgs e)
+        {
+            int panelLeftWidth = (int)(SellerInterface.Instance.Width * 0.2);
+
+
+            leftPanel.Width = panelLeftWidth;
+            leftPanel.Height = this.ClientSize.Height;
+            leftPanel.Location = new Point(0, 0);
+
+            containerPanel.Width = this.ClientSize.Width - panelLeftWidth;
+            containerPanel.Location = new Point(leftPanel.Right, 0);
+
+            containerPanel.Height = SellerInterface.Instance.Height;
+
+            AdjustRightPanelLayout();
+        }
+        private void AdjustRightPanelLayout()
+        {
+            foreach (System.Windows.Forms.Control ctrl in containerPanel.Controls)
+            {
+                if (ctrl is FlowLayoutPanel flp)
+                {
+                    flp.Width = containerPanel.ClientSize.Width - 10;
+                    flp.Margin = new Padding(5);
+                    
+                }
+            }
         }
     }
 }
