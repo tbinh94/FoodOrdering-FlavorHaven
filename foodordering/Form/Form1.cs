@@ -291,7 +291,8 @@ namespace foodordering
                     BackColor = Color.FromArgb(230, 170, 170),
                     id = product.id,
                 };
-
+                productItemDetail.Cursor = Cursors.Hand;
+                productItemDetail.ProductClicked += ProductItem_ProductClicked;
                 flpDetail.Controls.Add(productItemDetail);
                 totalHeight += productItemDetail.Height + productItemDetail.Margin.Top + productItemDetail.Margin.Bottom;
 

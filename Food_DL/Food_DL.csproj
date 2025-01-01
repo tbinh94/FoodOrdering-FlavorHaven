@@ -50,7 +50,9 @@
   <ItemGroup>
     <Compile Include="AdItemDL.cs" />
     <Compile Include="CartDAL.cs" />
-    <Compile Include="DataProvider.cs" />
+    <Compile Include="DataProvider.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="DiscountDAL.cs" />
     <Compile Include="OderDAL.cs" />
     <Compile Include="ProductDAL.cs" />
