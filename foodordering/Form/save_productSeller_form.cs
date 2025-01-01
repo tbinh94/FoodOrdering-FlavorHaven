@@ -105,6 +105,36 @@ namespace foodordering
                 CategoryCbb.Items.Add(item);
             }
             addressTxt.Text = Form1.user.Address;
+            // Duyệt qua tất cả các TextBox trong Form
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Lưu vị trí và kích thước ban đầu của TextBox
+                    Point originalLocation = textBox.Location;
+                    Size originalSize = textBox.Size;
+
+                    // Tạo Panel để làm viền
+                    Panel borderPanel = new Panel
+                    {
+                        Location = originalLocation,
+                        Size = new Size(originalSize.Width + 2, originalSize.Height + 2), // Thêm viền
+                        BackColor = Color.Gray, // Màu viền
+                        Padding = new Padding(1)
+                    };
+
+                    // Di chuyển TextBox vào trong Panel
+                    textBox.BorderStyle = BorderStyle.None; // Loại bỏ viền mặc định
+                    textBox.Dock = DockStyle.Fill; // Lấp đầy Panel
+
+                    // Thay thế vị trí TextBox bằng Panel
+                    this.Controls.Add(borderPanel);
+                    borderPanel.Controls.Add(textBox);
+
+                    // Điều chỉnh thứ tự hiển thị
+                    borderPanel.BringToFront();
+                }
+            }
         }
 
         private void btn_save_Click(object sender, EventArgs e)

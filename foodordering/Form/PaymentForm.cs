@@ -3,13 +3,11 @@ using Food_DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Net.WebRequestMethods;
 namespace foodordering
 {
     public partial class PaymentForm : Form
@@ -30,7 +28,7 @@ namespace foodordering
             this.StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
             user = Form1.user;
-            this.Width = flpFoodList.Width + 35;
+            this.Width = flpFoodList.Width + 45;
             discountRate = 0;
             listItem = Cart.instance.products_choosed;
             seller = null;

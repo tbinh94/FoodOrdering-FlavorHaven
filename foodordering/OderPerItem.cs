@@ -1,18 +1,9 @@
 ﻿using Food_BL;
 using Food_DTO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.WebRequestMethods;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace foodordering
 {
@@ -56,7 +47,7 @@ namespace foodordering
             this.Height = i;
             total.Text = "Tổng tiền: " + order.Total.ToString();
             this.Width += 20;
-            
+
             shopName.Text = user.Username;
             time.Text = order.OderDate.ToString("HH:mm:ss dd-MM-yyyy");
             //fLP.VerticalScroll.Enabled = false;

@@ -2,17 +2,8 @@
 using Food_DTO;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Printing;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.WebRequestMethods;
 
 namespace foodordering
 {
@@ -23,7 +14,7 @@ namespace foodordering
         public odersHistory()
         {
             InitializeComponent();
-            this.StartPosition=FormStartPosition.CenterScreen;
+            this.StartPosition = FormStartPosition.CenterScreen;
             listOder = new OderBL().getOderByUserID(Form1.iduser);
             listOder.Reverse();
             this.Width = fLP.Width + 35;

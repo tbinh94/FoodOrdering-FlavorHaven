@@ -14,7 +14,7 @@ namespace foodordering
             btnLogo.Image = ResizeImg.ResizeImage(Properties.Resources.logo, 140, 140);
             ConfigureImageButton(btnLogo);
             contactBtn.BackColor = Color.Transparent;
-
+            this.WindowState = FormWindowState.Maximized;
         }
 
 
@@ -51,6 +51,12 @@ namespace foodordering
         private void Policies_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void contactBtn_Click(object sender, EventArgs e)
+        {
+            string url = "https://github.com/tbinh94";
+            System.Diagnostics.Process.Start(url);
         }
     }
 }

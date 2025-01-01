@@ -24,8 +24,14 @@ namespace foodordering
             InitializeComponent();
             name = lblWelcome.ToString();
             containerpn = containerPanel;
+            DoubleBuffering(containerPanel);
         }
-
+        private void DoubleBuffering(Panel panel)
+        {
+            typeof(Panel).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.SetProperty | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic,
+                null, panel, new object[] { true });
+        }
         private void btnToggle_Click(object sender, EventArgs e)
         {
             // Đổi trạng thái ẩn/hiện
@@ -85,7 +91,7 @@ namespace foodordering
                 {
                     flp.Width = containerPanel.ClientSize.Width - 10;
                     flp.Margin = new Padding(5);
-                    
+
                 }
             }
         }

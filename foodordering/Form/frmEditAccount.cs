@@ -2,7 +2,6 @@
 using System;
 using System.Drawing;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace foodordering
@@ -14,7 +13,7 @@ namespace foodordering
         {
             InitializeComponent();
             picAvatar.SizeMode = PictureBoxSizeMode.Zoom;
-            picAvatar.BackColor = Color.White; 
+            picAvatar.BackColor = Color.White;
 
         }
 
@@ -28,7 +27,7 @@ namespace foodordering
             string newPassword = txtNewPassword.Text.Trim();
             string confirmPassword = txtConfirmPassword.Text.Trim();
 
-            string projectPath = Application.StartupPath; 
+            string projectPath = Application.StartupPath;
             string avatarFolderPath = Path.Combine(projectPath, "UserAvatar");
             string defaultAvatarPath = Path.Combine(projectPath, "Resources", "default_avatar.png");
             string avatarPath;
@@ -130,7 +129,7 @@ namespace foodordering
                 catch (Exception ex)
                 {
                     MessageBox.Show("Lỗi khi tải ảnh đại diện: " + ex.Message, "Thông báo");
-                    picAvatar.Image = Image.FromFile(defaultAvatarPath); 
+                    picAvatar.Image = Image.FromFile(defaultAvatarPath);
                 }
             }
             else

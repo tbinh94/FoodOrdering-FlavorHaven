@@ -1,5 +1,4 @@
-﻿using Food_BL;
-using Food_DTO;
+﻿using Food_DTO;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -84,5 +83,5 @@ namespace foodordering
 
 
 
-        }
+    }
 }

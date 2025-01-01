@@ -27,7 +27,7 @@ namespace Food_BL
         {
             if (string.IsNullOrEmpty(acc.Avatar))
             {
-                acc.Avatar = "..\\..\\Resources\\default_avatar.png"; 
+                acc.Avatar = "..\\..\\Resources\\default_avatar.png";
             }
             try
             {
@@ -82,7 +82,7 @@ namespace Food_BL
         }
         public string GetAvatarPath(string username, bool isSeller)
         {
-            return loginDL.GetAvatarPath(username,isSeller);
+            return loginDL.GetAvatarPath(username, isSeller);
         }
 
 

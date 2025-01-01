@@ -7,7 +7,6 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Forms;
 using Panel = System.Windows.Forms.Panel;
 
@@ -328,7 +327,7 @@ namespace foodordering
             }
         }
 
-       
+
         private void MakeButtonTransparent(System.Windows.Forms.Button btn)
         {
             btn.FlatStyle = FlatStyle.Flat;
@@ -621,7 +620,7 @@ namespace foodordering
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            EnsureUserAvatarFolder(); 
+            EnsureUserAvatarFolder();
             CopyDefaultAvatar();
 
             // Kiểm tra xem người dùng đã đăng nhập trước đó hay chưa
@@ -833,6 +832,7 @@ namespace foodordering
             }
         }
 
+
         private void adsShowAll_Click(object sender, EventArgs e)
         {
             adsShowAll.Visible = false;
@@ -896,7 +896,6 @@ namespace foodordering
                     ProductDTO product = productBL.GetProductDetails(selectedProductName);
                     if (product != null)
                     {
-                        // Xử lý load hình ảnh
                         string imagePath = Path.Combine(Application.StartupPath, "Resources", "ProductImage", product.ImagePath);
                         System.Drawing.Image productImage;
 
@@ -923,7 +922,7 @@ namespace foodordering
                             ItemDetail form2 = new ItemDetail();
                             form2.SetProductDetails(
                                 product.ProductName,
-                                product.Price.ToString("C0"), 
+                                product.Price.ToString("C0"),
                                 product.Address,
                                 resizedImage,
                                 randomRating
@@ -965,7 +964,6 @@ namespace foodordering
             hintContainerPanel.BackColor = Color.White;
             hintContainerPanel.Visible = false;
 
-            // Đặt vị trí panel ngay dưới searchBar
             hintContainerPanel.Location = new Point(
                 searchBar.Location.X,
                 searchBar.Location.Y + searchBar.Height
@@ -974,19 +972,17 @@ namespace foodordering
             suggestionsListBox.BorderStyle = BorderStyle.None;
             suggestionsListBox.BackColor = Color.White;
             suggestionsListBox.Dock = DockStyle.Fill;
-            suggestionsListBox.Margin= new Padding(10);
+            suggestionsListBox.Margin = new Padding(10);
             suggestionsListBox.Font = new Font("Verdana", 11, FontStyle.Regular);
 
-            // Đảm bảo panel có kích thước phù hợp
             hintContainerPanel.Size = new Size(
                 searchBar.Width,
-                150 
+                150
             );
         }
 
         private void EnsureUserAvatarFolder()
         {
-            // Đường dẫn tới thư mục Resources/UserAvatar
             string resourcePath = Path.Combine(Application.StartupPath, "Resources");
             string avatarFolderPath = Path.Combine(resourcePath, "UserAvatar");
 
