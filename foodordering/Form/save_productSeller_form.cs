@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 namespace foodordering
@@ -87,7 +88,7 @@ namespace foodordering
                 {
                     using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
                     {
-                        img.Image = ResizeImg.ResizeImage(Image.FromStream(stream), 381, 310);
+                        img.Image = ResizeImg.ResizeImage(Image.FromStream(stream), img.Width, img.Height);
                     }
                 }
                 catch (Exception ex)
@@ -100,10 +101,12 @@ namespace foodordering
         private void save_productSeller_form_Load(object sender, EventArgs e)
         {
             List<string> list = new ProductBL().CategoryProduct();
+            CategoryCbb.DropDownStyle = ComboBoxStyle.DropDownList;
             foreach (string item in list)
             {
                 CategoryCbb.Items.Add(item);
             }
+            CategoryCbb.SelectedIndex = 0;
             addressTxt.Text = Form1.user.Address;
             // Duyệt qua tất cả các TextBox trong Form
             foreach (Control control in this.Controls)
@@ -139,8 +142,29 @@ namespace foodordering
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-
-            string imgname = RemoveDiacritics(nameTxt.Text.Trim() + "_" + idseller) + ".jpg";
+            string checkTxt = "";
+            if (img.Image == null)
+            {
+                checkTxt += "Vui lòng chọn ảnh sản phẩm!\n";
+            }
+            if (nameTxt.Text.Length < 2)
+            {
+                checkTxt += "Tên sản phẩm từ 3 kí tự trở lên!\n";
+            }
+            if (int.Parse(priceTxt.Text) <= 0)
+            {
+                checkTxt += "Vui lòng nhập giá sảm phẩm phù hợp!\n";
+            }
+            if (descriptionTxt.Text.Length < 10)
+            {
+                checkTxt += "Mô tả sản phẩm từ 10 kí từ trở lên";
+            }
+            if (checkTxt.Length > 0)
+            {
+                MessageBox.Show(checkTxt);
+                return;
+            }
+            string imgname = RemoveDiacritics(nameTxt.Text.Trim() + "_" + idseller) + DateTime.Now.ToString("HH-mm-ss") + ".jpg";
             string folderPath = Path.Combine(Application.StartupPath, "Resources", "ProductImage");
             string imagePath = Path.Combine(folderPath, imgname);
             //img.Image.Save(imagePath, ImageFormat.Jpeg);
@@ -163,10 +187,9 @@ namespace foodordering
                     MessageBox.Show("Lỗi lưu ảnh: " + ex.Message);
                 }
             }
-            if (new ProductBL().save_product(nameTxt.Text, Decimal.Parse(priceTxt.Text), imgname, descriptionTxt.Text, CategoryCbb.Items.IndexOf(CategoryCbb.Text) + 1, addressTxt.Text, idseller))
+            if (new ProductBL().save_product(CapitalizeEachWord(nameTxt.Text), Decimal.Parse(priceTxt.Text), imgname, descriptionTxt.Text, CategoryCbb.Items.IndexOf(CategoryCbb.Text) + 1, addressTxt.Text, idseller))
             {
                 MessageBox.Show("Bạn đã đăng sản phẩm thành công!");
-
             }
             else
             {
@@ -184,13 +207,43 @@ namespace foodordering
             foreach (string pic in ((string[])e.Data.GetData(DataFormats.FileDrop)))
             {
                 Image image = Image.FromFile(pic);
-                img.Image = ResizeImg.ResizeImage(image, 381, 310); ;
+                img.Image = ResizeImg.ResizeImage(image, img.Width, img.Height); ;
             }
         }
 
         private void img_Click(object sender, EventArgs e)
         {
             btn_choose_img_Click(sender, e);
+        }
+
+        private void priceTxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ngăn không cho nhập ký tự không hợp lệ
+            }
+        }
+
+        private void priceTxt_TextChanged(object sender, EventArgs e)
+        {
+            int cursorPosition = priceTxt.SelectionStart;
+            if (priceTxt.Text == "" || int.Parse(priceTxt.Text) == 0)
+            {
+                priceTxt.Text = "0";
+                priceTxt.SelectionStart = priceTxt.Text.Length;
+                priceTxt.SelectionLength = 0;
+                return;
+            }
+            if ((priceTxt.Text)[0] == '0')
+                priceTxt.Text = priceTxt.Text.Substring(1);
+            priceTxt.SelectionStart = cursorPosition;
+        }
+        static string CapitalizeEachWord(string str)
+        {
+            if (string.IsNullOrEmpty(str)) return str;
+
+            TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+            return textInfo.ToTitleCase(str.ToLower());
         }
     }
 }

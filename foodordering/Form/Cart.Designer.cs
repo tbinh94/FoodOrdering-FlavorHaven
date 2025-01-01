@@ -85,7 +85,7 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 160);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1096, 544);
             this.panel1.TabIndex = 1;
@@ -96,7 +96,7 @@
             this.panel3.Controls.Add(this.checkBoxAll);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 457);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1096, 87);
             this.panel3.TabIndex = 0;
@@ -107,7 +107,7 @@
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(480, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(616, 87);
             this.panel4.TabIndex = 2;
@@ -118,7 +118,7 @@
             this.panel6.Controls.Add(this.lblTotal);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(472, 87);
             this.panel6.TabIndex = 5;
@@ -152,7 +152,7 @@
             this.panel5.Controls.Add(this.btn_buy);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel5.Location = new System.Drawing.Point(472, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(144, 87);
             this.panel5.TabIndex = 4;
@@ -162,7 +162,7 @@
             this.btn_buy.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_buy.Enabled = false;
             this.btn_buy.Location = new System.Drawing.Point(0, 0);
-            this.btn_buy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_buy.Margin = new System.Windows.Forms.Padding(4);
             this.btn_buy.Name = "btn_buy";
             this.btn_buy.Size = new System.Drawing.Size(144, 87);
             this.btn_buy.TabIndex = 3;
@@ -176,7 +176,7 @@
             this.checkBoxAll.AutoSize = true;
             this.checkBoxAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxAll.Location = new System.Drawing.Point(12, 27);
-            this.checkBoxAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxAll.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxAll.Name = "checkBoxAll";
             this.checkBoxAll.Size = new System.Drawing.Size(128, 37);
             this.checkBoxAll.TabIndex = 0;

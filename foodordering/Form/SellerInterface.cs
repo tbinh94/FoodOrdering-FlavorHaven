@@ -50,7 +50,11 @@ namespace foodordering
             containerPanel.Controls.Add(form);
             form.Show();
         }
-        private void btnMyProducts_Click(object sender, EventArgs e)
+        public void btnMyProducts_Click(object sender, EventArgs e)
+        {
+            MyProducts();
+        }
+        public void MyProducts()
         {
             Food_Seller_Form frm = new Food_Seller_Form(Form1.iduser);
             AddControlToPanel(frm);
@@ -64,7 +68,7 @@ namespace foodordering
 
         private void SellerInterface_Load(object sender, EventArgs e)
         {
-
+            label1.Text = "Xin chào " + Form1.user.Username + "!";
         }
 
         private void SellerInterface_Resize(object sender, EventArgs e)

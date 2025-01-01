@@ -25,7 +25,7 @@ namespace foodordering
         public static int iduser;
         private ProductBL productBL;
         BorderButton selectedButton = null;
-        private ProductSearchForm productSearchForm;
+        //private ProductSearchForm productSearchForm;
         public static Form1 Instance
         {
             get
