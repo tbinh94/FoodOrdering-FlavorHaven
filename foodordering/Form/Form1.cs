@@ -433,6 +433,7 @@ namespace foodordering
 
                     // Cập nhật nút đăng nhập
                     UpdateLoginButton(UserSession.Instance.LoggedInUsername);
+                    list = new CartBL().GetCart(foodordering.Properties.Settings.Default.userID);
                     user = new UserBL().getUser(foodordering.Properties.Settings.Default.userID, foodordering.Properties.Settings.Default.isSeller);
 
                 }
@@ -505,6 +506,8 @@ namespace foodordering
             UserSession.Instance.LoggedInUsername = null;
             IsSellerLoggedIn = false;
 
+            user = null;
+            list = null;
             foodordering.Properties.Settings.Default.userID = 0;
             foodordering.Properties.Settings.Default.isSeller = false;
             foodordering.Properties.Settings.Default.Save();
