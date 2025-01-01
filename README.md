@@ -1,5 +1,3 @@
-SAU KHI PUSH
+Chạy file foodordering.sln trong folder foodordering. 
 
-PHẢI VÀO FOLDER FOODORDERING
-
-SAU ĐÓ UP FILE .SLN THỦ CÔNG ĐỂ CHẠY PROJECT
+Hình ảnh được lưu trữ trong Resources.
