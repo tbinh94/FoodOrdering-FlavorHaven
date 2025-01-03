@@ -1,4 +1,4 @@
-The project is written in C# and uses SQL Server as database.
+The project about ordering food with many useful features, written in C# and uses SQL Server as database.
 
 To use Project, run the foodordering.sln file in the foodordering folder. Images are stored in Resources.
 
