@@ -497,16 +497,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\show.png" />
-    <None Include="Resources\back.png" />
-    <Content Include="Resources\background.jpg" />
     <None Include="Resources\key.png" />
     <None Include="Resources\down-arrow.png" />
     <None Include="Resources\hide.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\minus.png" />
     <None Include="Resources\plus.png" />
-    <None Include="Resources\jacob-dyer-X2l-hKEf6wU-unsplash.jpg" />
-    <None Include="Resources\phuc-duong-_o36k8DIZeI-unsplash.jpg" />
     <Content Include="Resources\ProductImage\banh_mi_thit.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -625,7 +621,6 @@
     <None Include="Resources\tag.png" />
     <None Include="Resources\telephone.png" />
     <None Include="Resources\file.png" />
-    <None Include="Resources\tron-le-wUk2U5Wirxg-unsplash.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Food_BL\Food_BL.csproj">

@@ -84,7 +84,6 @@ namespace foodordering
             flpAds.AutoScroll = false;
 
             // 5. Tải dữ liệu và giao diện
-            //LoadProducts();
             LoadProductItemControl();
             LoadProductsForFlowLayout();
             LoadAds();
@@ -95,17 +94,19 @@ namespace foodordering
             SetupSuggestionControls();
             pn3 = panel3;
         }
-
+        // hàm chống lag
         private void DoubleBuffering(Panel panel)
         {
             typeof(Panel).InvokeMember("DoubleBuffered",
                 System.Reflection.BindingFlags.SetProperty | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic,
                 null, panel, new object[] { true });
         }
+        // load giỏ hàng
         public void loadCart()
         {
             list = new CartBL().GetCart(iduser);
         }
+        // load các sản phẩm trong các flp
         public void LoadProductItemControl()
         {
             loadCart();
@@ -119,6 +120,7 @@ namespace foodordering
                 v.setTextCart = "🛒";
             }
         }
+
         public async Task<System.Drawing.Image> LoadImageAsync(string imagePath)
         {
             try
@@ -140,6 +142,7 @@ namespace foodordering
                 return null;
             }
         }
+        // load flp đầu
         private void LoadProductsForFlowLayout()
         {
             flowLayoutPanelProducts.Controls.Clear();
@@ -195,6 +198,7 @@ namespace foodordering
                 image.Dispose();
             }
         }
+        // load các voucher
         private void LoadAds()
         {
             flpAds.Controls.Clear(); // Làm sạch các control hiện tại trong panel
@@ -244,6 +248,7 @@ namespace foodordering
                 image.Dispose();
             }
         }
+        // load các flp cuối
         private void LoadProductsForDetail()
         {
             flpDetail.Controls.Clear();
@@ -302,12 +307,14 @@ namespace foodordering
             flpDetail.Width = fLP1.Width - 20;
         }
 
+        // hàm xáo thứ tự 
         public static List<T> ShuffleList<T>(List<T> inputList)
         {
             Random random = new Random();
             return inputList.OrderBy(x => random.Next()).ToList();
         }
 
+        // hàm click cho các sản phẩm để hiển thị chi tiết
         private void ProductItem_ProductClicked(object sender, EventArgs e)
         {
             if (sender is ProductItemControl productItem)
@@ -328,7 +335,7 @@ namespace foodordering
             }
         }
 
-
+        // hàm làm các button trong suốt
         private void MakeButtonTransparent(System.Windows.Forms.Button btn)
         {
             btn.FlatStyle = FlatStyle.Flat;
@@ -342,16 +349,13 @@ namespace foodordering
         // Hàm làm trong suốt button trong 1 container (panel, groupbox)
         private void ApplyTransparentStyleToAllButtons(System.Windows.Forms.Control container)
         {
-            // Tìm button trong container hiện tại
             foreach (System.Windows.Forms.Control control in container.Controls)
             {
-                // Nếu là button thì áp dụng style
                 if (control is System.Windows.Forms.Button)
                 {
                     MakeButtonTransparent((System.Windows.Forms.Button)control);
                 }
-                // Nếu control chứa các control khác (như Panel, GroupBox...)
-                // thì tìm kiếm tiếp trong đó
+                // Nếu control chứa các control khác (như Panel, GroupBox...) thì tìm kiếm tiếp trong đó
                 if (control.HasChildren)
                 {
                     ApplyTransparentStyleToAllButtons(control);
@@ -360,13 +364,13 @@ namespace foodordering
         }
         public void ConfigureImageButton(System.Windows.Forms.Button btn)
         {
-            btn.Size = new Size(80, 80);  // kích thước button
+            btn.Size = new Size(80, 80);
             btn.FlatStyle = FlatStyle.Flat;
             btn.FlatAppearance.BorderSize = 0;
             btn.Text = "";
             btn.ImageAlign = ContentAlignment.MiddleCenter;
-            btn.BackColor = Color.Transparent; // hoặc màu khác tùy thiết kế
-            btn.FlatAppearance.MouseOverBackColor = Color.Transparent; // mau hover
+            btn.BackColor = Color.Transparent;
+            btn.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btn.FlatAppearance.MouseDownBackColor = Color.Transparent;
         }
 
@@ -378,8 +382,6 @@ namespace foodordering
         // Sự kiện khi nhấn vào nút giỏ hàng
         private void cartButton_Click(object sender, EventArgs e)
         {
-            //Cart cart = new Cart(list);
-            //cart.Show();
             this.Enabled = false;
             using (Cart cart = new Cart(list))
             {
@@ -431,7 +433,6 @@ namespace foodordering
                     // Lưu trạng thái đăng nhập
                     UserSession.Instance.LoggedInUsername = loginForm.Username;
 
-                    // Cập nhật nút đăng nhập
                     UpdateLoginButton(UserSession.Instance.LoggedInUsername);
                     list = new CartBL().GetCart(foodordering.Properties.Settings.Default.userID);
                     user = new UserBL().getUser(foodordering.Properties.Settings.Default.userID, foodordering.Properties.Settings.Default.isSeller);
@@ -439,14 +440,13 @@ namespace foodordering
                 }
             }
         }
-
+        // Cập nhật nút đăng nhập sau khi đăng nhập thành công
         private void UpdateLoginButton(string username)
         {
 
             btnLogin.Text = $"🙋🏻‍♂️ {username} ⇓";
             btnLogin.TextAlign = (HorizontalAlignment)ContentAlignment.MiddleLeft;
             btnLogin.ImageAlign = (HorizontalAlignment)ContentAlignment.MiddleRight;
-            //btnLogin.Image = Properties.Resources.down_arrow;
 
             // Xóa sự kiện cũ
             btnLogin.Click -= btnLogin_Click;
@@ -476,6 +476,7 @@ namespace foodordering
 
         }
 
+        //  đổi mật khẩu
         private void EditAccount_Click(object sender, EventArgs e)
         {
             using (frmEditAccount editForm = new frmEditAccount())
@@ -485,11 +486,9 @@ namespace foodordering
             }
 
         }
+        // hiển thị form Lịch sử đơn hàng
         private void OrderHistoryItem_Click(object sender, EventArgs e)
         {
-            // Hiển thị form Lịch sử đơn hàng
-            //HelpForm orderHistory = new HelpForm();
-            //orderHistory.ShowDialog();
             this.Enabled = false;
             using (odersHistory f = new odersHistory())
             {
@@ -499,7 +498,7 @@ namespace foodordering
                 }
             }
         }
-
+        // nút đăng xuất
         private void SignOutItem_Click(object sender, EventArgs e)
         {
             // Reset trạng thái người dùng
@@ -527,6 +526,7 @@ namespace foodordering
             form.Show();
         }
 
+        // kênh người bán
         private void btnSellerChannel_Click(object sender, EventArgs e)
         {
             Hide();
@@ -556,10 +556,9 @@ namespace foodordering
             Hide();
             HelpForm form = new HelpForm();
             form.Show();
-            //Food_Seller_Form form = new Food_Seller_Form(1);
-            //form.Show();
         }
 
+        // hàm thêm 1 form vào panel
         private void AddControlToPanel(Form form)
         {
             form.TopLevel = false;
@@ -575,26 +574,24 @@ namespace foodordering
         {
             foreach (System.Windows.Forms.Control control in panel3.Controls)
             {
-                control.Visible = false; // Ẩn control
+                control.Visible = false;
             }
-            // Hiển thị loadingPanel và progressBar1
             loadingPanel.Visible = true;
             progressBar1.Visible = true;
-            progressBar1.Value = 0; // Đặt lại giá trị ban đầu
+            progressBar1.Value = 0;
 
             // Mô phỏng quá trình loading trong 5 giây
             await Task.Run(() =>
             {
                 for (int i = 0; i <= 100; i++)
                 {
-                    Thread.Sleep(50); // Mỗi vòng lặp mất 50ms (100 vòng = 5 giây)
+                    Thread.Sleep(50);
                     this.Invoke((MethodInvoker)(() =>
                     {
                         progressBar1.Value = i; // Cập nhật giá trị ProgressBar
                     }));
                 }
             });
-            // Khôi phục giao diện chính
             Form1 frm = new Form1();
             this.Hide();
             frm.Show();
@@ -603,9 +600,6 @@ namespace foodordering
 
         private void loadProductByCategorieID(int i)
         {
-            //FoodCategoryForm f = new FoodCategoryForm(i);
-            //AddControlToPanel(f);
-            //f.Show();
             List<ProductDTO> products = new ProductBL().GetProducts_byCategorieID(i);
             listProduct = products;
             LoadProductsForDetail();
@@ -689,12 +683,12 @@ namespace foodordering
                 int index = i;
                 BorderButton button = new BorderButton()
                 {
-                    Text = categories[i],  // Chỉ định văn bản cho button
-                    Width = 80,             // Đặt kích thước cho button
-                    Height = 36,            // Đặt chiều cao cho button
-                    BackColor = Color.White,  // Chọn màu nền cho button
-                    ForeColor = Color.Black,      // Màu chữ cho button
-                    Font = new Font("Verdana", 8, FontStyle.Bold)  // Cài đặt phông chữ cho button
+                    Text = categories[i],
+                    Width = 80,
+                    Height = 36,
+                    BackColor = Color.White,
+                    ForeColor = Color.Black,
+                    Font = new Font("Verdana", 8, FontStyle.Bold)
                 };
                 button.Click += (_, __) => ToggleButtonColor(button, index + 1);
                 fLPCategory.Controls.Add(button);
@@ -704,7 +698,7 @@ namespace foodordering
                 suggestionsListBox.Visible = false;
             }
         }
-
+        // hàm thay đổi màu khi button được click
         private void ToggleButtonColor(BorderButton button, int categoryIndex)
         {
             if (selectedButton != null)
@@ -720,6 +714,8 @@ namespace foodordering
             selectedButton = button;
             loadProductByCategorieID(categoryIndex);
         }
+
+        // hàm reset khi đăng xuất
         private void ResetUserState()
         {
             IsSellerLoggedIn = false;
@@ -749,7 +745,7 @@ namespace foodordering
             AddControlToPanel(searchResultForm);
         }
 
-
+        // hỗ trợ enter khi tìm
         private void searchBar_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Down && suggestionsListBox.Visible)
@@ -766,6 +762,7 @@ namespace foodordering
             }
         }
 
+        // load các button bên dưới search bar
         public void LoadFeaturedProducts()
         {
             flpFeatures.Controls.Clear();
@@ -844,7 +841,7 @@ namespace foodordering
             AddControlToPanel(showAllAds);
 
         }
-
+        // sự kiện khi gõ chữ tìm
         private void searchBar_TextChanged(object sender, EventArgs e)
         {
             string searchText = searchBar.Text.Trim();
@@ -880,12 +877,12 @@ namespace foodordering
             }
             catch (Exception ex)
             {
-                //System.Diagnostics.Debug.WriteLine($"PL Error: {ex.Message}");
                 MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message);
             }
 
         }
 
+        // sự kiện click vào gợi ý
         private void suggestionsListBox_Click_1(object sender, EventArgs e)
         {
             if (suggestionsListBox.SelectedItem != null)
@@ -911,12 +908,10 @@ namespace foodordering
                             }
                             else
                             {
-                                // Sử dụng ảnh mặc định nếu không tìm thấy
                                 imagePath = Path.Combine(Application.StartupPath, "Resources", "default.png");
                                 productImage = System.Drawing.Image.FromFile(imagePath);
                             }
 
-                            // Resize ảnh nếu cần
                             System.Drawing.Image resizedImage = ResizeImg.ResizeImage(productImage, 381, 310);
 
                             // Tạo và hiển thị ItemDetail
@@ -933,7 +928,6 @@ namespace foodordering
                             );
                             AddControlToPanel(form2);
 
-                            // Giải phóng tài nguyên
                             productImage.Dispose();
                         }
                         catch (Exception ex)
