@@ -1,7 +1,7 @@
  Food Ordering System
 
  Introduction
-This is a food ordering management system built with C WinForms and SQL Server, designed according to the 3-layer Architecture model:
+This is a food ordering management system built with C# WinForms and SQL Server, designed according to the 3-layer Architecture model:
 - Presentation Layer (PL): User interface.
 - Business Logic Layer (BL): Business logic processing.
 - Data Access Layer (DAL): Connect and manipulate with SQL Server database.
