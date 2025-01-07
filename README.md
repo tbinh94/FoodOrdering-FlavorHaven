@@ -18,11 +18,11 @@ This is a food ordering management system built with C# WinForms and SQL Server,
 - Manage products and product categories.
 
  Technology used
-- Programming language: C WinForms.
+- Programming language: C# WinForms.
 
 - Database: SQL Server.
 
-- Framework: .NET Framework 4.7.2.
+- Framework: .NET Framework 4.8.
 
  Database Structure
 - Product: ProductID, ProductName, Price, Description, CategoryID, Image, Address.
